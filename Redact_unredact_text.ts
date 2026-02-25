@@ -1,9 +1,5 @@
 import { Sweden } from "./Texts_Countries";
-import {
-    array
-    list
-    
-}
+import { build_array } from "./libr/graphs";
 
 export type Text = string;
 export type Tokenized_Text = string[];
