@@ -1,37 +1,8 @@
-import { Sweden, Germany , Norway,Spain ,Italy} from "./Texts_Countries";
-import { build_array } from "./libr/graphs";
+import { Sweden } from "./Texts_Countries";
 
 export type Text = string;
 export type Tokenized_Text = string[];
 
- 
-export function redact_all_text(input:string):string{
-    let redacted_text = input.replace(/\S/g, "*")
-    return redacted_text;
-}
-
-const display = redact_all_text(tokenize_text("jorden är platt hej ");
-console.log(display);
-
-
-
-
-function find_words(guess: string, text: string[]): array<string> {
-   let ok = false
-   for(let i = 0, i < array.length(text), i = i + 1) {
-       if (guess = text[i]) {
-           redacted_text[i] = text[i]
-           ok = true
-       }
-   }
-   return redacted_text
-}
-
-
-function input(): string {
-   guess = prompt("guess a word")
-   return guess
-}
 
 
 /**
@@ -39,15 +10,15 @@ function input(): string {
  * @param t: Text Takes in a string of some kind
  * @returns the same text but with no large letters,
  */
+// Kan fixas så att * tas bort
 export function normalize_text(t: Text): Text{
     return t
     .toLowerCase() // Makes each letter lowercase
     .normalize("NFD") // Splits accents from letters                
     .replace(/[\u0300-\u036f]/g, "")  // Removes the accents
-    .replace(/[^a-z0-9\s-]/g, "")   // Removes Punctuations
+    .replace(/[^a-z0-9\s-*]/g, "")   // Removes Punctuations
     .replace(/\s+/g, " ") // Makes double spaces, Tabs to one space " "
     .trim(); // Takes away spaces at the start and end
-   
 }
 
 
@@ -90,4 +61,29 @@ export function tokenize_text(t: Text): Tokenized_Text{
     return tokens;
 }
 
+// Så att det är detta som skrivs ut
+export function redact_all_text(input: Text):string{
+    
+    return input.replace(/\S/g, "*");
+}
+
+export function redact_all_text_tokenized(input: Text): string[]{
+    
+    return tokenize_text(input.replace(/\S/g, "*"));
+}
+
+export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): any {
+   
+   let ok = false
+   const l = text.length;
+   // Kollar igenom texten och hittar ordet
+   for(let i = 0; i < l; i = i + 1) {
+       const normalized_guess = normalize_text(guess); 
+       if (guess === text[i]) {
+           redacted_text_tokenized[i] = text[i]
+           ok = true
+       }
+   }
+   return redact_all_text_tokenized;
+}
 

@@ -1,4 +1,5 @@
 import { normalize_text, tokenize_text, redact_all_text} from "./Redact_unredact_text";
+import { Sweden } from "./Texts_Countries";
     
     const empty_string = "";
     const string_no_large_letters = "hej jag gillar glass"
@@ -20,7 +21,13 @@ import { normalize_text, tokenize_text, redact_all_text} from "./Redact_unredact
 
 test('testing redact all text', ()=> {
     expect(redact_all_text(redact_text1)).toEqual("*** *** ****** *****")
+    expect(tokenize_text(redact_all_text(redact_text1))).toEqual(["***", "***", "******", "*****"])
 })
+
+test('testing redact all text', ()=> {
+    expect(redact_all_text(redact_text1)).toEqual("*** *** ****** *****")
+})
+
 test('Can normalize handle empty string', ()=> {
     expect(normalized_empty).toBe("");
 })
@@ -45,6 +52,5 @@ test('Testing that we can tokenize regular sentences', ()=> {
     expect(tokenize1).toEqual(["hej", "jag", "gillar", "glass"]);
     expect(tokenize2).toEqual(["hello", "my", "name", "ar", "isak"]);
     expect(tokenize3).toEqual(["hello", "i", "like", "countries"]);
-
 })
 
