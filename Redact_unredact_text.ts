@@ -10,6 +10,7 @@ export type Tokenized_Text = string[];
  * @param t: Text Takes in a string of some kind
  * @returns the same text but with no large letters,
  */
+// Kan fixas så att * tas bort
 export function normalize_text(t: Text): Text{
     return t
     .toLowerCase() // Makes each letter lowercase
@@ -60,6 +61,7 @@ export function tokenize_text(t: Text): Tokenized_Text{
     return tokens;
 }
 
+// Så att det är detta som skrivs ut
 export function redact_all_text(input: Text):string{
     
     return input.replace(/\S/g, "*");
@@ -70,24 +72,18 @@ export function redact_all_text_tokenized(input: Text): string[]{
     return tokenize_text(input.replace(/\S/g, "*"));
 }
 
-function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] || false {
+export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): any {
    
    let ok = false
    const l = text.length;
    // Kollar igenom texten och hittar ordet
-   for(let i = 0; i < l; i++) {
+   for(let i = 0; i < l; i = i + 1) {
        const normalized_guess = normalize_text(guess); 
        if (guess === text[i]) {
            redacted_text_tokenized[i] = text[i]
            ok = true
        }
    }
-   if(ok = false){return redacted_text_tokenized}
-
+   return redact_all_text_tokenized;
 }
 
-
-function gameplay_loop(): string {
-   guess = prompt("guess a word")
-   return guess
-}

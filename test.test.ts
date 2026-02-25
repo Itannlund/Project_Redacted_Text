@@ -52,6 +52,5 @@ test('Testing that we can tokenize regular sentences', ()=> {
     expect(tokenize1).toEqual(["hej", "jag", "gillar", "glass"]);
     expect(tokenize2).toEqual(["hello", "my", "name", "ar", "isak"]);
     expect(tokenize3).toEqual(["hello", "i", "like", "countries"]);
-
 })
 
