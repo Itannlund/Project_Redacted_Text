@@ -3,16 +3,6 @@ import { Sweden } from "./Texts_Countries";
 export type Text = string;
 export type Tokenized_Text = string[];
 
- 
-export function redact_all_text(input: Text):string{
-    
-    return input.replace(/\S/g, "*");
-}
-
-export function redact_all_text_tokenized(input: Text): string[]{
-    
-    return tokenize_text(input.replace(/\S/g, "*"));
-}
 
 
 /**
@@ -70,22 +60,34 @@ export function tokenize_text(t: Text): Tokenized_Text{
     return tokens;
 }
 
+export function redact_all_text(input: Text):string{
+    
+    return input.replace(/\S/g, "*");
+}
 
-function find_words(guess: string, text: string[]): array<string> {
-   let redacted_tokenized = tokenize_text() 
+export function redact_all_text_tokenized(input: Text): string[]{
+    
+    return tokenize_text(input.replace(/\S/g, "*"));
+}
+
+function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] || false {
+   
    let ok = false
    const l = text.length;
-   for(let i = 0; i < l; i = i + 1) {
-       if (guess = text[i]) {
-           redacted_text[i] = text[i]
+   // Kollar igenom texten och hittar ordet
+   for(let i = 0; i < l; i++) {
+       const normalized_guess = normalize_text(guess); 
+       if (guess === text[i]) {
+           redacted_text_tokenized[i] = text[i]
            ok = true
        }
    }
-   return redacted_text
+   if(ok = false){return redacted_text_tokenized}
+
 }
 
 
-function input(): string {
+function gameplay_loop(): string {
    guess = prompt("guess a word")
    return guess
 }
