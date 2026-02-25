@@ -1,4 +1,4 @@
-import { Sweden } from "./Texts_Countries";
+import { Sweden, Germany , Norway,Spain ,Italy} from "./Texts_Countries";
 import { build_array } from "./libr/graphs";
 
 export type Text = string;
