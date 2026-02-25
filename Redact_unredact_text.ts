@@ -72,7 +72,7 @@ export function redact_all_text_tokenized(input: Text): string[]{
     return tokenize_text(input.replace(/\S/g, "*"));
 }
 
-export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): any {
+export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] {
    
    let ok = false
    const l = text.length;
@@ -87,3 +87,17 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    return redacted_text_tokenized;
 }
 
+function gameplay_loop(){
+    // Börjar med att skriva ut texten redacted
+    // Vi sätter våran valda text manuelt just nu
+    const text = Sweden[0];
+    const text_redacted = redact_all_text(text);
+    const text_redacted_tokenized = redact_all_text_tokenized(text);
+    const text_tokenized = tokenize_text(text);
+    while(true){
+        console.log(text_redacted_tokenized);
+        const user_guess = prompt("Make a guess:");
+        
+    }
+
+}
