@@ -1,15 +1,20 @@
 import { Sweden } from "./Texts_Countries";
+import {
+    array
+    list
+    
+}
 
 export type Text = string;
 export type Tokenized_Text = string[];
 
  
 export function redact_all_text(input:string):string{
-    
-    return input.replace(/\S/g, "*");
+    let redacted_text = input.replace(/\S/g, "*")
+    return redacted_text;
 }
 
-const display = redact_all_text(tokenize_text("jorden är platt hej "));
+const display = redact_all_text(tokenize_text("jorden är platt hej ");
 console.log(display);
 
 
@@ -17,7 +22,7 @@ console.log(display);
 
 function find_words(guess: string, text: string[]): array<string> {
    let ok = false
-   for(let i = 0, i < array.leangth(text), i = i + 1) {
+   for(let i = 0, i < array.length(text), i = i + 1) {
        if (guess = text[i]) {
            redacted_text[i] = text[i]
            ok = true
