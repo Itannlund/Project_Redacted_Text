@@ -70,6 +70,12 @@ function find_words(guess, text, redacted_text_tokenized) {
     }
     return redacted_text_tokenized;
 }
+// addat från internet för att få en 
+function askQuestion(rl, question) {
+    return new Promise(function (resolve) {
+        rl.question(question, function (answer) { return resolve(answer); });
+    });
+}
 function gameplay_loop() {
     // Börjar med att skriva ut texten redacted
     // Vi sätter våran valda text manuelt just nu
@@ -77,9 +83,8 @@ function gameplay_loop() {
     var text_redacted = redact_all_text(text);
     var text_redacted_tokenized = redact_all_text_tokenized(text);
     var text_tokenized = tokenize_text(text);
-    while (true) {
-        console.log(text_redacted_tokenized);
-        var user_guess = prompt("Make a guess:");
-    }
+    var input = prompt("Do you want to continue? (Y/N):  ");
+    var n = (input !== null && input !== void 0 ? input : "").trim().toUpperCase();
 }
+;
 gameplay_loop();

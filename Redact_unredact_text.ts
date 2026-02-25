@@ -87,18 +87,41 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    return redacted_text_tokenized;
 }
 
-function gameplay_loop(){
-    // Börjar med att skriva ut texten redacted
-    // Vi sätter våran valda text manuelt just nu
+function ask(question: string): Promise<string> {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
+    return new Promise((resolve) => {
+        rl.question(question, (answer) => {
+            rl.close();
+            resolve(answer);
+        });
+    });
+}
+
+
+async function gameplay_loop() {
     const text = "Hej mitt namn är Isak";
-    const text_redacted = redact_all_text(text);
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
-    while(true){
-        console.log(text_redacted_tokenized);
-        const user_guess = prompt("Make a guess:");
-        
+
+    console.log("Redacted text:");
+    console.log(text_redacted_tokenized.join(" "));
+
+    const input = await ask("Guess a word (or type quit): ");
+    const normalized_input = normalize_text(input);
+
+    if (normalized_input === "quit") {
+        console.log("Game ended.");
+        return;
     }
 
+    const updated = find_words(input, text_tokenized, text_redacted_tokenized);
+
+    console.log("Updated text:");
+    console.log(updated.join(" "));
 }
+
 gameplay_loop();
