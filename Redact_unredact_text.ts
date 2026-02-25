@@ -1,36 +1,16 @@
-import { Sweden } from "./Texts_Countries";
-
 export type Text = string;
 export type Tokenized_Text = string[];
 
  
 export function redact_all_text(input:string):string{
-    
+    real_words = input.split(" ");
     return input.replace(/\S/g, "*");
 }
 
-const display = redact_all_text(tokenize_text("jorden är platt hej "));
+const display = redact_all_text("jorden är platt hej ");
 console.log(display);
 
 
-
-
-function find_words(guess: string, text: string[]): array<string> {
-   let ok = false
-   for(let i = 0, i < array.leangth(text), i = i + 1) {
-       if (guess = text[i]) {
-           redacted_text[i] = text[i]
-           ok = true
-       }
-   }
-   return redacted_text
-}
-
-
-function input(): string {
-   guess = prompt("guess a word")
-   return guess
-}
 
 
 /**
