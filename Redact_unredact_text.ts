@@ -1,5 +1,5 @@
 import { Sweden } from "./Texts_Countries";
-
+import * as readline from "readline";
 export type Text = string;
 export type Tokenized_Text = string[];
 
@@ -90,7 +90,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
 function gameplay_loop(){
     // Börjar med att skriva ut texten redacted
     // Vi sätter våran valda text manuelt just nu
-    const text = Sweden[0];
+    const text = "Hej mitt namn är Isak";
     const text_redacted = redact_all_text(text);
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
@@ -101,3 +101,4 @@ function gameplay_loop(){
     }
 
 }
+gameplay_loop();
