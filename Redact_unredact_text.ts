@@ -107,6 +107,7 @@ async function gameplay_loop() {
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
 
+    while(true){
     console.log("Redacted text:");
     console.log(text_redacted_tokenized.join(" "));
 
@@ -117,11 +118,16 @@ async function gameplay_loop() {
         console.log("Game ended.");
         return;
     }
-
+    if (normalized_input === "sweden"){
+        console.log("You guessed correct")
+        return; 
+    }
+    
     const updated = find_words(input, text_tokenized, text_redacted_tokenized);
 
     console.log("Updated text:");
     console.log(updated.join(" "));
+}
 }
 
 gameplay_loop();
