@@ -41,6 +41,7 @@ exports.tokenize_text = tokenize_text;
 exports.redact_all_text = redact_all_text;
 exports.redact_all_text_tokenized = redact_all_text_tokenized;
 exports.find_words = find_words;
+var Texts_Countries_1 = require("./Texts_Countries");
 var readline = require("readline");
 /**
  * Normilizes a text by taking away uppercase letters, accents,
@@ -107,6 +108,7 @@ function find_words(guess, text, redacted_text_tokenized) {
     }
     return redacted_text_tokenized;
 }
+// Funktion för att ställa frågor
 function ask(question) {
     var rl = readline.createInterface({
         input: process.stdin,
@@ -119,13 +121,21 @@ function ask(question) {
         });
     });
 }
+function generate_random_text() {
+    var length = Texts_Countries_1.country_texts.length;
+    var n = Math.floor(Math.random() * length);
+    return Texts_Countries_1.country_texts[n];
+}
+// Våran gameplay loop. Denna kör spelet
 function gameplay_loop() {
     return __awaiter(this, void 0, void 0, function () {
-        var text, text_redacted_tokenized, text_tokenized, input, normalized_input, updated;
+        var our_array, correct_answer, text, text_redacted_tokenized, text_tokenized, input, normalized_input, updated;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    text = "Hej mitt namn är Isak";
+                    our_array = generate_random_text();
+                    correct_answer = our_array[0];
+                    text = our_array[1];
                     text_redacted_tokenized = redact_all_text_tokenized(text);
                     text_tokenized = tokenize_text(text);
                     _a.label = 1;
@@ -141,7 +151,7 @@ function gameplay_loop() {
                         console.log("Game ended.");
                         return [2 /*return*/];
                     }
-                    if (normalized_input === "sweden") {
+                    if (normalized_input === correct_answer) {
                         console.log("You guessed correct");
                         return [2 /*return*/];
                     }

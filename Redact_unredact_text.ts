@@ -1,4 +1,4 @@
-import { Sweden } from "./Texts_Countries";
+import { country_texts } from "./Texts_Countries";
 import * as readline from "readline";
 export type Text = string;
 export type Tokenized_Text = string[];
@@ -87,6 +87,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    return redacted_text_tokenized;
 }
 
+// Funktion för att ställa frågor
 function ask(question: string): Promise<string> {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -101,11 +102,20 @@ function ask(question: string): Promise<string> {
     });
 }
 
-
+function generate_random_text(){
+    const length = country_texts.length;
+    const n = Math.floor(Math.random() * length);
+    return country_texts[n]
+}
+// Våran gameplay loop. Denna kör spelet
 async function gameplay_loop() {
-    const text = "Hej mitt namn är Isak";
+    
+    const our_array = generate_random_text();
+    const correct_answer = our_array[0]; 
+    const text = our_array[1];
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
+
 
     while(true){
     console.log("Redacted text:");
@@ -118,7 +128,7 @@ async function gameplay_loop() {
         console.log("Game ended.");
         return;
     }
-    if (normalized_input === "sweden"){
+    if (normalized_input === correct_answer){
         console.log("You guessed correct")
         return; 
     }

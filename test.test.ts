@@ -1,5 +1,5 @@
 import { normalize_text, tokenize_text, redact_all_text, redact_all_text_tokenized, find_words} from "./Redact_unredact_text";
-import { Sweden } from "./Texts_Countries";
+import {country_texts} from "./Texts_Countries";
     
     const empty_string = "";
     const string_no_large_letters = "hej jag gillar glass"
