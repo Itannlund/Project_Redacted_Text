@@ -9,25 +9,9 @@ export function redact_all_text(input: Text):string{
     return input.replace(/\S/g, "*");
 }
 
-
-
-function find_words(guess: string, text: string[]): array<string> {
-   let redacted_tokenized = tokenize_text() 
-   let ok = false
-   const l = text.length;
-   for(let i = 0; i < l; i = i + 1) {
-       if (guess = text[i]) {
-           redacted_text[i] = text[i]
-           ok = true
-       }
-   }
-   return redacted_text
-}
-
-
-function input(): string {
-   guess = prompt("guess a word")
-   return guess
+export function redact_all_text_tokenized(input: Text): string[]{
+    
+    return tokenize_text(input.replace(/\S/g, "*"));
 }
 
 
@@ -87,3 +71,21 @@ export function tokenize_text(t: Text): Tokenized_Text{
 }
 
 
+function find_words(guess: string, text: string[]): array<string> {
+   let redacted_tokenized = tokenize_text() 
+   let ok = false
+   const l = text.length;
+   for(let i = 0; i < l; i = i + 1) {
+       if (guess = text[i]) {
+           redacted_text[i] = text[i]
+           ok = true
+       }
+   }
+   return redacted_text
+}
+
+
+function input(): string {
+   guess = prompt("guess a word")
+   return guess
+}
