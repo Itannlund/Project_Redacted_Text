@@ -1,15 +1,7 @@
+import { Sweden } from "./Texts_Countries";
+import * as readline from "readline";
 export type Text = string;
 export type Tokenized_Text = string[];
-
- 
-export function redact_all_text(input:string):string{
-    real_words = input.split(" ");
-    return input.replace(/\S/g, "*");
-}
-
-const display = redact_all_text("jorden är platt hej ");
-console.log(display);
-
 
 
 
@@ -18,15 +10,15 @@ console.log(display);
  * @param t: Text Takes in a string of some kind
  * @returns the same text but with no large letters,
  */
+// Kan fixas så att * tas bort
 export function normalize_text(t: Text): Text{
     return t
     .toLowerCase() // Makes each letter lowercase
     .normalize("NFD") // Splits accents from letters                
     .replace(/[\u0300-\u036f]/g, "")  // Removes the accents
-    .replace(/[^a-z0-9\s-]/g, "")   // Removes Punctuations
+    .replace(/[^a-z0-9\s-*]/g, "")   // Removes Punctuations
     .replace(/\s+/g, " ") // Makes double spaces, Tabs to one space " "
     .trim(); // Takes away spaces at the start and end
-   
 }
 
 
@@ -69,4 +61,44 @@ export function tokenize_text(t: Text): Tokenized_Text{
     return tokens;
 }
 
+// Så att det är detta som skrivs ut
+export function redact_all_text(input: Text):string{
+    
+    return input.replace(/\S/g, "*");
+}
 
+export function redact_all_text_tokenized(input: Text): string[]{
+    
+    return tokenize_text(input.replace(/\S/g, "*"));
+}
+
+export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] {
+   
+   let ok = false
+   const l = text.length;
+   // Kollar igenom texten och hittar ordet
+   for(let i = 0; i < l; i = i + 1) {
+       const normalized_guess = normalize_text(guess); 
+       if (normalized_guess === text[i]) {
+           redacted_text_tokenized[i] = text[i]
+           ok = true
+       }
+   }
+   return redacted_text_tokenized;
+}
+
+function gameplay_loop(){
+    // Börjar med att skriva ut texten redacted
+    // Vi sätter våran valda text manuelt just nu
+    const text = "Hej mitt namn är Isak";
+    const text_redacted = redact_all_text(text);
+    const text_redacted_tokenized = redact_all_text_tokenized(text);
+    const text_tokenized = tokenize_text(text);
+    while(true){
+        console.log(text_redacted_tokenized);
+        const user_guess = prompt("Make a guess:");
+        
+    }
+
+}
+gameplay_loop();
