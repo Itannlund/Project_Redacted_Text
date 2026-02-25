@@ -1,4 +1,4 @@
-import { normalize_text, tokenize_text, redact_all_text} from "./Redact_unredact_text";
+import { normalize_text, tokenize_text, redact_all_text, redact_all_text_tokenized, find_words} from "./Redact_unredact_text";
 import { Sweden } from "./Texts_Countries";
     
     const empty_string = "";
@@ -54,3 +54,12 @@ test('Testing that we can tokenize regular sentences', ()=> {
     expect(tokenize3).toEqual(["hello", "i", "like", "countries"]);
 })
 
+test('Testing Our find words function', ()=> {
+    const guess1 = "Isak";
+    const text1 = "Hej mitt namn är Isak";
+    const red_text1 = redact_all_text(text1);
+    const red_text1_tok = tokenize_text(red_text1);
+    expect(red_text1_tok).toEqual(["***", "****", "****", "**", "****"])
+    expect(find_words(guess1, tokenize_text(text1), red_text1_tok)).toEqual(["***", "****", "****", "**", "isak"])
+    expect(red_text1_tok).toEqual(["***", "****", "****", "**", "isak"])
+})

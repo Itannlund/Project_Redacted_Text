@@ -79,11 +79,11 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    // Kollar igenom texten och hittar ordet
    for(let i = 0; i < l; i = i + 1) {
        const normalized_guess = normalize_text(guess); 
-       if (guess === text[i]) {
+       if (normalized_guess === text[i]) {
            redacted_text_tokenized[i] = text[i]
            ok = true
        }
    }
-   return redact_all_text_tokenized;
+   return redacted_text_tokenized;
 }
 
