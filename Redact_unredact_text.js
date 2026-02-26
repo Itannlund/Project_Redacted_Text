@@ -108,7 +108,7 @@ function find_words(guess, text, redacted_text_tokenized) {
     }
     return redacted_text_tokenized;
 }
-// Funktion för att ställa frågor
+// Funktion för få prompts
 function ask(question) {
     var rl = readline.createInterface({
         input: process.stdin,
@@ -121,20 +121,41 @@ function ask(question) {
         });
     });
 }
+// Generates a random text from countries
 function generate_random_text() {
     var length = Texts_Countries_1.country_texts.length;
     var n = Math.floor(Math.random() * length);
     return Texts_Countries_1.country_texts[n];
 }
+function already_guessed(guesses, guess) {
+    for (var i = 0; i < guesses.length; i++) {
+        if (guesses[i] === guess) {
+            console.log("Already guessed, guess again: ");
+            return true;
+        }
+    }
+    guesses.push(guess);
+    return false;
+}
+function point_set(points) {
+    var newPoints = points - 5;
+    if (newPoints <= 0) {
+        console.log("You ran out of points :(");
+        return null;
+    }
+    return newPoints;
+}
 // Våran gameplay loop. Denna kör spelet
 function gameplay_loop() {
     return __awaiter(this, void 0, void 0, function () {
-        var our_array, correct_answer, text, text_redacted_tokenized, text_tokenized, input, normalized_input, updated;
+        var points, guesses, our_array, correct_answer, text, text_redacted_tokenized, text_tokenized, input, normalized_input, newPoints, updated;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    points = 100;
+                    guesses = [];
                     our_array = generate_random_text();
-                    correct_answer = our_array[0];
+                    correct_answer = normalize_text(our_array[0]);
                     text = our_array[1];
                     text_redacted_tokenized = redact_all_text_tokenized(text);
                     text_tokenized = tokenize_text(text);
@@ -151,13 +172,20 @@ function gameplay_loop() {
                         console.log("Game ended.");
                         return [2 /*return*/];
                     }
+                    if (already_guessed(guesses, normalized_input)) {
+                        return [3 /*break*/, 1];
+                    }
+                    newPoints = point_set(points);
+                    if (newPoints === null) {
+                        return [2 /*return*/];
+                    }
+                    points = newPoints;
                     if (normalized_input === correct_answer) {
                         console.log("You guessed correct");
                         return [2 /*return*/];
                     }
-                    updated = find_words(input, text_tokenized, text_redacted_tokenized);
-                    console.log("Updated text:");
-                    console.log(updated.join(" "));
+                    updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
+                    console.log("Points", newPoints);
                     return [3 /*break*/, 1];
                 case 3: return [2 /*return*/];
             }

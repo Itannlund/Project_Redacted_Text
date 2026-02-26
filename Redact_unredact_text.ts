@@ -124,9 +124,26 @@ function already_guessed(guesses: string[], guess: string): boolean {
 }
 
 
+
+function point_set(points: number): number | null {
+    const newPoints = points - 5;
+
+    if (newPoints <= 0) {
+        console.log("You ran out of points :(");
+        return null;
+    }
+
+    return newPoints;
+}
+
+
 // Våran gameplay loop. Denna kör spelet
 async function gameplay_loop() {
+    //start points
+    let points = 100
+    // Our array of guesses
     let guesses: string[] = [];
+    // Our array with correct guess and text
     const our_array = generate_random_text();
     const correct_answer = normalize_text(our_array[0]); 
     const text = our_array[1];
@@ -147,15 +164,19 @@ async function gameplay_loop() {
     if (already_guessed(guesses, normalized_input)){
         continue;
     }
+
+    const newPoints = point_set(points);
+    if (newPoints === null) {return;}
+    points = newPoints;
+    
     if (normalized_input === correct_answer){
-        console.log("You guessed correct")
+        console.log("You guessed correct, with a score of:", newPoints)
         return; 
     }
     
     const updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
 
-    console.log("Updated text:");
-    console.log(updated.join(" "));
+    console.log("Points", newPoints);
 }
 }
 

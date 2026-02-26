@@ -63,3 +63,4 @@ test('Testing Our find words function', ()=> {
     expect(find_words(guess1, tokenize_text(text1), red_text1_tok)).toEqual(["***", "****", "****", "**", "isak"])
     expect(red_text1_tok).toEqual(["***", "****", "****", "**", "isak"])
 })
+test('')
