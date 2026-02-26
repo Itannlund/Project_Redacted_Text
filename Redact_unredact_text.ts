@@ -152,32 +152,31 @@ async function gameplay_loop() {
 
 
     while(true){
-    console.log("Redacted text:");
-    console.log(text_redacted_tokenized.join(" "));
+        console.log("Redacted text:");
+        console.log(text_redacted_tokenized.join(" "));
 
-    const input = await ask("Guess a word (or type quit): ");
-    const normalized_input = normalize_text(input);
-    if (normalized_input === "quit") {
-        console.log("Game ended.");
-        return;
-    }
-    if (already_guessed(guesses, normalized_input)){
-        continue;
-    }
+        const input = await ask("Guess a word (or type quit): ");
+        const normalized_input = normalize_text(input);
+        if (normalized_input === "quit") {
+            console.log("Game ended.");
+            return;
+        }
+        if (already_guessed(guesses, normalized_input)){
+            continue;
+        }
 
-    const newPoints = point_set(points);
-    if (newPoints === null) {return;}
-    points = newPoints;
+        if (normalized_input === correct_answer){
+            console.log("You guessed correct, with a score of:", points)
+            return; 
+        }
+        const newPoints = point_set(points);
+        if (newPoints === null) {return;}
+        points = newPoints;
     
-    if (normalized_input === correct_answer){
-        console.log("You guessed correct, with a score of:", newPoints)
-        return; 
-    }
     
-    const updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
+        const updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
 
-    console.log("Points", newPoints);
-}
+    }
 }
 
 gameplay_loop();
