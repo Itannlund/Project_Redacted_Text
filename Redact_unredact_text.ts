@@ -87,7 +87,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    return redacted_text_tokenized;
 }
 
-// Funktion för att ställa frågor
+// Funktion för få prompts
 function ask(question: string): Promise<string> {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -102,14 +102,17 @@ function ask(question: string): Promise<string> {
     });
 }
 
+// Generates a random text from countries
 function generate_random_text(){
     const length = country_texts.length;
     const n = Math.floor(Math.random() * length);
     return country_texts[n]
 }
+
+
 // Våran gameplay loop. Denna kör spelet
 async function gameplay_loop() {
-    
+    let guesses = [];
     const our_array = generate_random_text();
     const correct_answer = our_array[0]; 
     const text = our_array[1];
