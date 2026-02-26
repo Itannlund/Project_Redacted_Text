@@ -110,11 +110,25 @@ function generate_random_text(){
 }
 
 
+
+function already_guessed(guesses: string[], guess: string): boolean {
+
+    for (let i = 0; i < guesses.length; i++){
+        if (guesses[i] === guess) {
+            console.log("Already guessed, guess again: ")
+            return true;
+        }
+    }
+    guesses.push(guess)
+    return false;
+}
+
+
 // Våran gameplay loop. Denna kör spelet
 async function gameplay_loop() {
-    let guesses = [];
+    let guesses: string[] = [];
     const our_array = generate_random_text();
-    const correct_answer = our_array[0]; 
+    const correct_answer = normalize_text(our_array[0]); 
     const text = our_array[1];
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
@@ -126,17 +140,19 @@ async function gameplay_loop() {
 
     const input = await ask("Guess a word (or type quit): ");
     const normalized_input = normalize_text(input);
-
     if (normalized_input === "quit") {
         console.log("Game ended.");
         return;
+    }
+    if (already_guessed(guesses, normalized_input)){
+        continue;
     }
     if (normalized_input === correct_answer){
         console.log("You guessed correct")
         return; 
     }
     
-    const updated = find_words(input, text_tokenized, text_redacted_tokenized);
+    const updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
 
     console.log("Updated text:");
     console.log(updated.join(" "));
