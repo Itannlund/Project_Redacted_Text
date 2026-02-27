@@ -43,6 +43,7 @@ exports.redact_all_text_tokenized = redact_all_text_tokenized;
 exports.find_words = find_words;
 var Texts_Countries_1 = require("./Texts_Countries");
 var readline = require("readline");
+var prompt = require('prompt-sync')({ sigint: true }); // Used to handle Inputs
 /**
  * Normilizes a text by taking away uppercase letters, accents,
  * @param t: Text Takes in a string of some kind
@@ -106,7 +107,12 @@ function find_words(guess, text, redacted_text_tokenized) {
             ok = true;
         }
     }
-    return redacted_text_tokenized;
+    if (ok === false) {
+        return ok;
+    }
+    else {
+        return redacted_text_tokenized;
+    }
 }
 // Funktion för få prompts
 function ask(question) {
@@ -137,18 +143,20 @@ function already_guessed(guesses, guess) {
     guesses.push(guess);
     return false;
 }
-function point_set(points) {
-    var newPoints = points - 5;
-    if (newPoints <= 0) {
-        console.log("You ran out of points :(");
-        return null;
+function point_set(points, action) {
+    //remove points
+    if (action === 2) {
+        return points;
     }
-    return newPoints;
+    else
+        (action === 1);
+    points = (points - 5);
+    return points;
 }
 // Våran gameplay loop. Denna kör spelet
 function gameplay_loop() {
     return __awaiter(this, void 0, void 0, function () {
-        var points, guesses, our_array, correct_answer, text, text_redacted_tokenized, text_tokenized, input, normalized_input, newPoints, updated;
+        var points, guesses, our_array, correct_answer, text, text_redacted_tokenized, text_tokenized, answer, input, normalized_input, updated;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -159,33 +167,34 @@ function gameplay_loop() {
                     text = our_array[1];
                     text_redacted_tokenized = redact_all_text_tokenized(text);
                     text_tokenized = tokenize_text(text);
+                    answer = false;
                     _a.label = 1;
                 case 1:
-                    if (!true) return [3 /*break*/, 3];
+                    if (!(points > 0)) return [3 /*break*/, 3];
+                    console.log("points", points);
                     console.log("Redacted text:");
                     console.log(text_redacted_tokenized.join(" "));
                     return [4 /*yield*/, ask("Guess a word (or type quit): ")];
                 case 2:
                     input = _a.sent();
                     normalized_input = normalize_text(input);
+                    updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
                     if (normalized_input === "quit") {
                         console.log("Game ended.");
                         return [2 /*return*/];
                     }
+                    if (updated === false) {
+                        console.log("Wrong answer, guess again");
+                        points = points - 5;
+                        return [3 /*break*/, 1];
+                    }
                     if (already_guessed(guesses, normalized_input)) {
                         return [3 /*break*/, 1];
                     }
-                    newPoints = point_set(points);
-                    if (newPoints === null) {
-                        return [2 /*return*/];
-                    }
-                    points = newPoints;
                     if (normalized_input === correct_answer) {
-                        console.log("You guessed correct");
+                        console.log("You guessed correct, with a score of:", points);
                         return [2 /*return*/];
                     }
-                    updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
-                    console.log("Points", newPoints);
                     return [3 /*break*/, 1];
                 case 3: return [2 /*return*/];
             }
