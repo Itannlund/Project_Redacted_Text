@@ -4,7 +4,7 @@ export type Text = string;
 export type Tokenized_Text = string[];
 
 
-
+const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
 /**
  * Normilizes a text by taking away uppercase letters, accents,
  * @param t: Text Takes in a string of some kind
@@ -139,6 +139,8 @@ function point_set(points: number): number | null {
 
 // Våran gameplay loop. Denna kör spelet
 async function gameplay_loop() {
+    // Interface menu
+   
     //start points
     let points = 100
     // Our array of guesses
@@ -156,6 +158,7 @@ async function gameplay_loop() {
         console.log(text_redacted_tokenized.join(" "));
 
         const input = await ask("Guess a word (or type quit): ");
+        
         const normalized_input = normalize_text(input);
         if (normalized_input === "quit") {
             console.log("Game ended.");
