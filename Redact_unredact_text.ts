@@ -72,7 +72,7 @@ export function redact_all_text_tokenized(input: Text): string[]{
     return tokenize_text(input.replace(/\S/g, "*"));
 }
 
-export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] {
+export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] | boolean {
    
    let ok = false
    const l = text.length;
@@ -84,7 +84,11 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
            ok = true
        }
    }
-   return redacted_text_tokenized;
+   if (ok === false) {
+    return ok;
+   } else {
+    return redacted_text_tokenized;
+   }
 }
 
 // Funktion för få prompts
@@ -125,15 +129,14 @@ function already_guessed(guesses: string[], guess: string): boolean {
 
 
 
-function point_set(points: number): number | null {
-    const newPoints = points - 5;
-
-    if (newPoints <= 0) {
-        console.log("You ran out of points :(");
-        return null;
+function point_set(points: number, action: number): Number {
+    //remove points
+    if (action === 2) {
+        return points
     }
-
-    return newPoints;
+    else (action === 1)
+        points = (points - 5)
+        return points
 }
 
 
@@ -151,19 +154,32 @@ async function gameplay_loop() {
     const text = our_array[1];
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
+    let answer = false
 
 
-    while(true){
+    while(points > 0){
+        console.log("points", points)
         console.log("Redacted text:");
         console.log(text_redacted_tokenized.join(" "));
 
         const input = await ask("Guess a word (or type quit): ");
         
         const normalized_input = normalize_text(input);
+
+
+        const updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
+
         if (normalized_input === "quit") {
             console.log("Game ended.");
             return;
         }
+
+        if (updated === false) {
+            console.log("Wrong answer, guess again")
+            points = points - 5;
+            continue;
+        }
+
         if (already_guessed(guesses, normalized_input)){
             continue;
         }
@@ -172,13 +188,7 @@ async function gameplay_loop() {
             console.log("You guessed correct, with a score of:", points)
             return; 
         }
-        const newPoints = point_set(points);
-        if (newPoints === null) {return;}
-        points = newPoints;
-    
-    
-        const updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
-
+        
     }
 }
 
