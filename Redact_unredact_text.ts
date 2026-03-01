@@ -1,4 +1,4 @@
-import { country_texts } from "./Texts_Countries";
+import { country_texts } from "./Texts_Countries.js";
 import * as readline from "readline";
 export type Text = string;
 export type Tokenized_Text = string[];
@@ -16,7 +16,6 @@ export function normalize_text(t: Text): Text{
     .toLowerCase() // Makes each letter lowercase
     .normalize("NFD") // Splits accents from letters                
     .replace(/[\u0300-\u036f]/g, "")  // Removes the accents
-    .replace(/[^a-z0-9\s-*]/g, "")   // Removes Punctuations
     .replace(/\s+/g, " ") // Makes double spaces, Tabs to one space " "
     .trim(); // Takes away spaces at the start and end
 }
@@ -64,12 +63,12 @@ export function tokenize_text(t: Text): Tokenized_Text{
 // Så att det är detta som skrivs ut
 export function redact_all_text(input: Text):string{
     
-    return input.replace(/\S/g, "*");
+    return input.replace(/[^.\s.]/g, "*");
 }
 
 export function redact_all_text_tokenized(input: Text): string[]{
     
-    return tokenize_text(input.replace(/\S/g, "*"));
+    return tokenize_text(input.replace(/[^.\s]/g, "*"));
 }
 
 export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] | boolean {
@@ -160,6 +159,8 @@ async function gameplay_loop() {
     while(points > 0){
         console.log("points", points)
         console.log("Redacted text:");
+        find_words(normalize_text("and"), text_tokenized, text_redacted_tokenized)
+        find_words(normalize_text("the"), text_tokenized, text_redacted_tokenized)
         console.log(text_redacted_tokenized.join(" "));
 
         const input = await ask("Guess a word (or type quit): ");
@@ -174,15 +175,17 @@ async function gameplay_loop() {
             return;
         }
 
+        if (already_guessed(guesses, normalized_input)){
+            console.log("Already guessed")
+            continue;
+        }
+
         if (updated === false) {
-            console.log("Wrong answer, guess again")
+            console.log("Wrong answer, guess again :(")
             points = points - 5;
             continue;
         }
 
-        if (already_guessed(guesses, normalized_input)){
-            continue;
-        }
 
         if (normalized_input === correct_answer){
             console.log("You guessed correct, with a score of:", points)
