@@ -144,6 +144,7 @@ function already_guessed(guesses: string[], guess: string): boolean {
 }
 
 
+
 // Skall användas senare när vi får flera actions
 function point_set(points: number, action: number): Number {
     //remove points
@@ -157,7 +158,7 @@ function point_set(points: number, action: number): Number {
 
 function meny(){
     while(true){
-        console.log("\n 1. Play \n 2. Exit")
+        console.log("\n 1. Play \n 2. Rules \n 3. Exit")
         const input1 = prompt("Choose from menu:  ");
         
         if(input1 === "1"){
@@ -177,33 +178,53 @@ function meny(){
             
         }
         if(input1 === "2"){
+        game_rules();
+        continue;
+        }
+
+        
+        if(input1 === "3"){
             console.log("Lämnat spelet");
             break;
         }
-        // Kanske måste fixa denna
-        if(input1 > 3){
-            console.log("Invalid input try again: ")
+        
+        else {
+            console.log("Invalid input try again:")
         }
-    
     }
+}
 
     
         
     
-}
+
 // Generates a random text from the desired kategory
 function generate_random_text(Kategory: string[][]): string[]{
         const length = Kategory.length;
         const n = Math.floor(Math.random() * length);
         return Kategory[n]
     }
+function game_rules(): void {
+    console.log(`_______________________________________________________________________________\n
+                Welcome to our game redacted, here are the rules!!!\n
+                1. The player will get a redacted text from a choosen category
+                2. The player will start with 100 points and your goal is to unredact 
+                   as many words as you can by typing them in the terminal.
+                3. For each word you guess correctly you gain 10 points and for each word 
+                   you guess incorrectly you lose 10 points.
+                4. To win the player needs to guess the current topic for their selected 
+                   category, correct guess for current topic gains double points.`);
+        const input_leave = prompt("If you wish to continue press any button: ")
+        return;
+}
 
 // Våran gameplay loop. Denna kör spelet
 function gameplay_loop(kategory: string[][]) {
-    // Interface menu
+    console.log(`________________________________________________________________________________\n
+                    Welcome to the game Redacted!!!`)
     
     //start points
-    let points = 50;
+    let points = 100;
     // Our array of guesses
     let guesses: string[] = [];
     // Our array with correct guess and text
@@ -256,13 +277,13 @@ function gameplay_loop(kategory: string[][]) {
         if (updated === false) {
             console.log(`_______________________________________________________________________________\n
                         Word does not exist try again`)
-            points = points - 5;
+            points = points - 10;
             continue;
         }
         if (updated === true){
             console.log(`_______________________________________________________________________________\n
                         Great job, you gained 5 points!`)
-            points = points + 5;
+            points = points + 10;
             continue;
 
         }
