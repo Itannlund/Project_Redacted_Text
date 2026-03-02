@@ -160,28 +160,38 @@ function point_set(points: number, action: number): Number {
 }
 
 function meny(){
-    console.log("\n 1. Play \n 2. Exit")
-    const input1 = prompt("Choose from menu:  ");
+    while(true){
+        console.log("\n 1. Play \n 2. Exit")
+        const input1 = prompt("Choose from menu:  ");
+        
+        if(input1 === "1"){
+            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Football teams \n 4. Go back  ")
+            const input2 = prompt("Choose Category: ");
+            if(input2 === "1"){
+                // Här startar land gissa
+                gameplay_loop(country_texts);
 
-    if(input1 === "1"){
-        console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Football teams  ")
-        const input2 = prompt("Choose Category: ");
-        if(input2 === "1"){
-            // Här startar land gissa
-            gameplay_loop(country_texts);
-
-        } 
-        if(input2 ==="2"){
-            // Här startar artist gissningen
-            gameplay_loop(song_title);
+            } 
+            if(input2 ==="2"){
+                // Här startar artist gissningen
+                gameplay_loop(song_title);
+            }
+            else{
+                continue;}
+            
         }
-        
+        if(input1 === "2"){
+            console.log("Lämnat spelet");
+            break;
+        }
+        // Kanske måste fixa denna
+        if(input1 > 3){
+            console.log("Invalid input try again: ")
+        }
+    
     }
-    if(input1 === "2"){
-        console.log("Lämnat spelet");
-        
-    }
-    // Lägg till else
+
+    // else
         
     
 }

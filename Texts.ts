@@ -18,7 +18,10 @@ export const country_texts = [
 ]
 
 export const song_title = [ 
-    ["shake it off",  `I stay out too late Got nothin' in my brain That's what people say, 
+    [
+    "shake it off",  
+    
+    `I stay out too late Got nothin' in my brain That's what people say, 
     mm-mm That's what people say, mm-mm I go on too many dates (Haha) But I can't make them stay
     At least, that's what people say, mm-mm
     That's what people say, mm-mm
@@ -34,6 +37,30 @@ export const song_title = [
     And the fakers gonna fake, fake, fake, fake, fake
     Baby, I'm just gonna shake, shake, shake, shake, shake
     I shake it off, I shake it off'`],
-    ["Hej mitt namn "]
+    [
+    "lay all your love on me", `
+    
+    I wasn't jealous before we met
+    Now every woman I see is a potential threat
+    And I'm possessive, it isn't nice
+    You've heard me saying that smoking was my only vice
+
+    But now it isn't true
+    Now everything is new
+    And all I've learned has overturned
+    I beg of you
+
+    Don't go wasting your emotion
+    Lay all your love on me
+
+    It was like shooting a sitting duck
+    A little small talk, a smile, and baby, I was stuck
+    I still don't know what you've done with me
+    A grown-up woman should never fall so easily
+
+    I feel a kind of fear
+    When I don't have you near
+    Unsatisfied, I skip my pride
+    I beg you, dear`]
 
 ]

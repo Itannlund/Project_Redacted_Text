@@ -138,24 +138,33 @@ function point_set(points, action) {
     return points;
 }
 function meny() {
-    console.log("\n 1. Play \n 2. Exit");
-    var input1 = prompt("Choose from menu:  ");
-    if (input1 === "1") {
-        console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Football teams  ");
-        var input2 = prompt("Choose Category: ");
-        if (input2 === "1") {
-            // Här startar land gissa
-            gameplay_loop(Texts_js_1.country_texts);
+    while (true) {
+        console.log("\n 1. Play \n 2. Exit");
+        var input1 = prompt("Choose from menu:  ");
+        if (input1 === "1") {
+            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Football teams \n 4. Go back  ");
+            var input2 = prompt("Choose Category: ");
+            if (input2 === "1") {
+                // Här startar land gissa
+                gameplay_loop(Texts_js_1.country_texts);
+            }
+            if (input2 === "2") {
+                // Här startar artist gissningen
+                gameplay_loop(Texts_js_1.song_title);
+            }
+            else {
+                continue;
+            }
         }
-        if (input2 === "2") {
-            // Här startar artist gissningen
-            gameplay_loop(Texts_js_1.song_title);
+        if (input1 === "2") {
+            console.log("Lämnat spelet");
+            break;
+        }
+        if (input1 > 3) {
+            console.log("Invalid input try again: ");
         }
     }
-    if (input1 === "2") {
-        console.log("Lämnat spelet");
-    }
-    // Lägg till else
+    // else
 }
 // Generates a random text from the desired kategory
 function generate_random_text(Kategory) {
