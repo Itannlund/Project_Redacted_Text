@@ -16,3 +16,24 @@ export const country_texts = [
 ["italy", "Italy,[a] officially the Italian Republic,[b] is a country in Southern and Western Europe.[c] It consists of a peninsula that extends into the Mediterranean Sea, with the Alps on its northern land border, as well as nearly 800 islands, notably Sicily and Sardinia. Italy shares land borders with France to the west; Switzerland and Austria to the north; Slovenia to the east; and the two enclaves of Vatican City and San Marino. It is the tenth-largest country in Europe by area, covering 301,340 km2 (116,350 sq mi), and the third-most populous member state of the European Union, with nearly 59 million inhabitants. Italy's capital and largest city is Rome; other major cities include Milan, Naples, Turin, Palermo, Bologna, Florence, Genoa, and Venice."]
 
 ]
+
+export const song_title = [ 
+    ["shake it off",  `I stay out too late Got nothin' in my brain That's what people say, 
+    mm-mm That's what people say, mm-mm I go on too many dates (Haha) But I can't make them stay
+    At least, that's what people say, mm-mm
+    That's what people say, mm-mm
+    But I keep cruisin'
+    Can't stop, won't stop movin'
+    It's like I got this music in my mind
+    Sayin', "It's gonna be alright"
+    'Cause the players gonna play, play, play, play, play
+    And the haters gonna hate, hate, hate, hate, hate
+    Baby, I'm just gonna shake, shake, shake, shake, shake
+    I shake it off, I shake it off
+    Heartbreakers gonna break, break, break, break, break
+    And the fakers gonna fake, fake, fake, fake, fake
+    Baby, I'm just gonna shake, shake, shake, shake, shake
+    I shake it off, I shake it off'`],
+    ["Hej mitt namn "]
+
+]

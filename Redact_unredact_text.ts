@@ -1,4 +1,4 @@
-import { country_texts } from "./Texts_Countries.js";
+import { country_texts, song_title } from "./Texts.js";
 import { Prompt } from "prompt-sync";
 import * as readline from "readline";
 export type Text = string;
@@ -158,6 +158,7 @@ function point_set(points: number, action: number): Number {
         points = (points - 5)
         return points
 }
+
 function meny(){
     console.log("\n 1. Play \n 2. Exit")
     const input1 = prompt("Choose from menu:  ");
@@ -167,40 +168,40 @@ function meny(){
         const input2 = prompt("Choose Category: ");
         if(input2 === "1"){
             // Här startar land gissa
-            gameplay_loop();
+            gameplay_loop(country_texts);
 
         } 
         if(input2 ==="2"){
             // Här startar artist gissningen
-            gameplay_loop();
+            gameplay_loop(song_title);
         }
-        if (input2 ==="3"){
-            //Här startar lag gissningen 
-            gameplay_loop();
-        }
-    if(input1 === "2"){
-        console.log("Lämnat spelet");
-    }
         
     }
+    if(input1 === "2"){
+        console.log("Lämnat spelet");
+        
+    }
+    // Lägg till else
+        
+    
 }
+// Generates a random text from the desired kategory
+function generate_random_text(Kategory: string[][]){
+        const length = Kategory.length;
+        const n = Math.floor(Math.random() * length);
+        return Kategory[n]
+    }
 
 // Våran gameplay loop. Denna kör spelet
-function gameplay_loop() {
+function gameplay_loop(kategory: string[][]) {
     // Interface menu
     
-    // Generates a random text from country_texts
-    function generate_random_text(){
-        const length = country_texts.length;
-        const n = Math.floor(Math.random() * length);
-        return country_texts[n]
-    }
     //start points
     let points = 100
     // Our array of guesses
     let guesses: string[] = [];
     // Our array with correct guess and text
-    const our_array = generate_random_text();
+    const our_array = generate_random_text(kategory);
     const correct_answer = normalize_text(our_array[0]); 
     const text = our_array[1];
     const text_redacted_tokenized = redact_all_text_tokenized(text);
@@ -228,6 +229,11 @@ function gameplay_loop() {
             return;
         }
 
+        if (normalized_input === correct_answer){
+            console.log("You guessed correct, with a score of:", points)
+            return; 
+        }
+
         if (already_guessed(guesses, normalized_input)){
             console.log("Already guessed")
             continue;
@@ -240,13 +246,10 @@ function gameplay_loop() {
         }
 
 
-        if (normalized_input === correct_answer){
-            console.log("You guessed correct, with a score of:", points)
-            return; 
-        }
+        
         
     }
 }
 
 
-find_words("Isak", ["hej", "mitt", "namn", "ar", "isak."], ["***", "****", "****", "**", "****."]);
+meny();

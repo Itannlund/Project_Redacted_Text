@@ -5,7 +5,7 @@ exports.tokenize_text = tokenize_text;
 exports.redact_all_text = redact_all_text;
 exports.redact_all_text_tokenized = redact_all_text_tokenized;
 exports.find_words = find_words;
-var Texts_Countries_js_1 = require("./Texts_Countries.js");
+var Texts_js_1 = require("./Texts.js");
 var prompt = require('prompt-sync')({ sigint: true }); // Used to handle Inputs
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
@@ -94,16 +94,12 @@ function find_words(guess, text, redacted_text_tokenized) {
     var normalized_guess = normalize_text(guess);
     // Kollar igenom texten och hittar ordet
     for (var i = 0; i < l; i = i + 1) {
-        var word_no_punctuation = text[i].replace(/[.,!?;:()"'`-]/g, "");
-        console.log("normalized_guess:", normalized_guess);
-        console.log("text:", text);
+        var word_no_punctuation = text[i].replace(/[.]/g, "");
         if (normalized_guess === word_no_punctuation) {
             redacted_text_tokenized[i] = text[i];
             ok = true;
         }
     }
-    console.log("ok:", ok);
-    console.log("result:", redacted_text_tokenized);
     if (ok === false) {
         return ok;
     }
@@ -149,36 +145,33 @@ function meny() {
         var input2 = prompt("Choose Category: ");
         if (input2 === "1") {
             // Här startar land gissa
-            gameplay_loop();
+            gameplay_loop(Texts_js_1.country_texts);
         }
         if (input2 === "2") {
             // Här startar artist gissningen
-            gameplay_loop();
-        }
-        if (input2 === "3") {
-            //Här startar lag gissningen 
-            gameplay_loop();
-        }
-        if (input1 === "2") {
-            console.log("Lämnat spelet");
+            gameplay_loop(Texts_js_1.song_title);
         }
     }
+    if (input1 === "2") {
+        console.log("Lämnat spelet");
+    }
+    // Lägg till else
+}
+// Generates a random text from the desired kategory
+function generate_random_text(Kategory) {
+    var length = Kategory.length;
+    var n = Math.floor(Math.random() * length);
+    return Kategory[n];
 }
 // Våran gameplay loop. Denna kör spelet
-function gameplay_loop() {
+function gameplay_loop(kategory) {
     // Interface menu
-    // Generates a random text from country_texts
-    function generate_random_text() {
-        var length = Texts_Countries_js_1.country_texts.length;
-        var n = Math.floor(Math.random() * length);
-        return Texts_Countries_js_1.country_texts[n];
-    }
     //start points
     var points = 100;
     // Our array of guesses
     var guesses = [];
     // Our array with correct guess and text
-    var our_array = generate_random_text();
+    var our_array = generate_random_text(kategory);
     var correct_answer = normalize_text(our_array[0]);
     var text = our_array[1];
     var text_redacted_tokenized = redact_all_text_tokenized(text);
@@ -198,6 +191,10 @@ function gameplay_loop() {
             console.log("Game ended.");
             return;
         }
+        if (normalized_input === correct_answer) {
+            console.log("You guessed correct, with a score of:", points);
+            return;
+        }
         if (already_guessed(guesses, normalized_input)) {
             console.log("Already guessed");
             continue;
@@ -207,10 +204,6 @@ function gameplay_loop() {
             points = points - 5;
             continue;
         }
-        if (normalized_input === correct_answer) {
-            console.log("You guessed correct, with a score of:", points);
-            return;
-        }
     }
 }
-find_words("Isak", ["hej", "mitt", "namn", "ar", "isak."], ["***", "****", "****", "**", "****."]);
+meny();
