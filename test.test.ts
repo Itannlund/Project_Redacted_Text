@@ -41,7 +41,7 @@ test('Testing normlize_text for Bigg letters', ()=>{
 
 test('Testing normlilize_text for weird letters', ()=> {
     const Swedish_letters = "Är Ån Något,. att öva pÅ? "
-    expect(normalize_text(Swedish_letters)).toEqual("ar an nagot att ova pa");
+    expect(normalize_text(Swedish_letters)).toEqual("ar an nagot,. att ova pa?");
 });
 
 test('Does tokenize handle an empty string', ()=> {
@@ -55,12 +55,11 @@ test('Testing that we can tokenize regular sentences', ()=> {
 })
 
 test('Testing Our find words function', ()=> {
-    const guess1 = "Isak";
-    const text1 = "Hej mitt namn är Isak";
+    const guess1 = "Isak.";
+    const text1 = "Hej mitt namn är Isak.";
     const red_text1 = redact_all_text(text1);
     const red_text1_tok = tokenize_text(red_text1);
-    expect(red_text1_tok).toEqual(["***", "****", "****", "**", "****"])
-    expect(find_words(guess1, tokenize_text(text1), red_text1_tok)).toEqual(["***", "****", "****", "**", "isak"])
-    expect(red_text1_tok).toEqual(["***", "****", "****", "**", "isak"])
+    expect(red_text1_tok).toEqual(["***", "****", "****", "**", "****."])
+    expect(find_words(guess1, tokenize_text(text1), red_text1_tok)).toEqual(["***", "****", "****", "**", "isak."])
+    expect(red_text1_tok).toEqual(["***", "****", "****", "**", "isak."])
 })
-test('')

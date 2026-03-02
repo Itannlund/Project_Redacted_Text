@@ -41,13 +41,15 @@ exports.tokenize_text = tokenize_text;
 exports.redact_all_text = redact_all_text;
 exports.redact_all_text_tokenized = redact_all_text_tokenized;
 exports.find_words = find_words;
-var Texts_Countries_1 = require("./Texts_Countries");
+var Texts_Countries_js_1 = require("./Texts_Countries.js");
 var readline = require("readline");
-var prompt = require('prompt-sync')({ sigint: true }); // Used to handle Inputs
+// const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
 /**
- * Normilizes a text by taking away uppercase letters, accents,
- * @param t: Text Takes in a string of some kind
- * @returns the same text but with no large letters,
+ * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
+ * @example normalize_text("Hej Mitt    naMn är Öster")
+ * results in "hej mitt namn ar oster"
+ * @param t: Text Takes in a string.
+ * @returns The same text but normalized, (see comments in function for exact description)
  */
 // Kan fixas så att * tas bort
 function normalize_text(t) {
@@ -55,14 +57,16 @@ function normalize_text(t) {
         .toLowerCase() // Makes each letter lowercase
         .normalize("NFD") // Splits accents from letters                
         .replace(/[\u0300-\u036f]/g, "") // Removes the accents
-        .replace(/[^a-z0-9\s-*]/g, "") // Removes Punctuations
         .replace(/\s+/g, " ") // Makes double spaces, Tabs to one space " "
         .trim(); // Takes away spaces at the start and end
 }
 /**
- * Normilizes a text by taking away uppercase letters, accents,
- * @param t: Text Takes in a string of some kind
- * @returns A text where each word in that text is a token.
+ * Takes in a text and normalizes and tokenizes it to an array with multiple strings inside
+ * @example tokenize_text("Hej mitt namn är Öster")
+ * results in ["hej", "mitt", "namn", "ar", "oster"]
+ * @param t: Text is a string
+ * @precondition
+ * @returns the same text but where each space between words creates a token until next space
  */
 function tokenize_text(t) {
     var tokens = []; // Our token Array
@@ -89,12 +93,25 @@ function tokenize_text(t) {
     }
     return tokens;
 }
-// Så att det är detta som skrivs ut
+/**
+ * Takes in a string and transforms all letters to * while keeping the structure and dots
+ * @example: redact_all_text("hello my name is öster")
+ * results in "***** ** **** ** *****"
+ * @param t: A text of some kind
+ * @returns Returns the text transformed into a redacted state
+ */
 function redact_all_text(input) {
-    return input.replace(/\S/g, "*");
+    return input.replace(/[^.\s.]/g, "*");
 }
+/**
+ * Takes in a string and transforms all letters to * and tokenizes them, they keep the same structure and dots
+ * @example: redact_all_text("hello my name is öster")
+ * results in "***** ** **** ** *****"
+ * @param t: A text of some kind
+ * @returns Returns the text transformed into a redacted state
+ */
 function redact_all_text_tokenized(input) {
-    return tokenize_text(input.replace(/\S/g, "*"));
+    return tokenize_text(input.replace(/[^.\s]/g, "*"));
 }
 function find_words(guess, text, redacted_text_tokenized) {
     var ok = false;
@@ -129,9 +146,9 @@ function ask(question) {
 }
 // Generates a random text from countries
 function generate_random_text() {
-    var length = Texts_Countries_1.country_texts.length;
+    var length = Texts_Countries_js_1.country_texts.length;
     var n = Math.floor(Math.random() * length);
-    return Texts_Countries_1.country_texts[n];
+    return Texts_Countries_js_1.country_texts[n];
 }
 function already_guessed(guesses, guess) {
     for (var i = 0; i < guesses.length; i++) {
@@ -168,6 +185,9 @@ function gameplay_loop() {
                     text_redacted_tokenized = redact_all_text_tokenized(text);
                     text_tokenized = tokenize_text(text);
                     answer = false;
+                    //Takes away common words so they are not redacted at the start
+                    find_words(normalize_text("and"), text_tokenized, text_redacted_tokenized);
+                    find_words(normalize_text("the"), text_tokenized, text_redacted_tokenized);
                     _a.label = 1;
                 case 1:
                     if (!(points > 0)) return [3 /*break*/, 3];
@@ -183,12 +203,13 @@ function gameplay_loop() {
                         console.log("Game ended.");
                         return [2 /*return*/];
                     }
-                    if (updated === false) {
-                        console.log("Wrong answer, guess again");
-                        points = points - 5;
+                    if (already_guessed(guesses, normalized_input)) {
+                        console.log("Already guessed");
                         return [3 /*break*/, 1];
                     }
-                    if (already_guessed(guesses, normalized_input)) {
+                    if (updated === false) {
+                        console.log("Wrong answer, guess again :(");
+                        points = points - 5;
                         return [3 /*break*/, 1];
                     }
                     if (normalized_input === correct_answer) {
@@ -201,4 +222,3 @@ function gameplay_loop() {
         });
     });
 }
-gameplay_loop();

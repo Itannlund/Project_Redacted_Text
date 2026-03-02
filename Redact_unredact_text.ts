@@ -4,11 +4,13 @@ export type Text = string;
 export type Tokenized_Text = string[];
 
 
-const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
+// const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
 /**
- * Normilizes a text by taking away uppercase letters, accents,
- * @param t: Text Takes in a string of some kind
- * @returns the same text but with no large letters,
+ * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
+ * @example normalize_text("Hej Mitt    naMn är Öster")
+ * results in "hej mitt namn ar oster"
+ * @param t: Text Takes in a string.
+ * @returns The same text but normalized, (see comments in function for exact description)
  */
 // Kan fixas så att * tas bort
 export function normalize_text(t: Text): Text{
@@ -22,11 +24,13 @@ export function normalize_text(t: Text): Text{
 
 
 /**
- * Normilizes a text by taking away uppercase letters, accents,
- * @param t: Text Takes in a string of some kind
- * @returns A text where each word in that text is a token.
+ * Takes in a text and normalizes and tokenizes it to an array with multiple strings inside
+ * @example tokenize_text("Hej mitt namn är Öster")
+ * results in ["hej", "mitt", "namn", "ar", "oster"]
+ * @param t: Text is a string
+ * @precondition
+ * @returns the same text but where each space between words creates a token until next space
  */
-
 
 export function tokenize_text(t: Text): Tokenized_Text{
    
@@ -60,14 +64,25 @@ export function tokenize_text(t: Text): Tokenized_Text{
     return tokens;
 }
 
-// Så att det är detta som skrivs ut
+/**
+ * Takes in a string and transforms all letters to * while keeping the structure and dots
+ * @example: redact_all_text("hello my name is öster")
+ * results in "***** ** **** ** *****"
+ * @param t: A text of some kind
+ * @returns Returns the text transformed into a redacted state
+ */
 export function redact_all_text(input: Text):string{
-    
     return input.replace(/[^.\s.]/g, "*");
 }
 
+/**
+ * Takes in a string and transforms all letters to * and tokenizes them, they keep the same structure and dots
+ * @example: redact_all_text("hello my name is öster")
+ * results in ["*****"", "**", "****", "**" "*****"]
+ * @param t: A text of some kind
+ * @returns Returns the text transformed into a redacted state
+ */
 export function redact_all_text_tokenized(input: Text): string[]{
-    
     return tokenize_text(input.replace(/[^.\s]/g, "*"));
 }
 
@@ -90,7 +105,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    }
 }
 
-// Funktion för få prompts
+// Funktion för få prompts ska antaligen tas bort
 function ask(question: string): Promise<string> {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -155,12 +170,13 @@ async function gameplay_loop() {
     const text_tokenized = tokenize_text(text);
     let answer = false
 
+    //Takes away common words so they are not redacted at the start
+    find_words(normalize_text("and"), text_tokenized, text_redacted_tokenized)
+    find_words(normalize_text("the"), text_tokenized, text_redacted_tokenized)
 
     while(points > 0){
         console.log("points", points)
         console.log("Redacted text:");
-        find_words(normalize_text("and"), text_tokenized, text_redacted_tokenized)
-        find_words(normalize_text("the"), text_tokenized, text_redacted_tokenized)
         console.log(text_redacted_tokenized.join(" "));
 
         const input = await ask("Guess a word (or type quit): ");
@@ -195,4 +211,3 @@ async function gameplay_loop() {
     }
 }
 
-gameplay_loop();
