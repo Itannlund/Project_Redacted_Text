@@ -43,7 +43,7 @@ exports.redact_all_text_tokenized = redact_all_text_tokenized;
 exports.find_words = find_words;
 var Texts_Countries_js_1 = require("./Texts_Countries.js");
 var readline = require("readline");
-// const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
+var prompt = require('prompt-sync')({ sigint: true }); // Used to handle Inputs
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
  * @example normalize_text("Hej Mitt    naMn är Öster")
@@ -106,13 +106,25 @@ function redact_all_text(input) {
 /**
  * Takes in a string and transforms all letters to * and tokenizes them, they keep the same structure and dots
  * @example: redact_all_text("hello my name is öster")
- * results in "***** ** **** ** *****"
+ * results in ["*****"", "**", "****", "**" "*****"]
  * @param t: A text of some kind
  * @returns Returns the text transformed into a redacted state
  */
 function redact_all_text_tokenized(input) {
     return tokenize_text(input.replace(/[^.\s]/g, "*"));
 }
+/**
+ * Takes in a guess a text and a redacted text and unredacts that guess in the redacted text
+ * @example find_words("Öster", ["mitt", "öster"], ["****", "*****"])
+ * results in ["****", "öster"]
+ * @param guess, is a string,
+ * @param text is an array with strings
+ * @param redacted_text_tokenized an array with strings
+ * @precondition This function requiered a redacted_text_tokenized that has the same ammount of words and placing as the text,
+ * will othervise return false
+ * @returns Returns false if no changes were made to redacted_text_tokenized
+ * and returns the redacted text if changes were made.
+ */
 function find_words(guess, text, redacted_text_tokenized) {
     var ok = false;
     var l = text.length;
@@ -131,7 +143,8 @@ function find_words(guess, text, redacted_text_tokenized) {
         return redacted_text_tokenized;
     }
 }
-// Funktion för få prompts
+// Denna ska tas bort
+// Funktion för få prompts s
 function ask(question) {
     var rl = readline.createInterface({
         input: process.stdin,
@@ -144,12 +157,15 @@ function ask(question) {
         });
     });
 }
-// Generates a random text from countries
-function generate_random_text() {
-    var length = Texts_Countries_js_1.country_texts.length;
-    var n = Math.floor(Math.random() * length);
-    return Texts_Countries_js_1.country_texts[n];
-}
+/**
+ * Takes in an array with guesses and a guess, it then adds the guess if it was not prevously in the array and returns false,
+ * othervise returns true
+ * @example: already_guessed(["hej", "mor"], "mor")
+ * results in "Already guessed, guess again: " then returns true
+ * @param guesses is an array with strings
+ * @param guess is a string
+ * @returns Returns true if not changes were made to guesses and false if changes where made.
+ */
 function already_guessed(guesses, guess) {
     for (var i = 0; i < guesses.length; i++) {
         if (guesses[i] === guess) {
@@ -160,6 +176,7 @@ function already_guessed(guesses, guess) {
     guesses.push(guess);
     return false;
 }
+// Skall användas senare när vi får flera actions
 function point_set(points, action) {
     //remove points
     if (action === 2) {
@@ -173,6 +190,13 @@ function point_set(points, action) {
 // Våran gameplay loop. Denna kör spelet
 function gameplay_loop() {
     return __awaiter(this, void 0, void 0, function () {
+        // Interface menu
+        // Generates a random text from country_texts
+        function generate_random_text() {
+            var length = Texts_Countries_js_1.country_texts.length;
+            var n = Math.floor(Math.random() * length);
+            return Texts_Countries_js_1.country_texts[n];
+        }
         var points, guesses, our_array, correct_answer, text, text_redacted_tokenized, text_tokenized, answer, input, normalized_input, updated;
         return __generator(this, function (_a) {
             switch (_a.label) {

@@ -1,10 +1,12 @@
 import { country_texts } from "./Texts_Countries.js";
+import { Prompt } from "prompt-sync";
 import * as readline from "readline";
 export type Text = string;
 export type Tokenized_Text = string[];
 
 
-// const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
+const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
+
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
  * @example normalize_text("Hej Mitt    naMn är Öster")
@@ -86,6 +88,18 @@ export function redact_all_text_tokenized(input: Text): string[]{
     return tokenize_text(input.replace(/[^.\s]/g, "*"));
 }
 
+/**
+ * Takes in a guess a text and a redacted text and unredacts that guess in the redacted text
+ * @example find_words("Öster", ["mitt", "öster"], ["****", "*****"])
+ * results in ["****", "öster"]
+ * @param guess, is a string, 
+ * @param text is an array with strings
+ * @param redacted_text_tokenized an array with strings
+ * @precondition This function requiered a redacted_text_tokenized that has the same ammount of words and placing as the text, 
+ * will othervise return false
+ * @returns Returns false if no changes were made to redacted_text_tokenized 
+ * and returns the redacted text if changes were made.
+ */
 export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] | boolean {
    
    let ok = false
@@ -105,7 +119,8 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    }
 }
 
-// Funktion för få prompts ska antaligen tas bort
+// Denna ska tas bort
+// Funktion för få prompts s
 function ask(question: string): Promise<string> {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -120,15 +135,16 @@ function ask(question: string): Promise<string> {
     });
 }
 
-// Generates a random text from countries
-function generate_random_text(){
-    const length = country_texts.length;
-    const n = Math.floor(Math.random() * length);
-    return country_texts[n]
-}
 
-
-
+/**
+ * Takes in an array with guesses and a guess, it then adds the guess if it was not prevously in the array and returns false,
+ * othervise returns true
+ * @example: already_guessed(["hej", "mor"], "mor")
+ * results in "Already guessed, guess again: " then returns true
+ * @param guesses is an array with strings
+ * @param guess is a string
+ * @returns Returns true if not changes were made to guesses and false if changes where made.
+ */
 function already_guessed(guesses: string[], guess: string): boolean {
 
     for (let i = 0; i < guesses.length; i++){
@@ -142,7 +158,7 @@ function already_guessed(guesses: string[], guess: string): boolean {
 }
 
 
-
+// Skall användas senare när vi får flera actions
 function point_set(points: number, action: number): Number {
     //remove points
     if (action === 2) {
@@ -157,7 +173,13 @@ function point_set(points: number, action: number): Number {
 // Våran gameplay loop. Denna kör spelet
 async function gameplay_loop() {
     // Interface menu
-   
+    
+    // Generates a random text from country_texts
+    function generate_random_text(){
+        const length = country_texts.length;
+        const n = Math.floor(Math.random() * length);
+        return country_texts[n]
+    }
     //start points
     let points = 100
     // Our array of guesses
