@@ -168,11 +168,11 @@ function meny(){
                 gameplay_loop(country_texts);
 
             } 
-            if(input2 ==="2"){
+            if (input2 ==="2"){
                 // Här startar artist gissningen
                 gameplay_loop(song_title);
             }
-            else{
+            else {
                 continue;}
             
         }
@@ -203,7 +203,7 @@ function gameplay_loop(kategory: string[][]) {
     // Interface menu
     
     //start points
-    let points = 100
+    let points = 50;
     // Our array of guesses
     let guesses: string[] = [];
     // Our array with correct guess and text
@@ -219,8 +219,9 @@ function gameplay_loop(kategory: string[][]) {
     find_words(normalize_text("the"), text_tokenized, text_redacted_tokenized)
 
     while(points > 0){
-        console.log("points", points)
+        console.log("Points:", points); 
         console.log("Redacted text:");
+        console.log("Already guessed words:", guesses);
         console.log(text_redacted_tokenized.join(" "));
 
         const input = prompt("Guess a word (or type quit): ");
@@ -231,26 +232,39 @@ function gameplay_loop(kategory: string[][]) {
         const updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
 
         if (normalized_input === "quit") {
-            console.log("Game ended.");
+            console.log(`______________________________________________________________________________\n
+                        Game ended!`);
             return;
         }
 
         if (normalized_input === correct_answer){
-            console.log("You guessed correct, with a score of:", points)
+            points = points * 2;
+            console.log(`_______________________________________________________________________________\n 
+                        You guessed correct!!!!! \n 
+                        With a score of:`, points, "points")
             // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
             // console.log(text);
             return; 
         }
 
         if (already_guessed(guesses, normalized_input)){
-            console.log("Already guessed")
+            console.log(`______________________________________________________________________________\n
+                        You have already guessed that word`)
             continue;
         }
 
         if (updated === false) {
-            console.log("Wrong answer, guess again :(")
+            console.log(`_______________________________________________________________________________\n
+                        Word does not exist try again`)
             points = points - 5;
             continue;
+        }
+        if (updated === true){
+            console.log(`_______________________________________________________________________________\n
+                        Great job, you gained 5 points!`)
+            points = points + 5;
+            continue;
+
         }
     }
 }

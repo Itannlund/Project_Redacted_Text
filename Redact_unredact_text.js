@@ -185,29 +185,35 @@ function gameplay_loop(kategory) {
     find_words(normalize_text("and"), text_tokenized, text_redacted_tokenized);
     find_words(normalize_text("the"), text_tokenized, text_redacted_tokenized);
     while (points > 0) {
-        console.log("points", points);
+        console.log("Points:", points);
         console.log("Redacted text:");
+        console.log("Already guessed words:", guesses);
         console.log(text_redacted_tokenized.join(" "));
         var input = prompt("Guess a word (or type quit): ");
         var normalized_input = normalize_text(input);
         var updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
         if (normalized_input === "quit") {
-            console.log("Game ended.");
+            console.log("______________________________________________________________________________\n\n                        Game ended!");
             return;
         }
         if (normalized_input === correct_answer) {
-            console.log("You guessed correct, with a score of:", points);
+            console.log("_______________________________________________________________________________\n \n                        You guessed correct!!!!! \n \n                        With a score of:", points, "points");
             // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
             // console.log(text);
             return;
         }
         if (already_guessed(guesses, normalized_input)) {
-            console.log("Already guessed");
+            console.log("______________________________________________________________________________\n\n                        You have already guessed that word");
             continue;
         }
         if (updated === false) {
-            console.log("Wrong answer, guess again :(");
+            console.log("_______________________________________________________________________________\n\n                        Word does not exist try again");
             points = points - 5;
+            continue;
+        }
+        if (updated === true) {
+            console.log("_______________________________________________________________________________\n\n                        Great job, you gained 5 points!");
+            points = points + 5;
             continue;
         }
     }
