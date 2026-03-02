@@ -154,7 +154,32 @@ function point_set(points: number, action: number): Number {
         points = (points - 5)
         return points
 }
+function meny(){
+    console.log("\n 1. Play \n 2. Exit")
+    const input1 = prompt("Choose from menu:  ");
 
+    if(input1 === "1"){
+        console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Football teams  ")
+        const input2 = prompt("Choose Category: ");
+        if(input2 === "1"){
+            // Här startar land gissa
+            gameplay_loop();
+
+        } 
+        if(input2 ==="2"){
+            // Här startar artist gissningen
+            gameplay_loop();
+        }
+        if (input2 ==="3"){
+            //Här startar lag gissningen 
+            gameplay_loop();
+        }
+    if(input1 === "2"){
+        console.log("Lämnat spelet");
+    }
+        
+    }
+}
 
 // Våran gameplay loop. Denna kör spelet
 function gameplay_loop() {
