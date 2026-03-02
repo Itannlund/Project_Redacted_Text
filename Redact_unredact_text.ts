@@ -104,10 +104,14 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    
    let ok = false
    const l = text.length;
+   const normalized_guess = normalize_text(guess);
    // Kollar igenom texten och hittar ordet
    for(let i = 0; i < l; i = i + 1) {
-       const normalized_guess = normalize_text(guess); 
-       if (normalized_guess === text[i]) {
+       
+       const word_no_punctuation = text[i].replace(/[.,!?;:()"'`-]/g, "");
+       console.log(normalized_guess);
+       console.log(word_no_punctuation);
+       if (normalized_guess === word_no_punctuation) {
            redacted_text_tokenized[i] = text[i]
            ok = true
        }
@@ -219,4 +223,3 @@ function gameplay_loop() {
     }
 }
 
-gameplay_loop();
