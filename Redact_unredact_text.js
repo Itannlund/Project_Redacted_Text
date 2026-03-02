@@ -74,7 +74,7 @@ function redact_all_text(input) {
  * @returns Returns the text transformed into a redacted state
  */
 function redact_all_text_tokenized(input) {
-    return tokenize_text(input.replace(/[^.\s]/g, "*"));
+    return tokenize_text(input.replace(/[^.,'-\s]/g, "*"));
 }
 /**
  * Takes in a guess a text and a redacted text and unredacts that guess in the redacted text
@@ -100,12 +100,7 @@ function find_words(guess, text, redacted_text_tokenized) {
             ok = true;
         }
     }
-    if (ok === false) {
-        return ok;
-    }
-    else {
-        return redacted_text_tokenized;
-    }
+    return ok;
 }
 /**
  * Takes in an array with guesses and a guess, it then adds the guess if it was not prevously in the array and returns false,
@@ -165,7 +160,6 @@ function meny() {
             console.log("Invalid input try again: ");
         }
     }
-    // else
 }
 // Generates a random text from the desired kategory
 function generate_random_text(Kategory) {
@@ -203,6 +197,8 @@ function gameplay_loop(kategory) {
         }
         if (normalized_input === correct_answer) {
             console.log("You guessed correct, with a score of:", points);
+            // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
+            // console.log(text);
             return;
         }
         if (already_guessed(guesses, normalized_input)) {

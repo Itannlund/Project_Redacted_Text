@@ -85,7 +85,7 @@ export function redact_all_text(input: Text):string{
  * @returns Returns the text transformed into a redacted state
  */
 export function redact_all_text_tokenized(input: Text): string[]{
-    return tokenize_text(input.replace(/[^.\s]/g, "*"));
+    return tokenize_text(input.replace(/[^.,'-\s]/g, "*"));
 }
 
 /**
@@ -100,7 +100,7 @@ export function redact_all_text_tokenized(input: Text): string[]{
  * @returns Returns false if no changes were made to redacted_text_tokenized 
  * and returns the redacted text if changes were made.
  */
-export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): string[] | boolean {
+export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): boolean {
    
    let ok = false
    const l = text.length;
@@ -116,11 +116,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
        }
    }
    
-   if (ok === false) {
-    return ok;
-   } else {
-    return redacted_text_tokenized;
-   }
+   return ok;
 }
 
 
@@ -241,6 +237,8 @@ function gameplay_loop(kategory: string[][]) {
 
         if (normalized_input === correct_answer){
             console.log("You guessed correct, with a score of:", points)
+            // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
+            // console.log(text);
             return; 
         }
 
