@@ -91,14 +91,19 @@ function redact_all_text_tokenized(input) {
 function find_words(guess, text, redacted_text_tokenized) {
     var ok = false;
     var l = text.length;
+    var normalized_guess = normalize_text(guess);
     // Kollar igenom texten och hittar ordet
     for (var i = 0; i < l; i = i + 1) {
-        var normalized_guess = normalize_text(guess);
-        if (normalized_guess === text[i]) {
+        var word_no_punctuation = text[i].replace(/[.,!?;:()"'`-]/g, "");
+        console.log("normalized_guess:", normalized_guess);
+        console.log("text:", text);
+        if (normalized_guess === word_no_punctuation) {
             redacted_text_tokenized[i] = text[i];
             ok = true;
         }
     }
+    console.log("ok:", ok);
+    console.log("result:", redacted_text_tokenized);
     if (ok === false) {
         return ok;
     }
@@ -135,6 +140,29 @@ function point_set(points, action) {
         (action === 1);
     points = (points - 5);
     return points;
+}
+function meny() {
+    console.log("\n 1. Play \n 2. Exit");
+    var input1 = prompt("Choose from menu:  ");
+    if (input1 === "1") {
+        console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Football teams  ");
+        var input2 = prompt("Choose Category: ");
+        if (input2 === "1") {
+            // Här startar land gissa
+            gameplay_loop();
+        }
+        if (input2 === "2") {
+            // Här startar artist gissningen
+            gameplay_loop();
+        }
+        if (input2 === "3") {
+            //Här startar lag gissningen 
+            gameplay_loop();
+        }
+        if (input1 === "2") {
+            console.log("Lämnat spelet");
+        }
+    }
 }
 // Våran gameplay loop. Denna kör spelet
 function gameplay_loop() {
@@ -185,4 +213,4 @@ function gameplay_loop() {
         }
     }
 }
-
+find_words("Isak", ["hej", "mitt", "namn", "ar", "isak."], ["***", "****", "****", "**", "****."]);

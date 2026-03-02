@@ -108,14 +108,14 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    // Kollar igenom texten och hittar ordet
    for(let i = 0; i < l; i = i + 1) {
        
-       const word_no_punctuation = text[i].replace(/[.,!?;:()"'`-]/g, "");
-       console.log(normalized_guess);
-       console.log(word_no_punctuation);
+       const word_no_punctuation = text[i].replace(/[.]/g, "");
+       
        if (normalized_guess === word_no_punctuation) {
            redacted_text_tokenized[i] = text[i]
            ok = true
        }
    }
+   
    if (ok === false) {
     return ok;
    } else {
@@ -248,3 +248,5 @@ function gameplay_loop() {
     }
 }
 
+
+find_words("Isak", ["hej", "mitt", "namn", "ar", "isak."], ["***", "****", "****", "**", "****."]);
