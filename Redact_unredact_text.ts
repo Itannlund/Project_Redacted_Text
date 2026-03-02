@@ -108,7 +108,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    // Kollar igenom texten och hittar ordet
    for(let i = 0; i < l; i = i + 1) {
        
-       const word_no_punctuation = text[i].replace(/[.]/g, "");
+       const word_no_punctuation = text[i].replace(/[.,!?;:()"'`-]/g, "");
        
        if (normalized_guess === word_no_punctuation) {
            redacted_text_tokenized[i] = text[i]
@@ -191,12 +191,12 @@ function meny(){
     
     }
 
-    // else
+    
         
     
 }
 // Generates a random text from the desired kategory
-function generate_random_text(Kategory: string[][]){
+function generate_random_text(Kategory: string[][]): string[]{
         const length = Kategory.length;
         const n = Math.floor(Math.random() * length);
         return Kategory[n]
@@ -254,10 +254,6 @@ function gameplay_loop(kategory: string[][]) {
             points = points - 5;
             continue;
         }
-
-
-        
-        
     }
 }
 

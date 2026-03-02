@@ -94,7 +94,7 @@ function find_words(guess, text, redacted_text_tokenized) {
     var normalized_guess = normalize_text(guess);
     // Kollar igenom texten och hittar ordet
     for (var i = 0; i < l; i = i + 1) {
-        var word_no_punctuation = text[i].replace(/[.]/g, "");
+        var word_no_punctuation = text[i].replace(/[.,!?;:()"'`-]/g, "");
         if (normalized_guess === word_no_punctuation) {
             redacted_text_tokenized[i] = text[i];
             ok = true;
@@ -160,6 +160,7 @@ function meny() {
             console.log("Lämnat spelet");
             break;
         }
+        // Kanske måste fixa denna
         if (input1 > 3) {
             console.log("Invalid input try again: ");
         }
