@@ -119,21 +119,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    }
 }
 
-// Denna ska tas bort
-// Funktion för få prompts s
-function ask(question: string): Promise<string> {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
 
-    return new Promise((resolve) => {
-        rl.question(question, (answer) => {
-            rl.close();
-            resolve(answer);
-        });
-    });
-}
 
 
 /**
@@ -171,7 +157,7 @@ function point_set(points: number, action: number): Number {
 
 
 // Våran gameplay loop. Denna kör spelet
-async function gameplay_loop() {
+function gameplay_loop() {
     // Interface menu
     
     // Generates a random text from country_texts
@@ -201,7 +187,7 @@ async function gameplay_loop() {
         console.log("Redacted text:");
         console.log(text_redacted_tokenized.join(" "));
 
-        const input = await ask("Guess a word (or type quit): ");
+        const input = prompt("Guess a word (or type quit): ");
         
         const normalized_input = normalize_text(input);
 
@@ -233,3 +219,4 @@ async function gameplay_loop() {
     }
 }
 
+gameplay_loop();
