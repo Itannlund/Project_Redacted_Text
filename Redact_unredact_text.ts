@@ -207,11 +207,16 @@ function point_set(points: number, action: number): Number {
         return points
 }
 
-let points_board: number [] = []
-function leaderboard(new_points_to_list: number){
-    points_board.push(new_points_to_list);
-    points_board.sort((a,b) =>b-a);
+type Player = {
+    points: number;
+    name: string };
 
+
+let points_board: Player[] = [];
+function leaderboard(name: string, newPoints: number): Player[] {
+    points_board.push({name, points: newPoints});
+    points_board.sort((a,b) =>b.points -a.points);
+    return points_board;
 }
 function meny(){
     while(true){
@@ -243,7 +248,9 @@ function meny(){
             if(input2 ==="4"){
                 console.log("Här är det en leaderboard. Här kommer de med mest poäng att hamna på en lista. ");
                 console.log("----------LEADERBOARD----------");
-                console.log(points_board);
+                points_board.forEach((player, index) => {
+                    console.log(`${index + 1}. ${player.name} - ${player.points} poäng`)
+                })
             }
             else {
                 continue;
@@ -367,7 +374,8 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
         if (normalized_input === "quit") {
             console.log(`______________________________________________________________________________\n
                         Game ended!`);
-            leaderboard(points);
+            const name = prompt("Enter name for leaderboard: ")
+            leaderboard(name, points);
             return;
         }
 
@@ -393,7 +401,8 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
                         With a score of:`, points, "points")
             // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
             // console.log(text);
-            leaderboard(points);
+            const name = prompt("Enter name for leaderboard: ")
+            leaderboard(name, points);
             return; 
         }
 

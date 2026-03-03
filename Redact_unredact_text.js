@@ -183,9 +183,10 @@ function point_set(points, action) {
     return points;
 }
 var points_board = [];
-function leaderboard(new_points_to_list) {
-    points_board.push(new_points_to_list);
-    points_board.sort(function (a, b) { return b - a; });
+function leaderboard(name, newPoints) {
+    points_board.push({ name: name, points: newPoints });
+    points_board.sort(function (a, b) { return b.points - a.points; });
+    return points_board;
 }
 function meny() {
     while (true) {
@@ -213,7 +214,9 @@ function meny() {
             if (input2 === "4") {
                 console.log("Här är det en leaderboard. Här kommer de med mest poäng att hamna på en lista. ");
                 console.log("----------LEADERBOARD----------");
-                console.log(points_board);
+                points_board.forEach(function (player, index) {
+                    console.log("".concat(index + 1, ". ").concat(player.name, " - ").concat(player.points, " po\u00E4ng"));
+                });
             }
             else {
                 continue;
@@ -310,7 +313,8 @@ function gameplay_loop(kategory, difficulty) {
         var updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
         if (normalized_input === "quit") {
             console.log("______________________________________________________________________________\n\n                        Game ended!");
-            leaderboard(points);
+            var name_1 = prompt("Enter name for leaderboard: ");
+            leaderboard(name_1, points);
             return;
         }
         if (normalized_input === "hint") {
@@ -333,7 +337,8 @@ function gameplay_loop(kategory, difficulty) {
             console.log("_______________________________________________________________________________\n \n                        You guessed correct!!!!! \n \n                        With a score of:", points, "points");
             // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
             // console.log(text);
-            leaderboard(points);
+            var name_2 = prompt("Enter name for leaderboard: ");
+            leaderboard(name_2, points);
             return;
         }
         if (already_guessed(guesses, normalized_input)) {
