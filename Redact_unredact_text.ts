@@ -207,13 +207,23 @@ function point_set(points: number, action: number): Number {
         return points
 }
 
+<<<<<<< HEAD
+let points_board: number [] = []
+function leaderboard(new_points_to_list: number){
+    points_board.push(new_points_to_list);
+    points_board.sort((a,b) =>b-a);
+
+}
+function meny(){
+=======
 function meny(): void {
+>>>>>>> ce384e7f7f4be6b3e1779b55097f3f1e2506f72c
     while(true){
         console.log("\n 1. Play \n 2. Rules \n 3. Exit")
         const input1 = prompt("Choose from menu:  ");
         
         if(input1 === "1"){
-            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back  ")
+            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back \n 4. Leaderboard  ")
             const input2 = prompt("Choose Category: ");
             
             if(input2 === "1"){
@@ -233,6 +243,10 @@ function meny(): void {
                 }
                     // Här startar artist gissningen
                     gameplay_loop(song_title, dif);
+            }
+            if(input2 ==="4"){
+                console.log("Här är det en leaderboard. Här kommer de med mest poäng att hamna på en lista. ");
+                console.log("----------LEADERBOARD----------");
             }
             else {
                 continue;
@@ -356,6 +370,7 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
         if (normalized_input === "quit") {
             console.log(`______________________________________________________________________________\n
                         Game ended!`);
+            leaderboard(points);
             return;
         }
 
@@ -381,6 +396,7 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
                         With a score of:`, points, "points")
             // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
             // console.log(text);
+            leaderboard(points);
             return; 
         }
 
