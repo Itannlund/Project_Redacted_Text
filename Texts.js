@@ -41,15 +41,15 @@ exports.song_title = [
     {
         answer: "shake it off",
         text: "I stay out too late Got nothin' in my brain That's what people say, \n    mm-mm That's what people say, mm-mm I go on too many dates (Haha) But I can't make them stay\n    At least, that's what people say, mm-mm\n    That's what people say, mm-mm\n    But I keep cruisin'\n    Can't stop, won't stop movin'\n    It's like I got this music in my mind\n    Sayin', \"It's gonna be alright\"\n    'Cause the players gonna play, play, play, play, play\n    And the haters gonna hate, hate, hate, hate, hate\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off\n    Heartbreakers gonna break, break, break, break, break\n    And the fakers gonna fake, fake, fake, fake, fake\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off'",
-        easy: ["Shake", "off"],
-        medium: [],
+        easy: ["off", "it", "people", "gonna", "players", "haters", "shake", "music", "dates"],
+        medium: ["brain", "cruisin'", "music"],
         hard: []
     },
     {
         answer: "lay all your love on me",
-        text: "I wasn't jealous before we met\n    Now every woman I see is a potential threat\n    And I'm possessive, it isn't nice\n    You've heard me saying that smoking was my only vice\n\n    But now it isn't true\n    Now everything is new\n    And all I've learned has overturned\n    I beg of you\n\n    Don't go wasting your emotion\n    Lay all your love on me\n\n    It was like shooting a sitting duck\n    A little small talk, a smile, and baby, I was stuck\n    I still don't know what you've done with me\n    A grown-up woman should never fall so easily\n\n    I feel a kind of fear\n    When I don't have you near\n    Unsatisfied, I skip my pride\n    I beg you, dear",
-        easy: ["Lay", "fear", "all"],
-        medium: [],
+        text: "I wasn't jealous before we met\n    Now every woman I see is a potential threat\n    And I'm possessive, it isn't nice\n    You've heard me saying that smoking was my only vice\n\n    But now it isn't true\n    Now everything is new\n    And all I've learned has overturned\n    I beg of you\n\n    Don't go wasting your emotion\n    Lay all your love on me\n\n    It was like shooting a sitting duck\n    A little small talk, a smile, and baby, I was stuck\n    I still don't know what you've done with me\n    A grown-up woman should never fall so easily\n\n    I feel a kind of fear\n    When I don't have you near\n    Unsatisfied, I skip my pride\n    I beg you, dear [Chorus]\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n\n    [Verse 3]\n    I've had a few little love affairs\n    They didn't last very long and they've been pretty scarce\n    I used to think that was sensible\n    It makes the truth even more incomprehensible\n\n    'Cause everything is new\n    And everything is you\n    And all I've learned has overturned\n    What can I do?\n\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n    Don't go wasting your emotion\n    Lay all your love on me",
+        easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything", "jealous", "emotion", "love"],
+        medium: ["duck", "baby", "jealous", "fear", "emotion"],
         hard: []
     }
 ];

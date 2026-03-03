@@ -1,6 +1,7 @@
 import { country_texts, song_title, type text_save} from "./Texts.js";
 import { Prompt } from "prompt-sync";
 import * as readline from "readline";
+import { diff } from "util";
 export type Text = string;
 export type Tokenized_Text = string[];
 
@@ -200,16 +201,18 @@ function meny(){
         const input1 = prompt("Choose from menu:  ");
         
         if(input1 === "1"){
-            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Football teams \n 4. Go back  ")
+            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back  ")
             const input2 = prompt("Choose Category: ");
             if(input2 === "1"){
+                const dif = helper_set_difficulty();
                 // Här startar land gissa
-                gameplay_loop(country_texts);
+                gameplay_loop(country_texts, dif);
 
             } 
             if (input2 ==="2"){
+                const dif = helper_set_difficulty();
                 // Här startar artist gissningen
-                gameplay_loop(song_title);
+                gameplay_loop(song_title, dif);
             }
             else {
                 continue;}
@@ -230,6 +233,11 @@ function meny(){
             console.log("Invalid input try again:")
         }
     }
+    function helper_set_difficulty(): string {
+        console.log("\n 1. Easy \n 2. Medium \n 3. Hard \n 4. Go back\n" )
+        const input_dif = prompt("\n Which difficulty would you like?  ")
+    return input_dif;
+}
 }
 
 
@@ -258,7 +266,7 @@ function game_rules(): void {
 }
 
 // Våran gameplay loop. Denna kör spelet
-function gameplay_loop(kategory: text_save[]) {
+function gameplay_loop(kategory: text_save[], difficulty: string) {
     console.log(`________________________________________________________________________________\n
                     Welcome to the game Redacted!!!`)
 
@@ -273,32 +281,34 @@ function gameplay_loop(kategory: text_save[]) {
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
     let answer = false
-    let points = 50;
+    let points = 100;
+    let wrong_guess = 10;
+    let correct_guess = 20;
     // Gör så några vanligt förekommande ord inte är redacted
     regular_words.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     
     function set_easy_difficulty(): void{
-        const wrong_guess = 10;
-        const correct_guess = 10;
+        points = 50;
+        correct_guess = 10;
         //Takes away common words so they are not redacted at the start
         our_array.easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     }
      function set_medium_difficulty(): void{
-        points = 100
-        const wrong_guess = 10;
-        const correct_guess = 20;
+        
         //Takes away common words so they are not redacted at the start
         our_array.easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     }
      function set_hard_difficulty(): void{
         points = 150;
-        const wrong_guess = 15;
-        const correct_guess = 30;
+        wrong_guess = 15;
+        correct_guess = 30;
         //Takes away common words so they are not redacted at the start
         
     }
-    set_easy_difficulty(); 
-            
+    if(difficulty === "1"){set_easy_difficulty()};
+    if(difficulty === "2"){set_medium_difficulty()};
+    if(difficulty === "3"){set_hard_difficulty()};        
+    
     while(points > 0){
         console.log("Points:", points); 
         console.log("Redacted text:");
@@ -343,13 +353,13 @@ function gameplay_loop(kategory: text_save[]) {
         if (updated === false) {
             console.log(`_______________________________________________________________________________\n
                         Word does not exist try again`)
-            points = points - 10;
+            points = points - wrong_guess;
             continue;
         }
         if (updated === true){
             console.log(`_______________________________________________________________________________\n
                         Great job, you gained 5 points!`)
-            points = points + 10;
+            points = points + correct_guess;
             continue;
 
         }

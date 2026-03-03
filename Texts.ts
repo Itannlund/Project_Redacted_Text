@@ -68,8 +68,8 @@ export const song_title: text_save [] = [
     And the fakers gonna fake, fake, fake, fake, fake
     Baby, I'm just gonna shake, shake, shake, shake, shake
     I shake it off, I shake it off'`,
-    easy: ["Shake", "off", "it", "cuisin", "hate", "mmmm", "people", "gonna", "Baby"],
-    medium: ["people", "keep"],
+    easy: ["off", "it", "people", "gonna", "players", "haters", "shake", "music", "dates"],
+    medium: ["brain", "cruisin'", "music"],
     hard: []
 },
     {
@@ -95,9 +95,35 @@ export const song_title: text_save [] = [
     I feel a kind of fear
     When I don't have you near
     Unsatisfied, I skip my pride
-    I beg you, dear`,
-    easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything"],
-    medium: ["duck", "baby", ],
+    I beg you, dear [Chorus]
+    Don't go wasting your emotion
+    Lay all your love on me
+    Don't go sharing your devotion
+    Lay all your love on me
+
+    [Verse 3]
+    I've had a few little love affairs
+    They didn't last very long and they've been pretty scarce
+    I used to think that was sensible
+    It makes the truth even more incomprehensible
+
+    'Cause everything is new
+    And everything is you
+    And all I've learned has overturned
+    What can I do?
+
+    Don't go wasting your emotion
+    Lay all your love on me
+    Don't go sharing your devotion
+    Lay all your love on me
+    Don't go wasting your emotion
+    Lay all your love on me
+    Don't go sharing your devotion
+    Lay all your love on me
+    Don't go wasting your emotion
+    Lay all your love on me`,
+    easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything", "jealous", "emotion", "love" ],
+    medium: ["duck", "baby", "jealous", "fear", "emotion" ],
     hard: []
     }
 ]

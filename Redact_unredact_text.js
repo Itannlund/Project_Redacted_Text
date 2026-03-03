@@ -5,11 +5,10 @@ exports.tokenize_text = tokenize_text;
 exports.redact_all_text = redact_all_text;
 exports.redact_all_text_tokenized = redact_all_text_tokenized;
 exports.find_words = find_words;
+exports.letters_spaces = letters_spaces;
 var Texts_js_1 = require("./Texts.js");
 var prompt = require('prompt-sync')({ sigint: true }); // Used to handle Inputs
-var regular_words_easy = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"];
-var regular_words_medium = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"];
-var regular_words_hard = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"];
+var regular_words = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"];
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
  * @example normalize_text("Hej Mitt    naMn är Öster")
@@ -124,6 +123,41 @@ function already_guessed(guesses, guess) {
     guesses.push(guess);
     return false;
 }
+function letters_spaces(text) {
+    var letters = 0;
+    var spaces = 0;
+    for (var i = 0; i < text.length; i = i + 1) {
+        var ch = text.charAt(i);
+        if (/[a-zA-Z]/.test(ch)) {
+            letters++;
+        }
+        if (ch === " ") {
+            spaces++;
+        }
+    }
+    return { letters: letters, spaces: spaces };
+}
+function hints(text, array) {
+    console.log("\n 1. How many letters and spaces in titel \n 2. Specific hint about country \n 3. No hint needed");
+    var input = prompt("Choose what type of hint: ");
+    if (input === "1") {
+        var result = letters_spaces(text);
+        console.log("_______________________________________________________________________________");
+        console.log("The titel has", result.letters, "letters and", result.spaces, "spaces");
+        return console.log(" ");
+    }
+    if (input === "2") {
+        var hint = array[2];
+        return console.log(hint);
+    }
+    if (input === "3") {
+        return;
+    }
+    else {
+        console.log("Invalid input");
+        hints(text, array);
+    }
+}
 // Skall användas senare när vi får flera actions
 function point_set(points, action) {
     //remove points
@@ -140,15 +174,17 @@ function meny() {
         console.log("\n 1. Play \n 2. Rules \n 3. Exit");
         var input1 = prompt("Choose from menu:  ");
         if (input1 === "1") {
-            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Football teams \n 4. Go back  ");
+            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back  ");
             var input2 = prompt("Choose Category: ");
             if (input2 === "1") {
+                var dif = helper_set_difficulty();
                 // Här startar land gissa
-                gameplay_loop(Texts_js_1.country_texts);
+                gameplay_loop(Texts_js_1.country_texts, dif);
             }
             if (input2 === "2") {
+                var dif = helper_set_difficulty();
                 // Här startar artist gissningen
-                gameplay_loop(Texts_js_1.song_title);
+                gameplay_loop(Texts_js_1.song_title, dif);
             }
             else {
                 continue;
@@ -166,6 +202,11 @@ function meny() {
             console.log("Invalid input try again:");
         }
     }
+    function helper_set_difficulty() {
+        console.log("\n 1. Easy \n 2. Medium \n 3. Hard \n 4. Go back\n");
+        var input_dif = prompt("\n Which difficulty would you like?  ");
+        return input_dif;
+    }
 }
 // Generates a random text from the desired kategory
 function generate_random_text(Kategory) {
@@ -179,7 +220,7 @@ function game_rules() {
     return;
 }
 // Våran gameplay loop. Denna kör spelet
-function gameplay_loop(kategory) {
+function gameplay_loop(kategory, difficulty) {
     console.log("________________________________________________________________________________\n\n                    Welcome to the game Redacted!!!");
     // Our array of guesses
     var guesses = [];
@@ -190,32 +231,43 @@ function gameplay_loop(kategory) {
     var text_redacted_tokenized = redact_all_text_tokenized(text);
     var text_tokenized = tokenize_text(text);
     var answer = false;
-    var points = 50;
+    var points = 100;
+    var wrong_guess = 10;
+    var correct_guess = 20;
+    // Gör så några vanligt förekommande ord inte är redacted
+    regular_words.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
     function set_easy_difficulty() {
-        var wrong_guess = 10;
-        var correct_guess = 10;
+        points = 50;
+        correct_guess = 10;
         //Takes away common words so they are not redacted at the start
-        regular_words_easy.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
         our_array.easy.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
     }
     function set_medium_difficulty() {
-        points = 100;
-        var wrong_guess = 10;
-        var correct_guess = 20;
         //Takes away common words so they are not redacted at the start
-        regular_words_medium.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
+        our_array.easy.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
     }
     function set_hard_difficulty() {
         points = 150;
-        var wrong_guess = 15;
-        var correct_guess = 30;
+        wrong_guess = 15;
+        correct_guess = 30;
         //Takes away common words so they are not redacted at the start
-        regular_words_hard.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
     }
-    set_easy_difficulty();
+    if (difficulty === "1") {
+        set_easy_difficulty();
+    }
+    ;
+    if (difficulty === "2") {
+        set_medium_difficulty();
+    }
+    ;
+    if (difficulty === "3") {
+        set_hard_difficulty();
+    }
+    ;
     while (points > 0) {
         console.log("Points:", points);
         console.log("Redacted text:");
+        console.log("Type hint for a hint");
         console.log("Already guessed words:", guesses);
         console.log(text_redacted_tokenized.join(" "));
         var input = prompt("Guess a word (or type quit): ");
@@ -224,6 +276,10 @@ function gameplay_loop(kategory) {
         if (normalized_input === "quit") {
             console.log("______________________________________________________________________________\n\n                        Game ended!");
             return;
+        }
+        if (normalized_input === "hint") {
+            console.log(hints(correct_answer, text));
+            continue;
         }
         if (normalized_input === correct_answer) {
             points = points * 2;
@@ -238,12 +294,12 @@ function gameplay_loop(kategory) {
         }
         if (updated === false) {
             console.log("_______________________________________________________________________________\n\n                        Word does not exist try again");
-            points = points - 10;
+            points = points - wrong_guess;
             continue;
         }
         if (updated === true) {
             console.log("_______________________________________________________________________________\n\n                        Great job, you gained 5 points!");
-            points = points + 10;
+            points = points + correct_guess;
             continue;
         }
     }
