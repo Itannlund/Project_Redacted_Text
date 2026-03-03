@@ -7,7 +7,9 @@ exports.redact_all_text_tokenized = redact_all_text_tokenized;
 exports.find_words = find_words;
 var Texts_js_1 = require("./Texts.js");
 var prompt = require('prompt-sync')({ sigint: true }); // Used to handle Inputs
-var regular_words_easy = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as"];
+var regular_words_easy = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"];
+var regular_words_medium = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"];
+var regular_words_hard = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"];
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
  * @example normalize_text("Hej Mitt    naMn är Öster")
@@ -172,7 +174,7 @@ function generate_random_text(Kategory) {
     return Kategory[n];
 }
 function game_rules() {
-    console.log("_______________________________________________________________________________\n\n                Welcome to our game redacted, here are the rules!!!\n\n                1. The player will get a redacted text from a choosen category\n                2. The player will start with 100 points and your goal is to unredact \n                   as many words as you can by typing them in the terminal.\n                3. For each word you guess correctly you gain 10 points and for each word \n                   you guess incorrectly you lose 10 points.\n                4. To win the player needs to guess the current topic for their selected \n                   category, correct guess for current topic gains double points.");
+    console.log("_______________________________________________________________________________\n\n                Welcome to our game redacted, here are the rules!!!\n\n                1. The player will get a redacted text from a choosen category\n                2. The player will start with 100 points and your goal is to unredact \n                   as many words as you can by typing them in the terminal.\n                3. For each word you guess correctly you gain 10 points and for each word \n                   you guess incorrectly you lose 10 points.\n                4. To win the player needs to guess the current topic for their selected \n                   category, correct guess for current topic gains double points.\n");
     var input_leave = prompt("If you wish to continue press any button: ");
     return;
 }
@@ -183,16 +185,32 @@ function gameplay_loop(kategory) {
     var guesses = [];
     // Our array with correct guess and text
     var our_array = generate_random_text(kategory);
-    var correct_answer = normalize_text(our_array[0]);
-    var text = our_array[1];
+    var correct_answer = normalize_text(our_array.answer);
+    var text = our_array.text;
     var text_redacted_tokenized = redact_all_text_tokenized(text);
     var text_tokenized = tokenize_text(text);
     var answer = false;
     var points = 50;
     function set_easy_difficulty() {
-        points = 100;
+        var wrong_guess = 10;
+        var correct_guess = 10;
         //Takes away common words so they are not redacted at the start
         regular_words_easy.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
+        our_array.easy.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
+    }
+    function set_medium_difficulty() {
+        points = 100;
+        var wrong_guess = 10;
+        var correct_guess = 20;
+        //Takes away common words so they are not redacted at the start
+        regular_words_medium.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
+    }
+    function set_hard_difficulty() {
+        points = 150;
+        var wrong_guess = 15;
+        var correct_guess = 30;
+        //Takes away common words so they are not redacted at the start
+        regular_words_hard.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
     }
     set_easy_difficulty();
     while (points > 0) {

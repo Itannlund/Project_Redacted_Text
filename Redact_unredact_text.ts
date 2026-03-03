@@ -1,4 +1,4 @@
-import { country_texts, song_title } from "./Texts.js";
+import { country_texts, song_title, type text_save} from "./Texts.js";
 import { Prompt } from "prompt-sync";
 import * as readline from "readline";
 export type Text = string;
@@ -6,7 +6,9 @@ export type Tokenized_Text = string[];
 
 
 const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
-const regular_words_easy: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as"]
+const regular_words_easy: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"]
+const regular_words_medium: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"]
+const regular_words_hard: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"]
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
  * @example normalize_text("Hej Mitt    naMn är Öster")
@@ -200,10 +202,10 @@ function meny(){
     
 
 // Generates a random text from the desired kategory
-function generate_random_text(Kategory: string[][]): string[]{
+function generate_random_text(Kategory: text_save[]): text_save{
         const length = Kategory.length;
         const n = Math.floor(Math.random() * length);
-        return Kategory[n]
+        return Kategory[n];
     }
 function game_rules(): void {
     console.log(`_______________________________________________________________________________\n
@@ -214,13 +216,13 @@ function game_rules(): void {
                 3. For each word you guess correctly you gain 10 points and for each word 
                    you guess incorrectly you lose 10 points.
                 4. To win the player needs to guess the current topic for their selected 
-                   category, correct guess for current topic gains double points.`);
+                   category, correct guess for current topic gains double points.\n`);
         const input_leave = prompt("If you wish to continue press any button: ")
         return;
 }
 
 // Våran gameplay loop. Denna kör spelet
-function gameplay_loop(kategory: string[][]) {
+function gameplay_loop(kategory: text_save[]) {
     console.log(`________________________________________________________________________________\n
                     Welcome to the game Redacted!!!`)
 
@@ -230,16 +232,33 @@ function gameplay_loop(kategory: string[][]) {
     let guesses: string[] = [];
     // Our array with correct guess and text
     const our_array = generate_random_text(kategory);
-    const correct_answer = normalize_text(our_array[0]); 
-    const text = our_array[1];
+    const correct_answer = normalize_text(our_array.answer); 
+    const text = our_array.text;
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
     let answer = false
     let points = 50;
     function set_easy_difficulty(): void{
-        points = 100;
+        const wrong_guess = 10;
+        const correct_guess = 10;
+        
         //Takes away common words so they are not redacted at the start
         regular_words_easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
+        our_array.easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
+    }
+     function set_medium_difficulty(): void{
+        points = 100
+        const wrong_guess = 10;
+        const correct_guess = 20;
+        //Takes away common words so they are not redacted at the start
+        regular_words_medium.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
+    }
+     function set_hard_difficulty(): void{
+        points = 150;
+        const wrong_guess = 15;
+        const correct_guess = 30;
+        //Takes away common words so they are not redacted at the start
+        regular_words_hard.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     }
     set_easy_difficulty(); 
             
