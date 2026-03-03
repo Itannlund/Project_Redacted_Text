@@ -191,11 +191,17 @@ function meny() {
             var input2 = prompt("Choose Category: ");
             if (input2 === "1") {
                 var dif = helper_set_difficulty();
+                if (dif === "4") {
+                    continue;
+                }
                 // Här startar land gissa
                 gameplay_loop(Texts_js_1.country_texts, dif);
             }
             if (input2 === "2") {
                 var dif = helper_set_difficulty();
+                if (dif === "4") {
+                    continue;
+                }
                 // Här startar artist gissningen
                 gameplay_loop(Texts_js_1.song_title, dif);
             }
@@ -203,11 +209,11 @@ function meny() {
                 continue;
             }
         }
-        if (input1 === "2") {
+        else if (input1 === "2") {
             game_rules();
             continue;
         }
-        if (input1 === "3") {
+        else if (input1 === "3") {
             console.log("Lämnat spelet");
             break;
         }
@@ -215,10 +221,15 @@ function meny() {
             console.log("Invalid input try again:");
         }
     }
-    function helper_set_difficulty() {
+}
+function helper_set_difficulty() {
+    while (true) {
         console.log("\n 1. Easy \n 2. Medium \n 3. Hard \n 4. Go back\n");
-        var input_dif = prompt("\n Which difficulty would you like?  ");
-        return input_dif;
+        var input_dif = prompt("Which difficulty would you like? ");
+        if (input_dif === "1" || input_dif === "2" || input_dif === "3" || input_dif === "4") {
+            return input_dif;
+        }
+        console.log("Invalid difficulty, try again.");
     }
 }
 // Generates a random text from the desired kategory
@@ -258,7 +269,7 @@ function gameplay_loop(kategory, difficulty) {
     }
     function set_medium_difficulty() {
         //Takes away common words so they are not redacted at the start
-        our_array.easy.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
+        our_array.medium.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
     }
     function set_hard_difficulty() {
         points = 150;
