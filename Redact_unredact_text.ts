@@ -195,7 +195,7 @@ function point_set(points: number, action: number): Number {
         return points
 }
 
-function meny(){
+function meny(): void {
     while(true){
         console.log("\n 1. Play \n 2. Rules \n 3. Exit")
         const input1 = prompt("Choose from menu:  ");
@@ -203,28 +203,37 @@ function meny(){
         if(input1 === "1"){
             console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back  ")
             const input2 = prompt("Choose Category: ");
+            
             if(input2 === "1"){
                 const dif = helper_set_difficulty();
-                // Här startar land gissa
-                gameplay_loop(country_texts, dif);
-
+                    if(dif === "4"){
+                        continue;
+                    }
+                    // Här startar land gissa
+                    gameplay_loop(country_texts, dif);
+                
+                
             } 
             if (input2 ==="2"){
                 const dif = helper_set_difficulty();
-                // Här startar artist gissningen
-                gameplay_loop(song_title, dif);
+                if(dif === "4"){
+                    continue;
+                }
+                    // Här startar artist gissningen
+                    gameplay_loop(song_title, dif);
             }
             else {
-                continue;}
-            
-        }
-        if(input1 === "2"){
-        game_rules();
-        continue;
-        }
-
+                continue;
+            }
         
-        if(input1 === "3"){
+        }
+        
+        else if(input1 === "2"){
+            game_rules();
+            continue;
+        }
+        
+        else if(input1 === "3"){
             console.log("Lämnat spelet");
             break;
         }
@@ -233,13 +242,21 @@ function meny(){
             console.log("Invalid input try again:")
         }
     }
-    function helper_set_difficulty(): string {
-        console.log("\n 1. Easy \n 2. Medium \n 3. Hard \n 4. Go back\n" )
-        const input_dif = prompt("\n Which difficulty would you like?  ")
-    return input_dif;
-}
+    
 }
 
+function helper_set_difficulty(): string {
+    while (true) {
+        console.log("\n 1. Easy \n 2. Medium \n 3. Hard \n 4. Go back\n");
+        const input_dif = prompt("Which difficulty would you like? ");
+
+        if (input_dif === "1" || input_dif === "2" || input_dif === "3" || input_dif === "4") {
+            return input_dif;
+        }
+
+        console.log("Invalid difficulty, try again.");
+    }
+}
 
     
         
@@ -294,15 +311,15 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
         our_array.easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     }
      function set_medium_difficulty(): void{
-        
         //Takes away common words so they are not redacted at the start
-        our_array.easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
+        our_array.medium.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     }
      function set_hard_difficulty(): void{
         points = 150;
         wrong_guess = 15;
         correct_guess = 30;
         //Takes away common words so they are not redacted at the start
+        
         
     }
     if(difficulty === "1"){set_easy_difficulty()};
