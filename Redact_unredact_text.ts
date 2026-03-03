@@ -161,7 +161,7 @@ export function letters_spaces(text: string): { letters: Number; spaces: Number 
     return {letters, spaces}
 }
 
-function hints(text: string, array: string[]): void | string {
+function hints(text: string, array: string): void | string {
     console.log("\n 1. How many letters and spaces in titel \n 2. Specific hint about country \n 3. No hint needed")
     const input = prompt("Choose what type of hint: ")
     
@@ -177,6 +177,8 @@ function hints(text: string, array: string[]): void | string {
     }
     if (input === "3") {
         return;
+    } else {console.log("Invalid input")
+        hints(text, array)
     }
 }
 
@@ -297,10 +299,6 @@ function gameplay_loop(kategory: text_save[]) {
     }
     set_easy_difficulty(); 
             
-    
-    
-    
-
     while(points > 0){
         console.log("Points:", points); 
         console.log("Redacted text:");
@@ -322,7 +320,7 @@ function gameplay_loop(kategory: text_save[]) {
         }
 
         if (normalized_input === "hint") {
-            console.log(hints(correct_answer, our_array))
+            console.log(hints(correct_answer, text))
             continue;
         }
 
