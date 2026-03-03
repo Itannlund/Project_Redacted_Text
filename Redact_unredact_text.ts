@@ -207,7 +207,6 @@ function point_set(points: number, action: number): Number {
         return points
 }
 
-<<<<<<< HEAD
 let points_board: number [] = []
 function leaderboard(new_points_to_list: number){
     points_board.push(new_points_to_list);
@@ -215,9 +214,6 @@ function leaderboard(new_points_to_list: number){
 
 }
 function meny(){
-=======
-function meny(): void {
->>>>>>> ce384e7f7f4be6b3e1779b55097f3f1e2506f72c
     while(true){
         console.log("\n 1. Play \n 2. Rules \n 3. Exit")
         const input1 = prompt("Choose from menu:  ");
@@ -247,6 +243,7 @@ function meny(): void {
             if(input2 ==="4"){
                 console.log("Här är det en leaderboard. Här kommer de med mest poäng att hamna på en lista. ");
                 console.log("----------LEADERBOARD----------");
+                console.log(points_board);
             }
             else {
                 continue;

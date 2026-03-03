@@ -30,15 +30,16 @@ exports.country_texts = [
         answer: "england",
         text: "England is a country in northwestern Europe and is part of the United Kingdom. It occupies the southern and central portion of the island of Great Britain and is bordered by Scotland to the north and Wales to the west. The landscape includes rolling hills, plains, forests, and a long coastline, with many towns and cities shaped by centuries of history.\n            England is not a sovereign state on its own, but it is the largest and most populous country within the United Kingdom. Its capital is London, one of the world\u2019s most influential cities in finance, culture, and politics. The country is known for its historic institutions, including a constitutional monarchy and parliamentary system that have influenced many other nations. Its economy is diverse, with major strengths in finance, education, technology, media, and services.\n            England has had a major impact on global history through literature, science, industry, and exploration. It is associated with many well-known traditions, historic landmarks, and cultural symbols. The climate is generally temperate, with mild winters and cool summers. England combines deep historical roots with modern urban life, making it one of the most recognized countries in the world.",
         easy: [],
-        medium: [],
-        hard: []
+        medium: ["Kingdom", "Africa", "southernmost", "continental"],
+        hard: [],
+        hints: ["Shakespear", "premiere league", "big ben"]
     },
     { answer: "china",
         text: "China is a country in East Asia and one of the largest and most populous nations in the world. It has a wide variety of landscapes, including mountains, deserts, plateaus, rivers, and fertile plains. The country shares borders with many others, and its size has contributed to a long history of regional diversity in culture, language, and tradition.\n            China is governed as a single-party socialist state, and its capital is Beijing. Other major cities include Shanghai, Guangzhou, and Shenzhen, which are important centers of trade, finance, and industry. The country has one of the world\u2019s largest economies and is known for manufacturing, technology, infrastructure, and global trade. It plays a major role in international politics and economic affairs.\n            China has one of the oldest continuous civilizations in the world and is known for major historical achievements in philosophy, science, art, and engineering. It is associated with famous landmarks, long-standing cultural traditions, and a rich culinary heritage. The climate varies greatly across the country, from cold northern winters to subtropical conditions in the south. China combines ancient history with rapid modernization, making it one of the most influential countries in the world.",
         easy: [],
-        medium: [],
-        hard: []
-    },
+        medium: ["Republic", "Southern", "Mediterranean", "800", "islands"],
+        hard: [],
+        hints: ["Ancient", "Great wall", "single-party state"] },
 ];
 exports.song_title = [
     {

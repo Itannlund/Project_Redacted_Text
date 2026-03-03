@@ -80,8 +80,8 @@ function redact_all_text_tokenized(input) {
 }
 /**
  * Takes in a guess a text and a redacted text and unredacts that guess in the redacted text
- * @example find_words("Öster", ["mitt", "öster"], ["****", "*****"])
- * results in ["****", "öster"]
+ * @example find_words("Öster", ["mitt", "oster"], ["****", "*****"])
+ * results in ["****", "oster"]
  * @param guess, is a string,
  * @param text is an array with strings
  * @param redacted_text_tokenized an array with strings
@@ -182,12 +182,17 @@ function point_set(points, action) {
     points = (points - 5);
     return points;
 }
+var points_board = [];
+function leaderboard(new_points_to_list) {
+    points_board.push(new_points_to_list);
+    points_board.sort(function (a, b) { return b - a; });
+}
 function meny() {
     while (true) {
         console.log("\n 1. Play \n 2. Rules \n 3. Exit");
         var input1 = prompt("Choose from menu:  ");
         if (input1 === "1") {
-            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back  ");
+            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back \n 4. Leaderboard  ");
             var input2 = prompt("Choose Category: ");
             if (input2 === "1") {
                 var dif = helper_set_difficulty();
@@ -204,6 +209,11 @@ function meny() {
                 }
                 // Här startar artist gissningen
                 gameplay_loop(Texts_js_1.song_title, dif);
+            }
+            if (input2 === "4") {
+                console.log("Här är det en leaderboard. Här kommer de med mest poäng att hamna på en lista. ");
+                console.log("----------LEADERBOARD----------");
+                console.log(points_board);
             }
             else {
                 continue;
@@ -300,6 +310,7 @@ function gameplay_loop(kategory, difficulty) {
         var updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
         if (normalized_input === "quit") {
             console.log("______________________________________________________________________________\n\n                        Game ended!");
+            leaderboard(points);
             return;
         }
         if (normalized_input === "hint") {
@@ -322,6 +333,7 @@ function gameplay_loop(kategory, difficulty) {
             console.log("_______________________________________________________________________________\n \n                        You guessed correct!!!!! \n \n                        With a score of:", points, "points");
             // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
             // console.log(text);
+            leaderboard(points);
             return;
         }
         if (already_guessed(guesses, normalized_input)) {
