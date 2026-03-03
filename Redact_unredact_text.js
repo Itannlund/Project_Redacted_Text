@@ -137,25 +137,38 @@ function letters_spaces(text) {
     }
     return { letters: letters, spaces: spaces };
 }
-function hints(text, array) {
-    console.log("\n 1. How many letters and spaces in titel \n 2. Specific hint about country \n 3. No hint needed");
+function hints(text, item, index) {
+    console.log("\n 1. How many letters and spaces in titel (costs 15 points) \n 2. Specific hint about country (costs 20 points) \n 3. No hint needed");
     var input = prompt("Choose what type of hint: ");
     if (input === "1") {
         var result = letters_spaces(text);
         console.log("_______________________________________________________________________________");
         console.log("The titel has", result.letters, "letters and", result.spaces, "spaces");
-        return console.log(" ");
+        console.log(" ");
+        return true;
     }
     if (input === "2") {
-        var hint = array[2];
-        return console.log(hint);
+        if (!item.hints || item.hints.length === 0) {
+            return false;
+        }
+        if (index >= item.hints.length) {
+            console.log("_______________________________________________________________________________");
+            console.log("No more hints :(");
+            return false;
+        }
+        else {
+            console.log("_______________________________________________________________________________");
+            console.log("Hint: ", item.hints[index]);
+            console.log(" ");
+            return index + 1;
+        }
     }
     if (input === "3") {
-        return;
+        return false;
     }
     else {
         console.log("Invalid input");
-        hints(text, array);
+        return hints(text, item, index);
     }
 }
 // Skall användas senare när vi får flera actions
@@ -245,6 +258,7 @@ function gameplay_loop(kategory, difficulty) {
     var points = 100;
     var wrong_guess = 10;
     var correct_guess = 20;
+    var hint_index = 0;
     // Gör så några vanligt förekommande ord inte är redacted
     regular_words.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
     function set_easy_difficulty() {
@@ -289,8 +303,19 @@ function gameplay_loop(kategory, difficulty) {
             return;
         }
         if (normalized_input === "hint") {
-            console.log(hints(correct_answer, text));
-            continue;
+            var result = hints(correct_answer, our_array, hint_index);
+            if (result === true) {
+                points = points - 15;
+                continue;
+            }
+            if (result === false) {
+                continue;
+            }
+            if (typeof result === "number") {
+                hint_index = result;
+                points = points - 20;
+                continue;
+            }
         }
         if (normalized_input === correct_answer) {
             points = points * 2;

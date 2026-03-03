@@ -162,24 +162,36 @@ export function letters_spaces(text: string): { letters: Number; spaces: Number 
     return {letters, spaces}
 }
 
-function hints(text: string, array: string): void | string {
-    console.log("\n 1. How many letters and spaces in titel \n 2. Specific hint about country \n 3. No hint needed")
+function hints(text: string, item: text_save, index: number): boolean | number {
+    console.log("\n 1. How many letters and spaces in titel (costs 15 points) \n 2. Specific hint about country (costs 20 points) \n 3. No hint needed")
     const input = prompt("Choose what type of hint: ")
     
     if (input === "1") {
         const result = letters_spaces(text)
         console.log("_______________________________________________________________________________")
         console.log("The titel has", result.letters, "letters and", result.spaces, "spaces")
-        return console.log(" ");
+        console.log(" ");
+        return true;
     }
     if (input === "2") {
-        const hint = array[2]
-        return console.log(hint);
+        if (!item.hints || item.hints.length === 0) {
+            return false;
+        }
+        if (index >= item.hints.length) {
+            console.log("_______________________________________________________________________________")
+            console.log("No more hints :(");
+            return false;
+        } else {
+            console.log("_______________________________________________________________________________")
+            console.log("Hint: ", item.hints[index])
+            console.log(" ")
+            return index + 1;
+        }
     }
     if (input === "3") {
-        return;
+        return false;
     } else {console.log("Invalid input")
-        hints(text, array)
+        return hints(text, item, index)
     }
 }
 
@@ -301,6 +313,7 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
     let points = 100;
     let wrong_guess = 10;
     let correct_guess = 20;
+    let hint_index = 0;
     // Gör så några vanligt förekommande ord inte är redacted
     regular_words.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     
@@ -347,8 +360,18 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
         }
 
         if (normalized_input === "hint") {
-            console.log(hints(correct_answer, text))
-            continue;
+            const result = hints(correct_answer, our_array, hint_index)
+            if (result === true) {
+                points = points - 15;
+                continue;
+            }
+            if (result === false) {
+                continue; 
+            } 
+            if (typeof result === "number") {
+                hint_index = result as number;
+                points = points - 20;
+                continue; }
         }
 
         if (normalized_input === correct_answer){

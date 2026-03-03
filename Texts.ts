@@ -5,6 +5,7 @@ export type text_save = {
     easy: string[] // Alla ord som inte ska redacteras för easy
     medium: string[] // Alla ord som inte ska redacteras för medium
     hard: string[]  // Alla ord som inte ska redacteras för hard
+    hints: string[] // Alla hints
 };
 export const country_texts: text_save [] = [
     {
@@ -14,7 +15,8 @@ export const country_texts: text_save [] = [
             The climate varies from colder conditions in the north to milder weather in the south. Nature and outdoor life are important parts of the culture, and public access to the countryside is a well-known tradition.`,
     easy: ["Kingdom", "Nordic", "northern", "democracy", "small", "climate"],
     medium: [],
-    hard: []
+    hard: [],
+    hints: ["social welfare", "Nobel prize", "ABBA"]
     },
     {
     answer: "germany", 
@@ -24,7 +26,8 @@ export const country_texts: text_save [] = [
     
     easy: ["Republic", "Europe", "Baltic"],
     medium: [],
-    hard: []
+    hard: [],
+    hints: ["engineering hub", "16 federal states", "oktoberfest" ]
 },
 {
     answer: "australia", 
@@ -33,7 +36,8 @@ export const country_texts: text_save [] = [
             Australia is also famous for its unique wildlife, with many animal species found nowhere else in the world. The climate varies widely, from tropical conditions in the north to more temperate regions in the south. Outdoor life plays a major role in the culture, and the country is often associated with beaches, sports, and wide open spaces.` ,
     easy: ["Kingdom", "Nordic", "western"],
     medium: [],
-    hard: []
+    hard: [],
+    hints: ["native wildlife", "big nation", "outback interior"]
 
 },
 
@@ -44,7 +48,8 @@ export const country_texts: text_save [] = [
             England has had a major impact on global history through literature, science, industry, and exploration. It is associated with many well-known traditions, historic landmarks, and cultural symbols. The climate is generally temperate, with mild winters and cool summers. England combines deep historical roots with modern urban life, making it one of the most recognized countries in the world.`,
     easy: [],
     medium: ["Kingdom", "Africa", "southernmost", "continental"],
-    hard: []
+    hard: [],
+    hints: ["Shakespear", "premiere league", "big ben"]
 },
 
 {   answer: "china", 
@@ -53,7 +58,8 @@ export const country_texts: text_save [] = [
             China has one of the oldest continuous civilizations in the world and is known for major historical achievements in philosophy, science, art, and engineering. It is associated with famous landmarks, long-standing cultural traditions, and a rich culinary heritage. The climate varies greatly across the country, from cold northern winters to subtropical conditions in the south. China combines ancient history with rapid modernization, making it one of the most influential countries in the world.`,
     easy: [],
     medium: ["Republic","Southern", "Mediterranean", "800", "islands"],
-    hard: []
+    hard: [],
+    hints: ["Ancient", "Great wall", "single-party state"]
 },
 ]
 
@@ -128,7 +134,8 @@ export const song_title: text_save [] = [
     And the fakers gonna fake, fake, fake, fake, fake (They fake and fake and fake)`,
     easy: ["off", "it", "people", "gonna", "players", "haters", "shake", "music", "dates"],
     medium: ["brain", "cruisin'", "music"],
-    hard: []
+    hard: [],
+    hints: ["pop", "2014", "Taylor swift"]
 },
     {
     answer: "lay all your love on me", 
@@ -182,7 +189,8 @@ export const song_title: text_save [] = [
     Lay all your love on me`,
     easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything", "jealous", "emotion", "love" ],
     medium: ["duck", "baby", "jealous", "fear", "emotion" ],
-    hard: []
+    hard: [],
+    hints: ["Disco love", "swedish pop", "1980"]
     },
     {
         answer: "boulevard of Broken Dreams",
@@ -229,6 +237,7 @@ export const song_title: text_save [] = [
         easy: ["boulevard", "dreams", "lonely", "shadow", "street"],
         medium: ["alone", "walking", "empty" ],
         hard: [],
+        hints: ["lonely city walk", "2004", "green day"]
         
     },
     {
@@ -293,6 +302,7 @@ export const song_title: text_save [] = [
         easy: ["beat", "fight", "strong", "wrong", "fire"],
         medium: ["tough", "scared", "blood"],
         hard: [],
+        hints: ["avoid the fight", "1980", "jackson"]
         
     },
     {
@@ -330,6 +340,7 @@ export const song_title: text_save [] = [
         easy: ["standing", "survivin'", "piece", "life", "fadin'"],
         medium: ["once", "down", "sad"],
         hard: [],
+        hints: ["Resilient", "1983", "Elton"]
         
     }
 ]

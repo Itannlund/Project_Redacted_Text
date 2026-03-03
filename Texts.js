@@ -7,34 +7,38 @@ exports.country_texts = [
         text: " Sweden is a country in Northern Europe and part of the Nordic region. It is one of the larger countries in Europe by area, but it has a relatively small population compared to its size. The landscape includes forests, thousands of lakes, long coastlines, and mountain areas in the north. The country borders Norway and Finland and has a long coastline along the Baltic Sea.\n            Sweden is a constitutional monarchy and a parliamentary democracy. Its capital is Stockholm, a city built across several islands. The country is known for its high standard of living, extensive welfare system, and strong focus on education and equality. Its economy is based on industry, technology, trade, and innovation. Several internationally known companies have their origins there.\n            The climate varies from colder conditions in the north to milder weather in the south. Nature and outdoor life are important parts of the culture, and public access to the countryside is a well-known tradition.",
         easy: ["Kingdom", "Nordic", "northern", "democracy", "small", "climate"],
         medium: [],
-        hard: []
+        hard: [],
+        hints: ["social welfare", "Nobel prize", "ABBA"]
     },
     {
         answer: "germany",
         text: "Germany is a country in Central Europe and one of the most populous nations on the continent. It shares borders with several countries, including France, Poland, Austria, and the Netherlands. The landscape is varied, with rivers, forests, mountain ranges, and broad plains. Different regions of the country have their own cultural traditions, dialects, and historical identities.\n            Germany is a federal parliamentary republic made up of sixteen states. Its capital is Berlin, which is also the largest city. The country is known for its strong economy, advanced industry, and major role in European politics. It is especially recognized for engineering, manufacturing, science, and transportation. Many globally known companies in the automotive, chemical, and technology sectors are based there.\n            The country has a rich cultural history in music, philosophy, literature, and architecture. It is also known for castles, historic cities, and seasonal festivals. The climate is generally temperate, with warm summers and cool winters. Germany combines modern urban life with deep historical roots, making it an influential country both in Europe and globally.",
         easy: ["Republic", "Europe", "Baltic"],
         medium: [],
-        hard: []
+        hard: [],
+        hints: ["engineering hub", "16 federal states", "oktoberfest"]
     },
     {
         answer: "australia",
         text: " Australia is a country in the Southern Hemisphere and is both a nation and a continent. It is surrounded by the Indian and Pacific Oceans and is known for its large size and relatively low population density. Much of the interior is dry or semi-arid, while the coastal areas contain most of the population. The landscape includes deserts, tropical forests, mountain ranges, and long stretches of coastline.\n            Australia is a federal parliamentary democracy and a constitutional monarchy made up of states and territories. Its capital is Canberra, while Sydney and Melbourne are among its largest and best-known cities. The country is known for its high quality of life, multicultural society, and strong economy. Important industries include mining, agriculture, tourism, education, and services.\n            Australia is also famous for its unique wildlife, with many animal species found nowhere else in the world. The climate varies widely, from tropical conditions in the north to more temperate regions in the south. Outdoor life plays a major role in the culture, and the country is often associated with beaches, sports, and wide open spaces.",
         easy: ["Kingdom", "Nordic", "western"],
         medium: [],
-        hard: []
+        hard: [],
+        hints: ["native wildlife", "big nation", "outback interior"]
     },
     {
         answer: "england",
         text: "England is a country in northwestern Europe and is part of the United Kingdom. It occupies the southern and central portion of the island of Great Britain and is bordered by Scotland to the north and Wales to the west. The landscape includes rolling hills, plains, forests, and a long coastline, with many towns and cities shaped by centuries of history.\n            England is not a sovereign state on its own, but it is the largest and most populous country within the United Kingdom. Its capital is London, one of the world\u2019s most influential cities in finance, culture, and politics. The country is known for its historic institutions, including a constitutional monarchy and parliamentary system that have influenced many other nations. Its economy is diverse, with major strengths in finance, education, technology, media, and services.\n            England has had a major impact on global history through literature, science, industry, and exploration. It is associated with many well-known traditions, historic landmarks, and cultural symbols. The climate is generally temperate, with mild winters and cool summers. England combines deep historical roots with modern urban life, making it one of the most recognized countries in the world.",
         easy: [],
-        medium: ["Kingdom", "Africa", "southernmost", "continental"],
+        medium: [],
         hard: []
     },
     { answer: "china",
         text: "China is a country in East Asia and one of the largest and most populous nations in the world. It has a wide variety of landscapes, including mountains, deserts, plateaus, rivers, and fertile plains. The country shares borders with many others, and its size has contributed to a long history of regional diversity in culture, language, and tradition.\n            China is governed as a single-party socialist state, and its capital is Beijing. Other major cities include Shanghai, Guangzhou, and Shenzhen, which are important centers of trade, finance, and industry. The country has one of the world\u2019s largest economies and is known for manufacturing, technology, infrastructure, and global trade. It plays a major role in international politics and economic affairs.\n            China has one of the oldest continuous civilizations in the world and is known for major historical achievements in philosophy, science, art, and engineering. It is associated with famous landmarks, long-standing cultural traditions, and a rich culinary heritage. The climate varies greatly across the country, from cold northern winters to subtropical conditions in the south. China combines ancient history with rapid modernization, making it one of the most influential countries in the world.",
         easy: [],
-        medium: ["Republic", "Southern", "Mediterranean", "800", "islands"],
-        hard: [] },
+        medium: [],
+        hard: []
+    },
 ];
 exports.song_title = [
     {
@@ -42,14 +46,16 @@ exports.song_title = [
         text: "I stay out too late Got nothin' in my brain That's what people say, \n    mm-mm That's what people say, mm-mm I go on too many dates (Haha) But I can't make them stay\n    At least, that's what people say, mm-mm\n    That's what people say, mm-mm\n    But I keep cruisin'\n    Can't stop, won't stop movin'\n    It's like I got this music in my mind\n    Sayin', \"It's gonna be alright\"\n    'Cause the players gonna play, play, play, play, play\n    And the haters gonna hate, hate, hate, hate, hate\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off\n    Heartbreakers gonna break, break, break, break, break\n    And the fakers gonna fake, fake, fake, fake, fake\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off' \n    \n    I never miss a beat\n    I'm lightnin' on my feet\n    And that's what they don't see, mm-mm\n    That's what they don't see, mm-mm\n    I'm dancin' on my own (Dancin' on my own)\n    I make the moves up as I go (Moves up as I go)\n    And that's what they don't know, mm-mm\n    That's what they don't know, mm-mm\n\n\n    But I keep cruisin'\n    Can't stop, won't stop groovin'\n    It's like I got this music in my mind\n    Sayin', \"It's gonna be alright\"\n\n    'Cause the players gonna play, play, play, play, play\n    And the haters gonna hate, hate, hate, hate, hate\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off\n    Heartbreakers gonna break, break, break, break, break\n    And the fakers gonna fake, fake, fake, fake, fake\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off [Post-Chorus]\n    I shake it off, I shake it off\n    I, I, I shake it off, I shake it off\n    I, I, I shake it off, I shake it off\n    I, I, I shake it off, I shake it off\n\n    Hey, hey, hey\n    Just think, while you've been gettin' down and out about the liars\n    And the dirty, dirty cheats of the world\n    You could've been gettin' down\n    To this sick beat\n\n    My ex-man brought his new girlfriend\n    She's like, \"Oh my God,\" but I'm just gonna shake\n    And to the fella over there with the hella good hair\n    Won't you come on over, baby? We can shake, shake, shake\n    Yeah, oh-oh, oh\n\n    'Cause the players gonna play, play, play, play, play\n    And the haters gonna hate, hate, hate, hate, hate (Haters gonna hate)\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off (Ha)\n    Heartbreakers gonna break, break, break, break, break (Mmm)\n    And the fakers gonna fake, fake, fake, fake, fake (They fake and fake and fake)",
         easy: ["off", "it", "people", "gonna", "players", "haters", "shake", "music", "dates"],
         medium: ["brain", "cruisin'", "music"],
-        hard: []
+        hard: [],
+        hints: ["pop", "2014", "Taylor swift"]
     },
     {
         answer: "lay all your love on me",
         text: "I wasn't jealous before we met\n    Now every woman I see is a potential threat\n    And I'm possessive, it isn't nice\n    You've heard me saying that smoking was my only vice\n\n    But now it isn't true\n    Now everything is new\n    And all I've learned has overturned\n    I beg of you\n\n    Don't go wasting your emotion\n    Lay all your love on me\n\n    It was like shooting a sitting duck\n    A little small talk, a smile, and baby, I was stuck\n    I still don't know what you've done with me\n    A grown-up woman should never fall so easily\n\n    I feel a kind of fear\n    When I don't have you near\n    Unsatisfied, I skip my pride\n    I beg you, dear [Chorus]\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n\n    [Verse 3]\n    I've had a few little love affairs\n    They didn't last very long and they've been pretty scarce\n    I used to think that was sensible\n    It makes the truth even more incomprehensible\n\n    'Cause everything is new\n    And everything is you\n    And all I've learned has overturned\n    What can I do?\n\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n    Don't go wasting your emotion\n    Lay all your love on me",
         easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything", "jealous", "emotion", "love"],
         medium: ["duck", "baby", "jealous", "fear", "emotion"],
-        hard: []
+        hard: [],
+        hints: ["Disco love", "swedish pop", "1980"]
     },
     {
         answer: "boulevard of Broken Dreams",
@@ -57,6 +63,7 @@ exports.song_title = [
         easy: ["boulevard", "dreams", "lonely", "shadow", "street"],
         medium: ["alone", "walking", "empty"],
         hard: [],
+        hints: ["lonely city walk", "2004", "green day"]
     },
     {
         answer: "beat it",
@@ -64,6 +71,7 @@ exports.song_title = [
         easy: ["beat", "fight", "strong", "wrong", "fire"],
         medium: ["tough", "scared", "blood"],
         hard: [],
+        hints: ["avoid the fight", "1980", "jackson"]
     },
     {
         answer: "im still standing",
@@ -71,5 +79,6 @@ exports.song_title = [
         easy: ["standing", "survivin'", "piece", "life", "fadin'"],
         medium: ["once", "down", "sad"],
         hard: [],
+        hints: ["Resilient", "1983", "Elton"]
     }
 ];
