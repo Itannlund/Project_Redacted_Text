@@ -1,4 +1,4 @@
-import { normalize_text, tokenize_text, redact_all_text, redact_all_text_tokenized, find_words} from "./Redact_unredact_text";
+import { normalize_text, tokenize_text, redact_all_text, redact_all_text_tokenized, find_words, letters_spaces} from "./Redact_unredact_text";
 import {country_texts} from "./Texts";
     
     const empty_string = "";
@@ -66,4 +66,6 @@ test("Testing Our find words function", () => {
    
 });
 
-
+test("testing counting numbers and letters", () => {
+    expect(letters_spaces("number")).toEqual({letters: 6, spaces: 0})
+})

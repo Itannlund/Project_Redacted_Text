@@ -145,6 +145,41 @@ function already_guessed(guesses: string[], guess: string): boolean {
     return false;
 }
 
+export function letters_spaces(text: string): { letters: Number; spaces: Number } {
+    let letters = 0;
+    let spaces = 0;
+
+    for (let i = 0; i < text.length; i = i + 1) {
+        const ch = text.charAt(i);
+
+        if (/[a-zA-Z]/.test(ch)) {
+            letters++;
+        }
+        if (ch === " ") {
+            spaces++;
+        } 
+    }
+    return {letters, spaces}
+}
+
+function hints(text: string, array: string[]): void | string {
+    console.log("\n 1. How many letters and spaces in titel \n 2. Specific hint about country \n 3. No hint needed")
+    const input = prompt("Choose what type of hint: ")
+    
+    if (input === "1") {
+        const result = letters_spaces(text)
+        console.log("_______________________________________________________________________________")
+        console.log("The titel has", result.letters, "letters and", result.spaces, "spaces")
+        return console.log(" ");
+    }
+    if (input === "2") {
+        const hint = array[2]
+        return console.log(hint);
+    }
+    if (input === "3") {
+        return;
+    }
+}
 
 
 // Skall användas senare när vi får flera actions
@@ -269,6 +304,7 @@ function gameplay_loop(kategory: text_save[]) {
     while(points > 0){
         console.log("Points:", points); 
         console.log("Redacted text:");
+        console.log("Type hint for a hint")
         console.log("Already guessed words:", guesses);
         console.log(text_redacted_tokenized.join(" "));
 
@@ -283,6 +319,11 @@ function gameplay_loop(kategory: text_save[]) {
             console.log(`______________________________________________________________________________\n
                         Game ended!`);
             return;
+        }
+
+        if (normalized_input === "hint") {
+            console.log(hints(correct_answer, our_array))
+            continue;
         }
 
         if (normalized_input === correct_answer){
