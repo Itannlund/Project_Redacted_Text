@@ -92,8 +92,8 @@ export function redact_all_text_tokenized(input: Text): string[]{
 
 /**
  * Takes in a guess a text and a redacted text and unredacts that guess in the redacted text
- * @example find_words("Öster", ["mitt", "öster"], ["****", "*****"])
- * results in ["****", "öster"]
+ * @example find_words("Öster", ["mitt", "oster"], ["****", "*****"])
+ * results in ["****", "oster"]
  * @param guess, is a string, 
  * @param text is an array with strings
  * @param redacted_text_tokenized an array with strings
