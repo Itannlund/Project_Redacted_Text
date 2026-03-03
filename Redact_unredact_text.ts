@@ -6,7 +6,7 @@ export type Tokenized_Text = string[];
 
 
 const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
-
+const regular_words_easy: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as"]
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
  * @example normalize_text("Hej Mitt    naMn är Öster")
@@ -194,6 +194,7 @@ function meny(){
     }
 }
 
+
     
         
     
@@ -222,9 +223,9 @@ function game_rules(): void {
 function gameplay_loop(kategory: string[][]) {
     console.log(`________________________________________________________________________________\n
                     Welcome to the game Redacted!!!`)
+
     
-    //start points
-    let points = 100;
+    
     // Our array of guesses
     let guesses: string[] = [];
     // Our array with correct guess and text
@@ -234,10 +235,17 @@ function gameplay_loop(kategory: string[][]) {
     const text_redacted_tokenized = redact_all_text_tokenized(text);
     const text_tokenized = tokenize_text(text);
     let answer = false
-
-    //Takes away common words so they are not redacted at the start
-    find_words(normalize_text("and"), text_tokenized, text_redacted_tokenized)
-    find_words(normalize_text("the"), text_tokenized, text_redacted_tokenized)
+    let points = 50;
+    function set_easy_difficulty(): void{
+        points = 100;
+        //Takes away common words so they are not redacted at the start
+        regular_words_easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
+    }
+    set_easy_difficulty(); 
+            
+    
+    
+    
 
     while(points > 0){
         console.log("Points:", points); 

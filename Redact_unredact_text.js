@@ -7,6 +7,7 @@ exports.redact_all_text_tokenized = redact_all_text_tokenized;
 exports.find_words = find_words;
 var Texts_js_1 = require("./Texts.js");
 var prompt = require('prompt-sync')({ sigint: true }); // Used to handle Inputs
+var regular_words_easy = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as"];
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
  * @example normalize_text("Hej Mitt    naMn är Öster")
@@ -178,8 +179,6 @@ function game_rules() {
 // Våran gameplay loop. Denna kör spelet
 function gameplay_loop(kategory) {
     console.log("________________________________________________________________________________\n\n                    Welcome to the game Redacted!!!");
-    //start points
-    var points = 100;
     // Our array of guesses
     var guesses = [];
     // Our array with correct guess and text
@@ -189,9 +188,13 @@ function gameplay_loop(kategory) {
     var text_redacted_tokenized = redact_all_text_tokenized(text);
     var text_tokenized = tokenize_text(text);
     var answer = false;
-    //Takes away common words so they are not redacted at the start
-    find_words(normalize_text("and"), text_tokenized, text_redacted_tokenized);
-    find_words(normalize_text("the"), text_tokenized, text_redacted_tokenized);
+    var points = 50;
+    function set_easy_difficulty() {
+        points = 100;
+        //Takes away common words so they are not redacted at the start
+        regular_words_easy.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
+    }
+    set_easy_difficulty();
     while (points > 0) {
         console.log("Points:", points);
         console.log("Redacted text:");
