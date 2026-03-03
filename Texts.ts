@@ -24,7 +24,7 @@ export const country_texts: text_save [] = [
             Germany is a federal parliamentary republic made up of sixteen states. Its capital is Berlin, which is also the largest city. The country is known for its strong economy, advanced industry, and major role in European politics. It is especially recognized for engineering, manufacturing, science, and transportation. Many globally known companies in the automotive, chemical, and technology sectors are based there.
             The country has a rich cultural history in music, philosophy, literature, and architecture. It is also known for castles, historic cities, and seasonal festivals. The climate is generally temperate, with warm summers and cool winters. Germany combines modern urban life with deep historical roots, making it an influential country both in Europe and globally.`,
     
-    easy: ["Republic", "Europe", "Baltic"],
+    easy: ["Republic", "Europe", "Baltic", "architecture", "historic","climate", "largest"],
     medium: [],
     hard: [],
     hints: ["engineering hub", "16 federal states", "oktoberfest" ]
@@ -34,7 +34,7 @@ export const country_texts: text_save [] = [
     text: ` Australia is a country in the Southern Hemisphere and is both a nation and a continent. It is surrounded by the Indian and Pacific Oceans and is known for its large size and relatively low population density. Much of the interior is dry or semi-arid, while the coastal areas contain most of the population. The landscape includes deserts, tropical forests, mountain ranges, and long stretches of coastline.
             Australia is a federal parliamentary democracy and a constitutional monarchy made up of states and territories. Its capital is Canberra, while Sydney and Melbourne are among its largest and best-known cities. The country is known for its high quality of life, multicultural society, and strong economy. Important industries include mining, agriculture, tourism, education, and services.
             Australia is also famous for its unique wildlife, with many animal species found nowhere else in the world. The climate varies widely, from tropical conditions in the north to more temperate regions in the south. Outdoor life plays a major role in the culture, and the country is often associated with beaches, sports, and wide open spaces.` ,
-    easy: ["Kingdom", "Nordic", "western"],
+    easy: ["Kingdom", "Nordic", "western", "parliamentary", "many", "species", "climate", "tropical", "culture","beaches"],
     medium: [],
     hard: [],
     hints: ["native wildlife", "big nation", "outback interior"]
@@ -47,7 +47,7 @@ export const country_texts: text_save [] = [
             England is not a sovereign state on its own, but it is the largest and most populous country within the United Kingdom. Its capital is London, one of the world’s most influential cities in finance, culture, and politics. The country is known for its historic institutions, including a constitutional monarchy and parliamentary system that have influenced many other nations. Its economy is diverse, with major strengths in finance, education, technology, media, and services.
             England has had a major impact on global history through literature, science, industry, and exploration. It is associated with many well-known traditions, historic landmarks, and cultural symbols. The climate is generally temperate, with mild winters and cool summers. England combines deep historical roots with modern urban life, making it one of the most recognized countries in the world.`,
     easy: [],
-    medium: ["Kingdom", "Africa", "southernmost", "continental"],
+    medium: ["Kingdom", "Africa", "southernmost", "continental","well-known", "historic", "science", "temperate", "major"],
     hard: [],
     hints: ["Shakespear", "premiere league", "big ben"]
 },
