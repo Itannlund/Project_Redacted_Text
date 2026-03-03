@@ -220,11 +220,11 @@ function leaderboard(name: string, newPoints: number): Player[] {
 }
 function meny(){
     while(true){
-        console.log("\n 1. Play \n 2. Rules \n 3. Exit")
+        console.log("\n 1. Play \n \n 2. Rules \n \n 3. Exit \n")
         const input1 = prompt("Choose from menu:  ");
         
         if(input1 === "1"){
-            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back \n 4. Leaderboard  ")
+            console.log("\n \n Category: \n \n 1. Countrys \n \n 2. Artist \n \n 3. Go back \n \n 4. Leaderboard \n  ")
             const input2 = prompt("Choose Category: ");
             
             if(input2 === "1"){
@@ -277,7 +277,7 @@ function meny(){
 
 function helper_set_difficulty(): string {
     while (true) {
-        console.log("\n 1. Easy \n 2. Medium \n 3. Hard \n 4. Go back\n");
+        console.log("\n \n 1. Easy \n \n 2. Medium \n \n 3. Hard \n \n 4. Go back \n \n");
         const input_dif = prompt("Which difficulty would you like? ");
 
         if (input_dif === "1" || input_dif === "2" || input_dif === "3" || input_dif === "4") {
