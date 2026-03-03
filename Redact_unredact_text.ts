@@ -6,9 +6,8 @@ export type Tokenized_Text = string[];
 
 
 const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
-const regular_words_easy: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"]
-const regular_words_medium: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"]
-const regular_words_hard: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"]
+const regular_words: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"]
+
 /**
  * Normalizes a text by taking away uppercase letters, accents doubble spaces etc.
  * @example normalize_text("Hej Mitt    naMn är Öster")
@@ -273,12 +272,13 @@ function gameplay_loop(kategory: text_save[]) {
     const text_tokenized = tokenize_text(text);
     let answer = false
     let points = 50;
+    // Gör så några vanligt förekommande ord inte är redacted
+    regular_words.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
+    
     function set_easy_difficulty(): void{
         const wrong_guess = 10;
         const correct_guess = 10;
-        
         //Takes away common words so they are not redacted at the start
-        regular_words_easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
         our_array.easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     }
      function set_medium_difficulty(): void{
@@ -286,14 +286,14 @@ function gameplay_loop(kategory: text_save[]) {
         const wrong_guess = 10;
         const correct_guess = 20;
         //Takes away common words so they are not redacted at the start
-        regular_words_medium.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
+        our_array.easy.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
     }
      function set_hard_difficulty(): void{
         points = 150;
         const wrong_guess = 15;
         const correct_guess = 30;
         //Takes away common words so they are not redacted at the start
-        regular_words_hard.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
+        
     }
     set_easy_difficulty(); 
             

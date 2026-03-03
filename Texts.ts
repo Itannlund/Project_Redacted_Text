@@ -1,15 +1,10 @@
-// texts of countries, First element in the array is 
-// Array[0] är rätt svar
-// array[1] är texten
-// array[2] är easy ord unredacted
-// array[3] är medium ord unredacted
-// array[4] är hard ord unredacted
+
 export type text_save = {
-    answer: string;
-    text: string;
-    easy: string[]
-    medium: string[]
-    hard: string[]
+    answer: string; // Rätt svar till spelet
+    text: string; // Våran text till spelet
+    easy: string[] // Alla ord som inte ska redacteras för easy
+    medium: string[] // Alla ord som inte ska redacteras för medium
+    hard: string[]  // Alla ord som inte ska redacteras för hard
 };
 export const country_texts: text_save [] = [
     {
@@ -73,8 +68,8 @@ export const song_title: text_save [] = [
     And the fakers gonna fake, fake, fake, fake, fake
     Baby, I'm just gonna shake, shake, shake, shake, shake
     I shake it off, I shake it off'`,
-    easy: ["Shake", "off"],
-    medium: [],
+    easy: ["Shake", "off", "it", "cuisin", "hate", "mmmm", "people", "gonna", "Baby"],
+    medium: ["people", "keep"],
     hard: []
 },
     {
@@ -101,8 +96,8 @@ export const song_title: text_save [] = [
     When I don't have you near
     Unsatisfied, I skip my pride
     I beg you, dear`,
-    easy: ["Lay", "fear", "all"],
-    medium: [],
+    easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything"],
+    medium: ["duck", "baby", ],
     hard: []
     }
 ]
