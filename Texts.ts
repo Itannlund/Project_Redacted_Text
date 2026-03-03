@@ -67,7 +67,54 @@ export const song_title: text_save [] = [
     Heartbreakers gonna break, break, break, break, break
     And the fakers gonna fake, fake, fake, fake, fake
     Baby, I'm just gonna shake, shake, shake, shake, shake
-    I shake it off, I shake it off'`,
+    I shake it off, I shake it off' 
+    
+    I never miss a beat
+    I'm lightnin' on my feet
+    And that's what they don't see, mm-mm
+    That's what they don't see, mm-mm
+    I'm dancin' on my own (Dancin' on my own)
+    I make the moves up as I go (Moves up as I go)
+    And that's what they don't know, mm-mm
+    That's what they don't know, mm-mm
+
+
+    But I keep cruisin'
+    Can't stop, won't stop groovin'
+    It's like I got this music in my mind
+    Sayin', "It's gonna be alright"
+
+    'Cause the players gonna play, play, play, play, play
+    And the haters gonna hate, hate, hate, hate, hate
+    Baby, I'm just gonna shake, shake, shake, shake, shake
+    I shake it off, I shake it off
+    Heartbreakers gonna break, break, break, break, break
+    And the fakers gonna fake, fake, fake, fake, fake
+    Baby, I'm just gonna shake, shake, shake, shake, shake
+    I shake it off, I shake it off [Post-Chorus]
+    I shake it off, I shake it off
+    I, I, I shake it off, I shake it off
+    I, I, I shake it off, I shake it off
+    I, I, I shake it off, I shake it off
+
+    Hey, hey, hey
+    Just think, while you've been gettin' down and out about the liars
+    And the dirty, dirty cheats of the world
+    You could've been gettin' down
+    To this sick beat
+
+    My ex-man brought his new girlfriend
+    She's like, "Oh my God," but I'm just gonna shake
+    And to the fella over there with the hella good hair
+    Won't you come on over, baby? We can shake, shake, shake
+    Yeah, oh-oh, oh
+
+    'Cause the players gonna play, play, play, play, play
+    And the haters gonna hate, hate, hate, hate, hate (Haters gonna hate)
+    Baby, I'm just gonna shake, shake, shake, shake, shake
+    I shake it off, I shake it off (Ha)
+    Heartbreakers gonna break, break, break, break, break (Mmm)
+    And the fakers gonna fake, fake, fake, fake, fake (They fake and fake and fake)`,
     easy: ["off", "it", "people", "gonna", "players", "haters", "shake", "music", "dates"],
     medium: ["brain", "cruisin'", "music"],
     hard: []
@@ -125,6 +172,154 @@ export const song_title: text_save [] = [
     easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything", "jealous", "emotion", "love" ],
     medium: ["duck", "baby", "jealous", "fear", "emotion" ],
     hard: []
+    },
+    {
+        answer: "boulevard of Broken Dreams",
+        text:  `I walk a lonely road
+                The only one that I have ever known
+                Don't know where it goes
+                But it's home to me, and I walk alone
+                I walk this empty street
+                On the Boulevard of Broken Dreams
+                Where the city sleeps
+                And I'm the only one, and I walk alone
+                I walk alone, I walk alone
+                I walk alone, I walk a-
+                My shadow's the only one that walks beside me
+                My shallow heart's the only thing that's beating
+                Sometimes, I wish someone out there will find me
+                'Til then, I walk alone
+                Ah-ah, ah-ah, ah-ah, ah-ah
+                Ah-ah, ah-ah, ah-ah
+                I'm walking down the line
+                That divides me somewhere in my mind
+                On the borderline
+                Of the edge, and where I walk alone
+                Read between the lines
+                What's fucked up, and everything's alright
+                Check my vital signs
+                To know I'm still alive, and I walk alone
+                I walk alone, I walk alone
+                I walk alone, I walk a-
+                My shadow's the only one that walks beside me
+                My shallow heart's the only thing that's beating
+                Sometimes, I wish someone out there will find me
+                'Til then, I walk alone
+                Ah-ah, ah-ah, ah-ah, ah-ah
+                Ah-ah, ah-ah, I walk alone, I walk a-
+                I walk this empty street
+                On the Boulevard of Broken Dreams
+                Where the city sleeps
+                And I'm the only one, and I walk a-
+                My shadow's the only one that walks beside me
+                My shallow heart's the only thing that's beating
+                Sometimes, I wish someone out there will find me
+                'Til then, I walk alone` ,
+        easy: ["boulevard", "dreams", "lonely", "shadow", "street"],
+        medium: ["alone", "walking", "empty" ],
+        hard: [],
+        
+    },
+    {
+        answer: "beat it",
+        text:  `They told him, "Don't you ever come around here
+        Don't want to see your face, you better disappear"
+        The fire's in their eyes and their words are really clear
+        So beat it, just beat it
+        You better run, you better do what you can
+        Don't want to see no blood, don't be a macho man
+        You want to be tough, better do what you can
+        So beat it, but you want to be bad
+        Just beat it, beat it, beat it, beat it
+        No one wants to be defeated
+        Showin' how funky and strong is your fight
+        It doesn't matter who's wrong or right
+        Just beat it, beat it
+        Just beat it, beat it
+        Just beat it, beat it
+        Just beat it, beat it (ooh)
+        They're out to get you, better leave while you can
+        Don't want to be a boy, you want to be a man
+        You want to stay alive, better do what you can
+        So beat it, just beat it (ooh)
+        You have to show them that you're really not scared
+        You're playin' with your life, this ain't no truth or dare
+        They'll kick you, then they beat you
+        Then they'll tell you it's fair
+        So beat it, but you want to be bad
+        Just beat it, beat it, beat it, beat it
+        No one wants to be defeated
+        Showin' how funky and strong is your fight
+        It doesn't matter who's wrong or right
+        Just beat it, beat it, beat it, beat it
+        No one wants to be defeated
+        Showin' how funky and strong is your fight
+        It doesn't matter who's wrong or right
+        Just beat it, beat it, beat it, beat it
+        Beat it, beat it, beat it
+        Beat it, beat it, beat it
+        Beat it, beat it, beat it
+        Beat it, beat it, beat it
+        Beat it, beat it, beat it, beat it
+        No one wants to be defeated
+        Showin' how funky and strong is your fight
+        It doesn't matter who's wrong or right
+        Just beat it, beat it
+        Beat it, beat it
+        No one wants to be defeated
+        Showin' how funky and strong is your fight
+        It doesn't matter who's wrong or right
+        Just beat it, beat it, beat it, beat it
+        No one wants to be defeated
+        Showin' how funky and strong is your fight
+        It doesn't matter who's wrong or right
+        Just beat it, beat it, beat it, beat it
+        No one wants to be defeated
+        Showin' how funky and strong is your fight
+        It doesn't matter who's wrong or right
+        Just beat it, beat it
+        Beat it, beat it `,
+        easy: ["beat", "fight", "strong", "wrong", "fire"],
+        medium: ["tough", "scared", "blood"],
+        hard: [],
+        
+    },
+    {
+        answer: "im still standing",
+        text:  `You could never know what it's like
+                Your blood like winter freezes just like ice
+                And there's a cold lonely light that shines from you
+                You'll wind up like the wreck you hide behind that mask you use
+                And did you think this fool could never win?
+                Well, look at me, I'm coming back again
+                I got a taste of love in a simple way
+                And if you need to know while I'm still standing, you just fade away
+                Don't you know I'm still standing better than I ever did
+                Looking like a true survivor, feeling like a little kid
+                I'm still standing after all this time
+                Picking up the pieces of my life without you on my mind
+                I'm still standing (yeah, yeah, yeah)
+                I'm still standing (yeah, yeah, yeah)
+                Once I never could have hoped to win
+                You're starting down the road leaving me again
+                The threats you made were meant to cut me down
+                And if our love was just a circus, you'd be a clown by now
+                You know I'm still standing better than I ever did
+                Looking like a true survivor, feeling like a little kid
+                I'm still standing after all this time
+                Picking up the pieces of my life without you on my mind
+                I'm still standing (yeah, yeah, yeah)
+                I'm still standing (yeah, yeah, yeah)
+                Don't you know that I'm still standing better than I ever did?
+                Looking like a true survivor, feeling like a little kid
+                I'm still standing after all this time
+                Picking up the pieces of my life without you on my mind
+                I'm still standing (yeah, yeah, yeah)
+                I'm still standing (yeah, yeah, yeah)` ,
+        easy: ["standing", "survivin'", "piece", "life", "fadin'"],
+        medium: ["once", "down", "sad"],
+        hard: [],
+        
     }
 ]
 
