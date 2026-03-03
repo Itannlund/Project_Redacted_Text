@@ -17,14 +17,14 @@ export const country_texts: text_save [] = [
     {
     answer: "germany", 
     text: "Germany,[d] officially the Federal Republic of Germany,[e] is a country in Western and Central Europe. It lies between the Baltic Sea and the North Sea to the north with the Alps to the south. Its sixteen constituent states have a total population of over 82 million, making it the most populous member state of the European Union. Germany borders Denmark to the north; Poland and the Czech Republic to the east; Austria and Switzerland to the south; and France, Luxembourg, Belgium, and the Netherlands to the west. The nation's capital and most populous city is Berlin and its main financial centre is Frankfurt; the largest urban area is the Ruhr.",
-    easy: [],
+    easy: ["Republic", "Europe", "Baltic"],
     medium: [],
     hard: []
 },
 {
     answer: "norway", 
     text: "Norway,[a] officially the Kingdom of Norway,[b] is a Nordic country comprising the western and northernmost parts of the Scandinavian Peninsula in Northern Europe, the remote Arctic island Jan Mayen and the archipelago Svalbard.[note 5] Bouvet Island, located in the Subantarctic, is a dependency, and not a part of the Kingdom; Norway also claims the Antarctic territories of Peter I Island and Queen Maud Land. Norway has a population of approximately 5.6 million, and a total area of 385,207 square kilometres (148,729 sq mi).[10] Its capital and largest city is Oslo. The country shares a long eastern border with Sweden, and is bordered by Finland and Russia to the northeast. Norway has an extensive coastline facing the Skagerrak strait, the North Sea, the Norwegian Sea, and the Barents Sea.",
-    easy: [],
+    easy: ["Kingdom", "Nordic", "western"],
     medium: [],
     hard: []
 
@@ -34,14 +34,14 @@ export const country_texts: text_save [] = [
     answer: "spain", 
     text: "Spain,[g] officially the Kingdom of Spain,[h] is a country in Southern and Western Europe with territories in North Africa.[i] Featuring the southernmost point of continental Europe, it is the largest country in Southern Europe and the fourth-most populous European Union (EU) member state. Spanning the majority of the Iberian Peninsula, its territory also includes the Canary Islands, in the Eastern Atlantic Ocean; the Balearic Islands, in the Western Mediterranean Sea; and the autonomous cities of Ceuta and Melilla, in mainland Africa. Peninsular Spain is bordered to the north by France, Andorra, and the Bay of Biscay; to the east and south by the Mediterranean Sea and Gibraltar; and to the west by Portugal and the Atlantic Ocean. Spain's capital and largest city is Madrid; other major urban areas include Barcelona, Valencia, Seville, Zaragoza, Málaga, Murcia, and Palma de Mallorca.",
     easy: [],
-    medium: [],
+    medium: ["Kingdom", "Africa", "southernmost", "continental"],
     hard: []
 },
 
 {   answer: "italy", 
     text: "Italy,[a] officially the Italian Republic,[b] is a country in Southern and Western Europe.[c] It consists of a peninsula that extends into the Mediterranean Sea, with the Alps on its northern land border, as well as nearly 800 islands, notably Sicily and Sardinia. Italy shares land borders with France to the west; Switzerland and Austria to the north; Slovenia to the east; and the two enclaves of Vatican City and San Marino. It is the tenth-largest country in Europe by area, covering 301,340 km2 (116,350 sq mi), and the third-most populous member state of the European Union, with nearly 59 million inhabitants. Italy's capital and largest city is Rome; other major cities include Milan, Naples, Turin, Palermo, Bologna, Florence, Genoa, and Venice.",
     easy: [],
-    medium: [],
+    medium: ["Republic","Southern", "Mediterranean", "800", "islands"],
     hard: []
 },
 ]
