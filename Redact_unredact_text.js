@@ -138,22 +138,23 @@ function letters_spaces(text) {
     return { letters: letters, spaces: spaces };
 }
 function hints(text, item, index) {
-    console.log("\n 1. How many letters and spaces in titel \n 2. Specific hint about country \n 3. No hint needed");
+    console.log("\n 1. How many letters and spaces in titel (costs 15 points) \n 2. Specific hint about country (costs 20 points) \n 3. No hint needed");
     var input = prompt("Choose what type of hint: ");
     if (input === "1") {
         var result = letters_spaces(text);
         console.log("_______________________________________________________________________________");
         console.log("The titel has", result.letters, "letters and", result.spaces, "spaces");
         console.log(" ");
-        return false;
+        return true;
     }
     if (input === "2") {
         if (!item.hints || item.hints.length === 0) {
-            return index;
+            return false;
         }
         if (index >= item.hints.length) {
+            console.log("_______________________________________________________________________________");
             console.log("No more hints :(");
-            return index;
+            return false;
         }
         else {
             console.log("_______________________________________________________________________________");
@@ -292,11 +293,16 @@ function gameplay_loop(kategory, difficulty) {
         }
         if (normalized_input === "hint") {
             var result = hints(correct_answer, our_array, hint_index);
+            if (result === true) {
+                points = points - 15;
+                continue;
+            }
             if (result === false) {
                 continue;
             }
-            else {
+            if (typeof result === "number") {
                 hint_index = result;
+                points = points - 20;
                 continue;
             }
         }

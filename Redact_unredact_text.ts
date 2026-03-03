@@ -163,7 +163,7 @@ export function letters_spaces(text: string): { letters: Number; spaces: Number 
 }
 
 function hints(text: string, item: text_save, index: number): boolean | number {
-    console.log("\n 1. How many letters and spaces in titel \n 2. Specific hint about country \n 3. No hint needed")
+    console.log("\n 1. How many letters and spaces in titel (costs 15 points) \n 2. Specific hint about country (costs 20 points) \n 3. No hint needed")
     const input = prompt("Choose what type of hint: ")
     
     if (input === "1") {
@@ -171,16 +171,16 @@ function hints(text: string, item: text_save, index: number): boolean | number {
         console.log("_______________________________________________________________________________")
         console.log("The titel has", result.letters, "letters and", result.spaces, "spaces")
         console.log(" ");
-        return false;
+        return true;
     }
     if (input === "2") {
         if (!item.hints || item.hints.length === 0) {
-            return index;
+            return false;
         }
         if (index >= item.hints.length) {
             console.log("_______________________________________________________________________________")
             console.log("No more hints :(");
-            return index;
+            return false;
         } else {
             console.log("_______________________________________________________________________________")
             console.log("Hint: ", item.hints[index])
@@ -344,10 +344,16 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
 
         if (normalized_input === "hint") {
             const result = hints(correct_answer, our_array, hint_index)
+            if (result === true) {
+                points = points - 15;
+                continue;
+            }
             if (result === false) {
                 continue; 
-            } else {
+            } 
+            if (typeof result === "number") {
                 hint_index = result as number;
+                points = points - 20;
                 continue; }
         }
 
