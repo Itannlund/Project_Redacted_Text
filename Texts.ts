@@ -5,11 +5,11 @@
 // array[3] är medium ord unredacted
 // array[4] är hard ord unredacted
 export type text_save = {
-  answer: string;
-  text: string;
-  easy: string[]
-  medium: string[]
-  hard: string[]
+    answer: string;
+    text: string;
+    easy: string[]
+    medium: string[]
+    hard: string[]
 };
 export const country_texts: text_save [] = [
     {
