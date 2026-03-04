@@ -8,8 +8,8 @@ import {    normalize_text,
             generate_random_text,
             hints,
             already_guessed,
-            leaderboard,
-            gameplay_loop} from "./Redact_unredact_text";
+            leaderboard
+            } from "./Redact_unredact_text";
 import {country_texts, song_title, type text_save} from "./Texts";
 
     
@@ -31,7 +31,7 @@ import {country_texts, song_title, type text_save} from "./Texts";
     const tokenize2 = tokenize_text(normalized2);
     const tokenize3 = tokenize_text(normalized3);
 
-leaderboard("hej", 3);
+
 
 describe("Redacting Text", () => {
     test('testing redact all text', ()=> {
@@ -142,6 +142,11 @@ test("testing counting numbers and letters", () => {
     expect(letters_spaces("number")).toEqual({letters: 6, spaces: 0})
 })
 
+test("Leaderboard", ()=> {
+    leaderboard("hej", 3);
+    const L1 = leaderboard("Isak", 100);
+    expect(L1).toEqual([{"name": "Isak", "points": 100}, {"name": "hej", "points": 3}])
+})
 
 
 

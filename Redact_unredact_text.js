@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.points_board = void 0;
 exports.normalize_text = normalize_text;
 exports.tokenize_text = tokenize_text;
 exports.redact_all_text = redact_all_text;
@@ -16,6 +17,7 @@ exports.generate_random_text = generate_random_text;
 exports.game_rules = game_rules;
 exports.gameplay_loop = gameplay_loop;
 var Texts_js_1 = require("./Texts.js");
+exports.points_board = [];
 var prompt = require('prompt-sync')({ sigint: true }); // Used to handle Inputs
 var regular_words = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"];
 /**
@@ -194,11 +196,10 @@ function point_set(points, action, value) {
     }
     return points;
 }
-var points_board = [];
 function leaderboard(name, newPoints) {
-    points_board.push({ name: name, points: newPoints });
-    points_board.sort(function (a, b) { return b.points - a.points; });
-    return points_board;
+    exports.points_board.push({ name: name, points: newPoints });
+    exports.points_board.sort(function (a, b) { return b.points - a.points; });
+    return exports.points_board;
 }
 function meny() {
     while (true) {
@@ -226,7 +227,7 @@ function meny() {
             if (input2 === "4") {
                 console.log("Här är det en leaderboard. Här kommer de med mest poäng att hamna på en lista. ");
                 console.log("----------LEADERBOARD----------");
-                points_board.forEach(function (player, index) {
+                exports.points_board.forEach(function (player, index) {
                     console.log("".concat(index + 1, ". ").concat(player.name, " - ").concat(player.points, " po\u00E4ng"));
                 });
             }
@@ -369,4 +370,3 @@ function gameplay_loop(kategory, difficulty) {
         }
     }
 }
-meny();
