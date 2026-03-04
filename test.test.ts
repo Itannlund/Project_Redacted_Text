@@ -88,6 +88,31 @@ describe("Find words", ()=> {
     });
 });
 
+
+describe("generate_random_text", () => {
+  test("Checks so it returns one of the elements inside our array", () => {
+    const arr: text_save []= [
+      { answer: "sweden", text: "Text 1", easy: [], medium: [], hard: [], hints: [] },
+      { answer: "england", text: "Text 2", easy: [], medium: [],  hard: [],  hints: [] },
+      { answer: "australia", text: "Text 3", easy: [], medium: [], hard: [],  hints: [] }
+    ];
+
+    const result = generate_random_text(arr);
+
+    expect(arr).toContain(result);
+  });
+
+  test("Because it is random we try it with only one element", () => {
+    const arr: text_save [] = [
+      { answer: "sweden", text: "Text 1", easy: [], medium: [], hard: [], hints: [] },
+    ];
+
+    const result = generate_random_text(arr);
+
+    expect(result).toBe(arr[0]);
+  });
+});
+
 describe("Already Guessed", ()=> {
     
     test("Does Already guessed add word to its array and returns false", ()=>{
