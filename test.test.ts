@@ -9,6 +9,7 @@ import {    normalize_text,
             hints,
             already_guessed,
             leaderboard,
+            point_set,
             gameplay_loop} from "./Redact_unredact_text";
 import {country_texts, song_title, type text_save} from "./Texts";
 

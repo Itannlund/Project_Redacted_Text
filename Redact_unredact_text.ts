@@ -197,7 +197,7 @@ export function hints(text: string, item: text_save, index: number): boolean | n
 
 // Skall användas senare när vi får flera actions
 
-function point_set(points: number, action: number, value: number): number {
+export function point_set(points: number, action: number, value: number): number {
     //remove points
     if (action === 1) {
         return points - value;
