@@ -145,3 +145,30 @@ test("testing counting numbers and letters", () => {
 
 
 
+
+
+
+
+test("Sorted list ", () =>{
+    leaderboard("anna", 55);
+    const l1 = leaderboard("alice", 30);
+    expect(l1).toEqual([{"name":"alice", "points":30}, {"name": "anna", "points":55}]);
+})
+
+test("same amount", ()=>{
+    leaderboard("anna", 55);
+    const l1 = leaderboard("alice", 55);
+    expect(l1).toEqual([{"name":"alice", "points":55}, {"name": "anna", "points":55}]);
+
+})
+
+
+
+
+test("adding a player to leaderboard", () =>{
+    const points_board1 = leaderboard("alice", 100);
+    expect(points_board1).toHaveLength(1);
+})
+
+
+
