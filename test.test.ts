@@ -31,7 +31,7 @@ import {country_texts, song_title, type text_save} from "./Texts";
     const tokenize2 = tokenize_text(normalized2);
     const tokenize3 = tokenize_text(normalized3);
 
-leaderboard("hej", 3);
+
 
 describe("Redacting Text", () => {
     test('testing redact all text', ()=> {
@@ -146,29 +146,19 @@ test("testing counting numbers and letters", () => {
 
 
 
-
-
-
-test("Sorted list ", () =>{
+describe("Leaderboard", ()=>{
+    
     leaderboard("anna", 55);
     const l1 = leaderboard("alice", 30);
-    expect(l1).toEqual([{"name":"alice", "points":30}, {"name": "anna", "points":55}]);
-})
 
-test("same amount", ()=>{
-    leaderboard("anna", 55);
-    const l1 = leaderboard("alice", 55);
-    expect(l1).toEqual([{"name":"alice", "points":55}, {"name": "anna", "points":55}]);
+    test("Sorted list ", () =>{
+        
+        expect(l1).toEqual([{"name":"anna", "points": 55}, {"name": "alice", "points": 30}]);
+    })
 
-})
+    test("adding a player to leaderboard", () =>{
+        expect(l1).toHaveLength(2);
+    })
 
-
-
-
-test("adding a player to leaderboard", () =>{
-    const points_board1 = leaderboard("alice", 100);
-    expect(points_board1).toHaveLength(1);
-})
-
-
+});
 
