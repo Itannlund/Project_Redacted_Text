@@ -431,4 +431,3 @@ export function gameplay_loop(kategory: text_save[], difficulty: string) {
 }
 
 
-meny();

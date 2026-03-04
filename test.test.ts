@@ -34,52 +34,82 @@ import {country_texts, song_title, type text_save} from "./Texts";
 
 describe("Redacting Text", () => {
     test('testing redact all text', ()=> {
-        expect(redact_all_text(redact_text1)).toEqual("*** *** ****** *****")
-        expect(tokenize_text(redact_all_text(redact_text1))).toEqual(["***", "***", "******", "*****"])
-    })
-
-    test('testing redact all text', ()=> {
-        expect(redact_all_text(redact_text1)).toEqual("*** *** ****** *****")
+        expect(redact_text1).toEqual("*** *** ****** *****")
+    
     })
 
 });
-
-test('Can normalize handle empty string', ()=> {
-    expect(normalized_empty).toBe("");
-})
-
-test('Testing normlize_text for Bigg letters', ()=>{
-
-    expect(normalized1).toEqual(string_no_large_letters);
-    expect(normalized2).toBe("hello my name ar isak")
-    expect(normalized3).toBe("hello i like countries");
-})
-
-test('Testing normalize_text for weird letters', ()=> {
-    const Swedish_letters = "Är Ån Något,. att öva pÅ? "
-    expect(normalize_text(Swedish_letters)).toEqual("ar an nagot,. att ova pa?");
+describe("Redacting Text Tokenized", () => {
+    test("Regular text", () => {
+        expect(redact_all_text_tokenized(normalized1)).toEqual(["***", "***", "******", "*****"])
+    });
 });
 
-test('Does tokenize handle an empty string', ()=> {
-    expect(tokenize_empty).toEqual([]);
-})
+describe("Normalize_text", () => {
+    test('Can normalize handle empty string', ()=> {
+        expect(normalized_empty).toBe("");
+    })
+    test('Testing normlize_text for Bigg letters', ()=>{
 
-test('Testing that we can tokenize regular sentences', ()=> {
-    expect(tokenize1).toEqual(["hej", "jag", "gillar", "glass"]);
-    expect(tokenize2).toEqual(["hello", "my", "name", "ar", "isak"]);
-    expect(tokenize3).toEqual(["hello", "i", "like", "countries"]);
-})
+        expect(normalized1).toEqual(string_no_large_letters);
+        expect(normalized2).toBe("hello my name ar isak")
+        expect(normalized3).toBe("hello i like countries");
+    });
+    test('Testing normalize_text for weird letters', ()=> {
+        const Swedish_letters = "Är Ån Något,. att öva pÅ? "
+        expect(normalize_text(Swedish_letters)).toEqual("ar an nagot,. att ova pa?");
+});
+});
 
-test("Testing Our find words function", () => {
-    const guess1 = "Isak";
-    const text1 = "Hej mitt namn är Isak.";
-    const red_text1 = redact_all_text(text1);
-    const red_text1_tok = tokenize_text(red_text1);
+describe("Tokenize", ()=>{
+    test('Does tokenize handle an empty string', ()=> {
+        expect(tokenize_empty).toEqual([]);
+    });
+    test('Testing that we can tokenize regular sentences', ()=> {
+        expect(tokenize1).toEqual(["hej", "jag", "gillar", "glass"]);
+        expect(tokenize2).toEqual(["hello", "my", "name", "ar", "isak"]);
+        expect(tokenize3).toEqual(["hello", "i", "like", "countries"]);
+    });
+});
 
-    expect(tokenize_text(text1)).toEqual(["hej", "mitt", "namn", "ar", "isak."]);
-    expect(red_text1_tok).toEqual(["***", "****", "****", "**", "****."]);
-     expect(find_words(guess1, tokenize_text(text1), red_text1_tok)).toEqual(["***", "****", "****", "**", "isak." ]);
+
+
+describe("Find words", ()=> {
+    test("Testing Our find words function", () => {
+        const guess1 = "Isak";
+        const text1 = "Hej mitt namn är Isak.";
+        const red_text1 = redact_all_text(text1);
+        const red_text1_tok = tokenize_text(red_text1);
+
+        expect(tokenize_text(text1)).toEqual(["hej", "mitt", "namn", "ar", "isak."]);
+        expect(red_text1_tok).toEqual(["***", "****", "****", "**", "****."]);
+        expect(find_words(guess1, tokenize_text(text1), red_text1_tok)).toEqual(true);
    
+    });
+});
+
+describe("Already Guessed", ()=> {
+    const guesses = ["sweden", "norway"];
+    test("Does Already guessed add word to its array and returns false", ()=>{
+        
+        const result = already_guessed(guesses, "denmark");
+
+        expect(result).toBe(false);
+    });
+    test("Does Already guessed return true if the word is in the array", ()=> {
+        
+        const result = already_guessed(guesses, "sweden");
+
+        expect(result).toBe(true);
+        expect(guesses).toEqual(["sweden", "norway"]);
+    });
+    test("Does Already guessed not add the word to array if it has already been guessed", ()=>{
+        const guesses = ["sweden"];
+        already_guessed(guesses, "sweden");
+
+        expect(guesses).toEqual(["sweden"]);
+        expect(guesses).toHaveLength(1);
+    });
 });
 
 test("testing counting numbers and letters", () => {

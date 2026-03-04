@@ -1,0 +1,340 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for Texts.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="index.html">All files</a> Texts.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>4/4</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>4/4</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.song_title = exports.country_texts = void 0;
+exports.country_texts = [
+    {
+        answer: "sweden",
+        text: " Sweden is a country in Northern Europe and part of the Nordic region. It is one of the larger countries in Europe by area, but it has a relatively small population compared to its size. The landscape includes forests, thousands of lakes, long coastlines, and mountain areas in the north. The country borders Norway and Finland and has a long coastline along the Baltic Sea.\n            Sweden is a constitutional monarchy and a parliamentary democracy. Its capital is Stockholm, a city built across several islands. The country is known for its high standard of living, extensive welfare system, and strong focus on education and equality. Its economy is based on industry, technology, trade, and innovation. Several internationally known companies have their origins there.\n            The climate varies from colder conditions in the north to milder weather in the south. Nature and outdoor life are important parts of the culture, and public access to the countryside is a well-known tradition.",
+        easy: ["Kingdom", "Nordic", "northern", "democracy", "small", "climate"],
+        medium: [],
+        hard: [],
+        hints: ["social welfare", "Nobel prize", "ABBA"]
+    },
+    {
+        answer: "germany",
+        text: "Germany is a country in Central Europe and one of the most populous nations on the continent. It shares borders with several countries, including France, Poland, Austria, and the Netherlands. The landscape is varied, with rivers, forests, mountain ranges, and broad plains. Different regions of the country have their own cultural traditions, dialects, and historical identities.\n            Germany is a federal parliamentary republic made up of sixteen states. Its capital is Berlin, which is also the largest city. The country is known for its strong economy, advanced industry, and major role in European politics. It is especially recognized for engineering, manufacturing, science, and transportation. Many globally known companies in the automotive, chemical, and technology sectors are based there.\n            The country has a rich cultural history in music, philosophy, literature, and architecture. It is also known for castles, historic cities, and seasonal festivals. The climate is generally temperate, with warm summers and cool winters. Germany combines modern urban life with deep historical roots, making it an influential country both in Europe and globally.",
+        easy: ["Republic", "Europe", "Baltic", "architecture", "historic", "climate", "largest"],
+        medium: [],
+        hard: [],
+        hints: ["engineering hub", "16 federal states", "oktoberfest"]
+    },
+    {
+        answer: "australia",
+        text: " Australia is a country in the Southern Hemisphere and is both a nation and a continent. It is surrounded by the Indian and Pacific Oceans and is known for its large size and relatively low population density. Much of the interior is dry or semi-arid, while the coastal areas contain most of the population. The landscape includes deserts, tropical forests, mountain ranges, and long stretches of coastline.\n            Australia is a federal parliamentary democracy and a constitutional monarchy made up of states and territories. Its capital is Canberra, while Sydney and Melbourne are among its largest and best-known cities. The country is known for its high quality of life, multicultural society, and strong economy. Important industries include mining, agriculture, tourism, education, and services.\n            Australia is also famous for its unique wildlife, with many animal species found nowhere else in the world. The climate varies widely, from tropical conditions in the north to more temperate regions in the south. Outdoor life plays a major role in the culture, and the country is often associated with beaches, sports, and wide open spaces.",
+        easy: ["Kingdom", "Nordic", "western", "parliamentary", "many", "species", "climate", "tropical", "culture", "beaches"],
+        medium: [],
+        hard: [],
+        hints: ["native wildlife", "big nation", "outback interior"]
+    },
+    {
+        answer: "england",
+        text: "England is a country in northwestern Europe and is part of the United Kingdom. It occupies the southern and central portion of the island of Great Britain and is bordered by Scotland to the north and Wales to the west. The landscape includes rolling hills, plains, forests, and a long coastline, with many towns and cities shaped by centuries of history.\n            England is not a sovereign state on its own, but it is the largest and most populous country within the United Kingdom. Its capital is London, one of the world\u2019s most influential cities in finance, culture, and politics. The country is known for its historic institutions, including a constitutional monarchy and parliamentary system that have influenced many other nations. Its economy is diverse, with major strengths in finance, education, technology, media, and services.\n            England has had a major impact on global history through literature, science, industry, and exploration. It is associated with many well-known traditions, historic landmarks, and cultural symbols. The climate is generally temperate, with mild winters and cool summers. England combines deep historical roots with modern urban life, making it one of the most recognized countries in the world.",
+        easy: [],
+        medium: ["Kingdom", "Africa", "southernmost", "continental", "well-known", "historic", "science", "temperate", "major"],
+        hard: [],
+        hints: ["Shakespear", "premiere league", "big ben"]
+    },
+    { answer: "china",
+        text: "China is a country in East Asia and one of the largest and most populous nations in the world. It has a wide variety of landscapes, including mountains, deserts, plateaus, rivers, and fertile plains. The country shares borders with many others, and its size has contributed to a long history of regional diversity in culture, language, and tradition.\n            China is governed as a single-party socialist state, and its capital is Beijing. Other major cities include Shanghai, Guangzhou, and Shenzhen, which are important centers of trade, finance, and industry. The country has one of the world\u2019s largest economies and is known for manufacturing, technology, infrastructure, and global trade. It plays a major role in international politics and economic affairs.\n            China has one of the oldest continuous civilizations in the world and is known for major historical achievements in philosophy, science, art, and engineering. It is associated with famous landmarks, long-standing cultural traditions, and a rich culinary heritage. The climate varies greatly across the country, from cold northern winters to subtropical conditions in the south. China combines ancient history with rapid modernization, making it one of the most influential countries in the world.",
+        easy: [],
+        medium: ["Republic", "Southern", "Mediterranean", "800", "islands"],
+        hard: [],
+        hints: ["Ancient", "Great wall", "single-party state"] },
+];
+exports.song_title = [
+    {
+        answer: "shake it off",
+        text: "I stay out too late Got nothin' in my brain That's what people say, \n    mm-mm That's what people say, mm-mm I go on too many dates (Haha) But I can't make them stay\n    At least, that's what people say, mm-mm\n    That's what people say, mm-mm\n    But I keep cruisin'\n    Can't stop, won't stop movin'\n    It's like I got this music in my mind\n    Sayin', \"It's gonna be alright\"\n    'Cause the players gonna play, play, play, play, play\n    And the haters gonna hate, hate, hate, hate, hate\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off\n    Heartbreakers gonna break, break, break, break, break\n    And the fakers gonna fake, fake, fake, fake, fake\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off' \n    \n    I never miss a beat\n    I'm lightnin' on my feet\n    And that's what they don't see, mm-mm\n    That's what they don't see, mm-mm\n    I'm dancin' on my own (Dancin' on my own)\n    I make the moves up as I go (Moves up as I go)\n    And that's what they don't know, mm-mm\n    That's what they don't know, mm-mm\n\n\n    But I keep cruisin'\n    Can't stop, won't stop groovin'\n    It's like I got this music in my mind\n    Sayin', \"It's gonna be alright\"\n\n    'Cause the players gonna play, play, play, play, play\n    And the haters gonna hate, hate, hate, hate, hate\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off\n    Heartbreakers gonna break, break, break, break, break\n    And the fakers gonna fake, fake, fake, fake, fake\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off [Post-Chorus]\n    I shake it off, I shake it off\n    I, I, I shake it off, I shake it off\n    I, I, I shake it off, I shake it off\n    I, I, I shake it off, I shake it off\n\n    Hey, hey, hey\n    Just think, while you've been gettin' down and out about the liars\n    And the dirty, dirty cheats of the world\n    You could've been gettin' down\n    To this sick beat\n\n    My ex-man brought his new girlfriend\n    She's like, \"Oh my God,\" but I'm just gonna shake\n    And to the fella over there with the hella good hair\n    Won't you come on over, baby? We can shake, shake, shake\n    Yeah, oh-oh, oh\n\n    'Cause the players gonna play, play, play, play, play\n    And the haters gonna hate, hate, hate, hate, hate (Haters gonna hate)\n    Baby, I'm just gonna shake, shake, shake, shake, shake\n    I shake it off, I shake it off (Ha)\n    Heartbreakers gonna break, break, break, break, break (Mmm)\n    And the fakers gonna fake, fake, fake, fake, fake (They fake and fake and fake)",
+        easy: ["off", "it", "people", "gonna", "players", "haters", "shake", "music", "dates"],
+        medium: ["brain", "cruisin'", "music"],
+        hard: [],
+        hints: ["pop", "2014", "Taylor swift"]
+    },
+    {
+        answer: "lay all your love on me",
+        text: "I wasn't jealous before we met\n    Now every woman I see is a potential threat\n    And I'm possessive, it isn't nice\n    You've heard me saying that smoking was my only vice\n\n    But now it isn't true\n    Now everything is new\n    And all I've learned has overturned\n    I beg of you\n\n    Don't go wasting your emotion\n    Lay all your love on me\n\n    It was like shooting a sitting duck\n    A little small talk, a smile, and baby, I was stuck\n    I still don't know what you've done with me\n    A grown-up woman should never fall so easily\n\n    I feel a kind of fear\n    When I don't have you near\n    Unsatisfied, I skip my pride\n    I beg you, dear [Chorus]\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n\n    [Verse 3]\n    I've had a few little love affairs\n    They didn't last very long and they've been pretty scarce\n    I used to think that was sensible\n    It makes the truth even more incomprehensible\n\n    'Cause everything is new\n    And everything is you\n    And all I've learned has overturned\n    What can I do?\n\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n    Don't go wasting your emotion\n    Lay all your love on me\n    Don't go sharing your devotion\n    Lay all your love on me\n    Don't go wasting your emotion\n    Lay all your love on me",
+        easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything", "jealous", "emotion", "love"],
+        medium: ["duck", "baby", "jealous", "fear", "emotion"],
+        hard: [],
+        hints: ["Disco love", "swedish pop", "1980"]
+    },
+    {
+        answer: "boulevard of Broken Dreams",
+        text: "I walk a lonely road\n                The only one that I have ever known\n                Don't know where it goes\n                But it's home to me, and I walk alone\n                I walk this empty street\n                On the Boulevard of Broken Dreams\n                Where the city sleeps\n                And I'm the only one, and I walk alone\n                I walk alone, I walk alone\n                I walk alone, I walk a-\n                My shadow's the only one that walks beside me\n                My shallow heart's the only thing that's beating\n                Sometimes, I wish someone out there will find me\n                'Til then, I walk alone\n                Ah-ah, ah-ah, ah-ah, ah-ah\n                Ah-ah, ah-ah, ah-ah\n                I'm walking down the line\n                That divides me somewhere in my mind\n                On the borderline\n                Of the edge, and where I walk alone\n                Read between the lines\n                What's fucked up, and everything's alright\n                Check my vital signs\n                To know I'm still alive, and I walk alone\n                I walk alone, I walk alone\n                I walk alone, I walk a-\n                My shadow's the only one that walks beside me\n                My shallow heart's the only thing that's beating\n                Sometimes, I wish someone out there will find me\n                'Til then, I walk alone\n                Ah-ah, ah-ah, ah-ah, ah-ah\n                Ah-ah, ah-ah, I walk alone, I walk a-\n                I walk this empty street\n                On the Boulevard of Broken Dreams\n                Where the city sleeps\n                And I'm the only one, and I walk a-\n                My shadow's the only one that walks beside me\n                My shallow heart's the only thing that's beating\n                Sometimes, I wish someone out there will find me\n                'Til then, I walk alone",
+        easy: ["boulevard", "dreams", "lonely", "shadow", "street"],
+        medium: ["alone", "walking", "empty"],
+        hard: [],
+        hints: ["lonely city walk", "2004", "green day"]
+    },
+    {
+        answer: "beat it",
+        text: "They told him, \"Don't you ever come around here\n        Don't want to see your face, you better disappear\"\n        The fire's in their eyes and their words are really clear\n        So beat it, just beat it\n        You better run, you better do what you can\n        Don't want to see no blood, don't be a macho man\n        You want to be tough, better do what you can\n        So beat it, but you want to be bad\n        Just beat it, beat it, beat it, beat it\n        No one wants to be defeated\n        Showin' how funky and strong is your fight\n        It doesn't matter who's wrong or right\n        Just beat it, beat it\n        Just beat it, beat it\n        Just beat it, beat it\n        Just beat it, beat it (ooh)\n        They're out to get you, better leave while you can\n        Don't want to be a boy, you want to be a man\n        You want to stay alive, better do what you can\n        So beat it, just beat it (ooh)\n        You have to show them that you're really not scared\n        You're playin' with your life, this ain't no truth or dare\n        They'll kick you, then they beat you\n        Then they'll tell you it's fair\n        So beat it, but you want to be bad\n        Just beat it, beat it, beat it, beat it\n        No one wants to be defeated\n        Showin' how funky and strong is your fight\n        It doesn't matter who's wrong or right\n        Just beat it, beat it, beat it, beat it\n        No one wants to be defeated\n        Showin' how funky and strong is your fight\n        It doesn't matter who's wrong or right\n        Just beat it, beat it, beat it, beat it\n        Beat it, beat it, beat it\n        Beat it, beat it, beat it\n        Beat it, beat it, beat it\n        Beat it, beat it, beat it\n        Beat it, beat it, beat it, beat it\n        No one wants to be defeated\n        Showin' how funky and strong is your fight\n        It doesn't matter who's wrong or right\n        Just beat it, beat it\n        Beat it, beat it\n        No one wants to be defeated\n        Showin' how funky and strong is your fight\n        It doesn't matter who's wrong or right\n        Just beat it, beat it, beat it, beat it\n        No one wants to be defeated\n        Showin' how funky and strong is your fight\n        It doesn't matter who's wrong or right\n        Just beat it, beat it, beat it, beat it\n        No one wants to be defeated\n        Showin' how funky and strong is your fight\n        It doesn't matter who's wrong or right\n        Just beat it, beat it\n        Beat it, beat it ",
+        easy: ["beat", "fight", "strong", "wrong", "fire"],
+        medium: ["tough", "scared", "blood"],
+        hard: [],
+        hints: ["avoid the fight", "1980", "jackson"]
+    },
+    {
+        answer: "im still standing",
+        text: "You could never know what it's like\n                Your blood like winter freezes just like ice\n                And there's a cold lonely light that shines from you\n                You'll wind up like the wreck you hide behind that mask you use\n                And did you think this fool could never win?\n                Well, look at me, I'm coming back again\n                I got a taste of love in a simple way\n                And if you need to know while I'm still standing, you just fade away\n                Don't you know I'm still standing better than I ever did\n                Looking like a true survivor, feeling like a little kid\n                I'm still standing after all this time\n                Picking up the pieces of my life without you on my mind\n                I'm still standing (yeah, yeah, yeah)\n                I'm still standing (yeah, yeah, yeah)\n                Once I never could have hoped to win\n                You're starting down the road leaving me again\n                The threats you made were meant to cut me down\n                And if our love was just a circus, you'd be a clown by now\n                You know I'm still standing better than I ever did\n                Looking like a true survivor, feeling like a little kid\n                I'm still standing after all this time\n                Picking up the pieces of my life without you on my mind\n                I'm still standing (yeah, yeah, yeah)\n                I'm still standing (yeah, yeah, yeah)\n                Don't you know that I'm still standing better than I ever did?\n                Looking like a true survivor, feeling like a little kid\n                I'm still standing after all this time\n                Picking up the pieces of my life without you on my mind\n                I'm still standing (yeah, yeah, yeah)\n                I'm still standing (yeah, yeah, yeah)",
+        easy: ["standing", "survivin'", "piece", "life", "fadin'"],
+        medium: ["once", "down", "sad"],
+        hard: [],
+        hints: ["Resilient", "1983", "Elton"]
+    }
+];
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-03-04T12:31:06.734Z
+            </div>
+        <script src="prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
+    </body>
+</html>
+    
