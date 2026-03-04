@@ -162,3 +162,28 @@ describe("Leaderboard", ()=>{
 
 });
 
+
+describe("Leaderboard1", ()=>{
+    test("players with the same amount"), () =>{
+        
+        leaderboard("test1", 50);
+        const result1 = leaderboard("test2", 50);
+        
+        expect(result1).toHaveLength(2);
+        expect(result1[0].points).toBe(50);
+        expect(result1[1].points).toBe(50);
+    }
+    test("uppdatera poängen", ()=>{
+        const returned_value = leaderboard("test1", 125);
+        expect(returned_value).toBe([{"name": "test1", "points": 125}]);
+        expect(returned_value[0].points).toBe(125);
+
+    })
+})
+
+
+
+    
+  
+
+
