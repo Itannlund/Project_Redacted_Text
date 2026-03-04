@@ -181,14 +181,17 @@ function hints(text, item, index) {
     }
 }
 // Skall användas senare när vi får flera actions
-function point_set(points, action) {
+function point_set(points, action, value) {
     //remove points
-    if (action === 2) {
-        return points;
+    if (action === 1) {
+        return points - value;
     }
-    else
-        (action === 1);
-    points = (points - 5);
+    if (action === 2) {
+        return points + value;
+    }
+    if (action === 3) {
+        return points * value;
+    }
     return points;
 }
 var points_board = [];
@@ -329,7 +332,7 @@ function gameplay_loop(kategory, difficulty) {
         if (normalized_input === "hint") {
             var result = hints(correct_answer, our_array, hint_index);
             if (result === true) {
-                points = points - 15;
+                points = point_set(points, 1, 15);
                 continue;
             }
             if (result === false) {
@@ -337,12 +340,12 @@ function gameplay_loop(kategory, difficulty) {
             }
             if (typeof result === "number") {
                 hint_index = result;
-                points = points - 20;
+                points = point_set(points, 1, 20);
                 continue;
             }
         }
         if (normalized_input === correct_answer) {
-            points = points * 2;
+            points = point_set(points, 3, 2);
             console.log("_______________________________________________________________________________\n \n                        You guessed correct!!!!! \n \n                        With a score of:", points, "points");
             // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
             // console.log(text);
@@ -356,12 +359,12 @@ function gameplay_loop(kategory, difficulty) {
         }
         if (updated === false) {
             console.log("_______________________________________________________________________________\n\n                        Word does not exist try again");
-            points = points - wrong_guess;
+            points = point_set(points, 1, wrong_guess);
             continue;
         }
         if (updated === true) {
-            console.log("_______________________________________________________________________________\n\n                        Great job, you gained 5 points!");
-            points = points + correct_guess;
+            console.log("_______________________________________________________________________________\n\n                        Great job, you gained", correct_guess, " points!");
+            points = point_set(points, 2, correct_guess);
             continue;
         }
     }

@@ -196,15 +196,21 @@ export function hints(text: string, item: text_save, index: number): boolean | n
 
 
 // Skall användas senare när vi får flera actions
-export function point_set(points: number, action: number): Number {
+
+function point_set(points: number, action: number, value: number): number {
     //remove points
-    if (action === 2) {
-        return points
+    if (action === 1) {
+        return points - value;
     }
-    else (action === 1)
-        points = (points - 5)
-        return points
+    if (action === 2) {
+        return points + value;
+    }
+    if (action === 3) {
+        return points * value;
+    }
+    return points;
 }
+
 
 type Player = {
     points: number;
@@ -384,7 +390,7 @@ export function gameplay_loop(kategory: text_save[], difficulty: string) {
         if (normalized_input === "hint") {
             const result = hints(correct_answer, our_array, hint_index)
             if (result === true) {
-                points = points - 15;
+                points = point_set(points, 1, 15);
                 continue;
             }
             if (result === false) {
@@ -392,12 +398,12 @@ export function gameplay_loop(kategory: text_save[], difficulty: string) {
             } 
             if (typeof result === "number") {
                 hint_index = result as number;
-                points = points - 20;
+                points = point_set(points, 1, 20);
                 continue; }
         }
 
         if (normalized_input === correct_answer){
-            points = points * 2;
+            points = point_set(points, 3, 2)
             console.log(`_______________________________________________________________________________\n 
                         You guessed correct!!!!! \n 
                         With a score of:`, points, "points")
@@ -417,13 +423,13 @@ export function gameplay_loop(kategory: text_save[], difficulty: string) {
         if (updated === false) {
             console.log(`_______________________________________________________________________________\n
                         Word does not exist try again`)
-            points = points - wrong_guess;
+            points = point_set(points, 1, wrong_guess);
             continue;
         }
         if (updated === true){
             console.log(`_______________________________________________________________________________\n
-                        Great job, you gained 5 points!`)
-            points = points + correct_guess;
+                        Great job, you gained`, correct_guess,` points!`)
+            points = point_set(points, 2, correct_guess);
             continue;
 
         }
