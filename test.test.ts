@@ -31,14 +31,18 @@ import {country_texts, song_title, type text_save} from "./Texts";
     const tokenize2 = tokenize_text(normalized2);
     const tokenize3 = tokenize_text(normalized3);
 
-test('testing redact all text', ()=> {
-    expect(redact_all_text(redact_text1)).toEqual("*** *** ****** *****")
-    expect(tokenize_text(redact_all_text(redact_text1))).toEqual(["***", "***", "******", "*****"])
-})
 
-test('testing redact all text', ()=> {
-    expect(redact_all_text(redact_text1)).toEqual("*** *** ****** *****")
-})
+describe("Redacting Text", () => {
+    test('testing redact all text', ()=> {
+        expect(redact_all_text(redact_text1)).toEqual("*** *** ****** *****")
+        expect(tokenize_text(redact_all_text(redact_text1))).toEqual(["***", "***", "******", "*****"])
+    })
+
+    test('testing redact all text', ()=> {
+        expect(redact_all_text(redact_text1)).toEqual("*** *** ****** *****")
+    })
+
+});
 
 test('Can normalize handle empty string', ()=> {
     expect(normalized_empty).toBe("");
