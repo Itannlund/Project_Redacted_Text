@@ -1,6 +1,5 @@
 import { country_texts, song_title, type text_save} from "./Texts.js";
-import { Prompt } from "prompt-sync";
-import * as readline from "readline";
+
 import { diff } from "util";
 export type Text = string;
 export type Tokenized_Text = string[];
@@ -133,7 +132,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
  * @param guess is a string
  * @returns Returns true if not changes were made to guesses and false if changes where made.
  */
-function already_guessed(guesses: string[], guess: string): boolean {
+export function already_guessed(guesses: string[], guess: string): boolean {
 
     for (let i = 0; i < guesses.length; i++){
         if (guesses[i] === guess) {
@@ -162,7 +161,7 @@ export function letters_spaces(text: string): { letters: Number; spaces: Number 
     return {letters, spaces}
 }
 
-function hints(text: string, item: text_save, index: number): boolean | number {
+export function hints(text: string, item: text_save, index: number): boolean | number {
     console.log("\n 1. How many letters and spaces in titel (costs 15 points) \n 2. Specific hint about country (costs 20 points) \n 3. No hint needed")
     const input = prompt("Choose what type of hint: ")
     
@@ -197,7 +196,7 @@ function hints(text: string, item: text_save, index: number): boolean | number {
 
 
 // Skall användas senare när vi får flera actions
-function point_set(points: number, action: number): Number {
+export function point_set(points: number, action: number): Number {
     //remove points
     if (action === 2) {
         return points
@@ -213,12 +212,14 @@ type Player = {
 
 
 let points_board: Player[] = [];
-function leaderboard(name: string, newPoints: number): Player[] {
+
+export function leaderboard(name: string, newPoints: number): Player[] {
     points_board.push({name, points: newPoints});
     points_board.sort((a,b) =>b.points -a.points);
     return points_board;
 }
-function meny(){
+
+export function meny(){
     while(true){
         console.log("\n 1. Play \n \n 2. Rules \n \n 3. Exit \n")
         const input1 = prompt("Choose from menu:  ");
@@ -275,7 +276,7 @@ function meny(){
     
 }
 
-function helper_set_difficulty(): string {
+export function helper_set_difficulty(): string {
     while (true) {
         console.log("\n \n 1. Easy \n \n 2. Medium \n \n 3. Hard \n \n 4. Go back \n \n");
         const input_dif = prompt("Which difficulty would you like? ");
@@ -293,12 +294,12 @@ function helper_set_difficulty(): string {
     
 
 // Generates a random text from the desired kategory
-function generate_random_text(Kategory: text_save[]): text_save{
+export function generate_random_text(Kategory: text_save[]): text_save{
         const length = Kategory.length;
         const n = Math.floor(Math.random() * length);
         return Kategory[n];
     }
-function game_rules(): void {
+export function game_rules(): void {
     console.log(`_______________________________________________________________________________\n
                 Welcome to our game redacted, here are the rules!!!\n
                 1. The player will get a redacted text from a choosen category
@@ -313,7 +314,7 @@ function game_rules(): void {
 }
 
 // Våran gameplay loop. Denna kör spelet
-function gameplay_loop(kategory: text_save[], difficulty: string) {
+export function gameplay_loop(kategory: text_save[], difficulty: string) {
     console.log(`________________________________________________________________________________\n
                     Welcome to the game Redacted!!!`)
 
@@ -353,6 +354,7 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
         
         
     }
+    
     if(difficulty === "1"){set_easy_difficulty()};
     if(difficulty === "2"){set_medium_difficulty()};
     if(difficulty === "3"){set_hard_difficulty()};        

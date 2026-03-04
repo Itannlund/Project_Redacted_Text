@@ -1,5 +1,17 @@
-import { normalize_text, tokenize_text, redact_all_text, redact_all_text_tokenized, find_words, letters_spaces} from "./Redact_unredact_text";
-import {country_texts} from "./Texts";
+import PromptSync = require("prompt-sync");
+import {    normalize_text, 
+            tokenize_text, 
+            redact_all_text, 
+            redact_all_text_tokenized, 
+            find_words, 
+            letters_spaces,
+            generate_random_text,
+            hints,
+            already_guessed,
+            leaderboard,
+            gameplay_loop} from "./Redact_unredact_text";
+import {country_texts, song_title, type text_save} from "./Texts";
+
     
     const empty_string = "";
     const string_no_large_letters = "hej jag gillar glass"
@@ -39,7 +51,7 @@ test('Testing normlize_text for Bigg letters', ()=>{
     expect(normalized3).toBe("hello i like countries");
 })
 
-test('Testing normlilize_text for weird letters', ()=> {
+test('Testing normalize_text for weird letters', ()=> {
     const Swedish_letters = "Är Ån Något,. att öva pÅ? "
     expect(normalize_text(Swedish_letters)).toEqual("ar an nagot,. att ova pa?");
 });
@@ -69,3 +81,11 @@ test("Testing Our find words function", () => {
 test("testing counting numbers and letters", () => {
     expect(letters_spaces("number")).toEqual({letters: 6, spaces: 0})
 })
+
+//____________________________________________________________________
+// Gameloop testcases 
+test("Testcases for gameloop ", () => {
+
+});
+
+
