@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1772629444439" clover="3.2.0">
-  <project timestamp="1772629444439" name="All files">
+<coverage generated="1772636255570" clover="3.2.0">
+  <project timestamp="1772636255570" name="All files">
     <metrics statements="208" coveredstatements="76" conditionals="78" coveredconditionals="14" methods="23" coveredmethods="9" elements="309" coveredelements="99" complexity="0" loc="208" ncloc="208" packages="1" files="2" classes="2"/>
     <file name="Redact_unredact_text.js" path="C:\Users\isakt\OneDrive - Uppsala universitet\Dokument\GitHub\Project_Redacted_Text\Redact_unredact_text.js">
       <metrics statements="204" coveredstatements="72" conditionals="78" coveredconditionals="14" methods="23" coveredmethods="9"/>

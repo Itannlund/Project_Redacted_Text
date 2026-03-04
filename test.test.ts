@@ -31,6 +31,7 @@ import {country_texts, song_title, type text_save} from "./Texts";
     const tokenize2 = tokenize_text(normalized2);
     const tokenize3 = tokenize_text(normalized3);
 
+leaderboard("hej", 3);
 
 describe("Redacting Text", () => {
     test('testing redact all text', ()=> {
@@ -141,10 +142,6 @@ test("testing counting numbers and letters", () => {
     expect(letters_spaces("number")).toEqual({letters: 6, spaces: 0})
 })
 
-//____________________________________________________________________
-// Gameloop testcases 
-test("Testcases for gameloop ", () => {
 
-});
 
 
