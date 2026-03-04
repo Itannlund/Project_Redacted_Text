@@ -364,7 +364,7 @@ function gameplay_loop(kategory: text_save[], difficulty: string) {
         console.log("Already guessed words:", guesses, "\n ");
         console.log(text_redacted_tokenized.join(" "));
 
-        const input = prompt("\nGuess a word (or type quit): ");
+        const input = prompt("Guess a word (or type quit): ");
         
         const normalized_input = normalize_text(input);
 

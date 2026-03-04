@@ -190,10 +190,10 @@ function leaderboard(name, newPoints) {
 }
 function meny() {
     while (true) {
-        console.log("\n 1. Play \n 2. Rules \n 3. Exit");
+        console.log("\n 1. Play \n \n 2. Rules \n \n 3. Exit \n");
         var input1 = prompt("Choose from menu:  ");
         if (input1 === "1") {
-            console.log("\n Category: \n 1. Countrys \n 2. Artist \n 3. Go back \n 4. Leaderboard  ");
+            console.log("\n \n Category: \n \n 1. Countrys \n \n 2. Artist \n \n 3. Go back \n \n 4. Leaderboard \n  ");
             var input2 = prompt("Choose Category: ");
             if (input2 === "1") {
                 var dif = helper_set_difficulty();
@@ -237,7 +237,7 @@ function meny() {
 }
 function helper_set_difficulty() {
     while (true) {
-        console.log("\n 1. Easy \n 2. Medium \n 3. Hard \n 4. Go back\n");
+        console.log("\n \n 1. Easy \n \n 2. Medium \n \n 3. Hard \n \n 4. Go back \n \n");
         var input_dif = prompt("Which difficulty would you like? ");
         if (input_dif === "1" || input_dif === "2" || input_dif === "3" || input_dif === "4") {
             return input_dif;
@@ -304,9 +304,9 @@ function gameplay_loop(kategory, difficulty) {
     ;
     while (points > 0) {
         console.log("Points:", points);
-        console.log("Redacted text:");
+        console.log("\nRedacted text:");
         console.log("Type hint for a hint");
-        console.log("Already guessed words:", guesses);
+        console.log("Already guessed words:", guesses, "\n ");
         console.log(text_redacted_tokenized.join(" "));
         var input = prompt("Guess a word (or type quit): ");
         var normalized_input = normalize_text(input);
