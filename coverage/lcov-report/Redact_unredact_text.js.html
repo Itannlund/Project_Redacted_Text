@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">34.76% </span>
+                <span class="strong">34.43% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>73/210</span>
+                <span class='fraction'>73/212</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.91% </span>
+                <span class="strong">17.94% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>14/74</span>
+                <span class='fraction'>14/78</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">34.15% </span>
+                <span class="strong">33.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>69/202</span>
+                <span class='fraction'>69/204</span>
             </div>
         
             
@@ -432,7 +432,10 @@
 <a name='L367'></a><a href='#L367'>367</a>
 <a name='L368'></a><a href='#L368'>368</a>
 <a name='L369'></a><a href='#L369'>369</a>
-<a name='L370'></a><a href='#L370'>370</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L370'></a><a href='#L370'>370</a>
+<a name='L371'></a><a href='#L371'>371</a>
+<a name='L372'></a><a href='#L372'>372</a>
+<a name='L373'></a><a href='#L373'>373</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -557,10 +560,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -620,9 +623,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -984,14 +990,17 @@ function <span class="fstat-no" title="function not covered" >hints(</span>text,
     }
 }
 // Skall användas senare när vi får flera actions
-function <span class="fstat-no" title="function not covered" >point_set(</span>points, action) {
+function <span class="fstat-no" title="function not covered" >point_set(</span>points, action, value) {
     //remove points
-<span class="cstat-no" title="statement not covered" >    if (action === 2) {</span>
-<span class="cstat-no" title="statement not covered" >        return points;</span>
+<span class="cstat-no" title="statement not covered" >    if (action === 1) {</span>
+<span class="cstat-no" title="statement not covered" >        return points - value;</span>
     }
-    else
-<span class="cstat-no" title="statement not covered" >        (action === 1);</span>
-<span class="cstat-no" title="statement not covered" >    points = (points - 5);</span>
+<span class="cstat-no" title="statement not covered" >    if (action === 2) {</span>
+<span class="cstat-no" title="statement not covered" >        return points + value;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (action === 3) {</span>
+<span class="cstat-no" title="statement not covered" >        return points * value;</span>
+    }
 <span class="cstat-no" title="statement not covered" >    return points;</span>
 }
 var points_board = [];
@@ -1132,7 +1141,7 @@ function <span class="fstat-no" title="function not covered" >gameplay_loop(</sp
 <span class="cstat-no" title="statement not covered" >        if (normalized_input === "hint") {</span>
             var result = <span class="cstat-no" title="statement not covered" >hints(correct_answer, our_array, hint_index);</span>
 <span class="cstat-no" title="statement not covered" >            if (result === true) {</span>
-<span class="cstat-no" title="statement not covered" >                points = points - 15;</span>
+<span class="cstat-no" title="statement not covered" >                points = point_set(points, 1, 15);</span>
 <span class="cstat-no" title="statement not covered" >                continue;</span>
             }
 <span class="cstat-no" title="statement not covered" >            if (result === false) {</span>
@@ -1140,12 +1149,12 @@ function <span class="fstat-no" title="function not covered" >gameplay_loop(</sp
             }
 <span class="cstat-no" title="statement not covered" >            if (typeof result === "number") {</span>
 <span class="cstat-no" title="statement not covered" >                hint_index = result;</span>
-<span class="cstat-no" title="statement not covered" >                points = points - 20;</span>
+<span class="cstat-no" title="statement not covered" >                points = point_set(points, 1, 20);</span>
 <span class="cstat-no" title="statement not covered" >                continue;</span>
             }
         }
 <span class="cstat-no" title="statement not covered" >        if (normalized_input === correct_answer) {</span>
-<span class="cstat-no" title="statement not covered" >            points = points * 2;</span>
+<span class="cstat-no" title="statement not covered" >            points = point_set(points, 3, 2);</span>
 <span class="cstat-no" title="statement not covered" >            console.log("_______________________________________________________________________________\n \n                        You guessed correct!!!!! \n \n                        With a score of:", points, "points");</span>
             // Om man vill se texten när personen vinner ser konstigt ut i terminalen dock
             // console.log(text);
@@ -1159,12 +1168,12 @@ function <span class="fstat-no" title="function not covered" >gameplay_loop(</sp
         }
 <span class="cstat-no" title="statement not covered" >        if (updated === false) {</span>
 <span class="cstat-no" title="statement not covered" >            console.log("_______________________________________________________________________________\n\n                        Word does not exist try again");</span>
-<span class="cstat-no" title="statement not covered" >            points = points - wrong_guess;</span>
+<span class="cstat-no" title="statement not covered" >            points = point_set(points, 1, wrong_guess);</span>
 <span class="cstat-no" title="statement not covered" >            continue;</span>
         }
 <span class="cstat-no" title="statement not covered" >        if (updated === true) {</span>
-<span class="cstat-no" title="statement not covered" >            console.log("_______________________________________________________________________________\n\n                        Great job, you gained 5 points!");</span>
-<span class="cstat-no" title="statement not covered" >            points = points + correct_guess;</span>
+<span class="cstat-no" title="statement not covered" >            console.log("_______________________________________________________________________________\n\n                        Great job, you gained", correct_guess, " points!");</span>
+<span class="cstat-no" title="statement not covered" >            points = point_set(points, 2, correct_guess);</span>
 <span class="cstat-no" title="statement not covered" >            continue;</span>
         }
     }
@@ -1177,7 +1186,7 @@ meny();
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-04T12:31:06.734Z
+                at 2026-03-04T12:53:04.117Z
             </div>
         <script src="prettify.js"></script>
         <script>

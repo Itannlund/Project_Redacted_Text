@@ -89,18 +89,18 @@ describe("Find words", ()=> {
 });
 
 describe("Already Guessed", ()=> {
-    const guesses = ["sweden", "norway"];
+    
     test("Does Already guessed add word to its array and returns false", ()=>{
-        
+        const guesses = ["sweden", "norway"];
         const result = already_guessed(guesses, "denmark");
 
         expect(result).toBe(false);
     });
     test("Does Already guessed return true if the word is in the array", ()=> {
-        
-        const result = already_guessed(guesses, "sweden");
+        const guesses = ["sweden", "norway"];
+        const result2 = already_guessed(guesses, "sweden");
 
-        expect(result).toBe(true);
+        expect(result2).toBe(true);
         expect(guesses).toEqual(["sweden", "norway"]);
     });
     test("Does Already guessed not add the word to array if it has already been guessed", ()=>{
