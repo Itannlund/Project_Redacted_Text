@@ -15,7 +15,7 @@ import {country_texts, song_title, type text_save} from "./Texts";
 
     
     const empty_string = "";
-    const string_no_large_letters = "hej jag gillar glass"
+    const string_no_large_letters = "hej, jag gillar, glass,"
     const string_large_letters = "Hello mY namE Är Isak";
     const string_only_large_letters = "HELLO I LIKE COUNTRIES";
     
@@ -36,14 +36,20 @@ import {country_texts, song_title, type text_save} from "./Texts";
 
 describe("Redacting Text", () => {
     test('testing redact all text', ()=> {
-        expect(redact_text1).toEqual("*** *** ****** *****")
+        expect(redact_text1).toEqual("**** *** ******* ******")
     
+    })
+     test("empty string", () => {
+        expect(redact_all_text("")).toBe("");
+    })
+     test("keep punctuation", () => {
+        
     })
 
 });
 describe("Redacting Text Tokenized", () => {
     test("Regular text", () => {
-        expect(redact_all_text_tokenized(normalized1)).toEqual(["***", "***", "******", "*****"])
+        expect(redact_all_text_tokenized(normalized1)).toEqual(["***,", "***", "******,", "*****,"])
     });
 });
 
@@ -68,7 +74,7 @@ describe("Tokenize", ()=>{
         expect(tokenize_empty).toEqual([]);
     });
     test('Testing that we can tokenize regular sentences', ()=> {
-        expect(tokenize1).toEqual(["hej", "jag", "gillar", "glass"]);
+        expect(tokenize1).toEqual(["hej,", "jag", "gillar,", "glass,"]);
         expect(tokenize2).toEqual(["hello", "my", "name", "ar", "isak"]);
         expect(tokenize3).toEqual(["hello", "i", "like", "countries"]);
     });
@@ -143,8 +149,20 @@ test("testing counting numbers and letters", () => {
     expect(letters_spaces("number")).toEqual({letters: 6, spaces: 0})
 })
 
-
-
+describe("point set", () => {
+    test("subtract points", () => {
+        expect(point_set(100, 1, 10)).toBe(90);
+    });
+     test("add points", () => {
+        expect(point_set(100, 2, 10)).toBe(110);
+    });
+     test("multiply points", () => {
+        expect(point_set(100, 3, 10)).toBe(1000);
+    });
+     test("unvalid action", () => {
+        expect(point_set(100, 4, 10)).toBe(100);
+    });
+})
 
 
 describe("Leaderboard", ()=>{
