@@ -317,10 +317,9 @@ function gameplay_loop(kategory, difficulty) {
     while (points > 0) {
         console.log("Points:", points);
         console.log("\nRedacted text:");
-        console.log("Type hint for a hint");
         console.log("Already guessed words:", guesses, "\n ");
         console.log(text_redacted_tokenized.join(" "));
-        var input = prompt("Guess a word (or type quit): ");
+        var input = prompt("Guess a word (or type quit/hint): ");
         var normalized_input = normalize_text(input);
         var updated = find_words(normalized_input, text_tokenized, text_redacted_tokenized);
         if (normalized_input === "quit") {
