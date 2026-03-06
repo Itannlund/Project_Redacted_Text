@@ -15,7 +15,7 @@ export const country_texts: text_save [] = [
             The climate varies from colder conditions in the north to milder weather in the south. Nature and outdoor life are important parts of the culture, and public access to the countryside is a well-known tradition.`,
     easy: ["Nothern", "Nordic", "northern", "democracy", "small", "climate", "country", "baltic"],
     medium: ["Europe", "population", "forests", "lakes", "technology"],
-    hard: ["constitutional", "monarchy", "parliamentary", "welfare"],
+    hard: ["constitutional", "monarchy", "welfare"],
     hints: ["social welfare", "Nobel prize", "ABBA"]
     },
     {
