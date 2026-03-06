@@ -13,9 +13,9 @@ export const country_texts: text_save [] = [
     text: ` Sweden is a country in Northern Europe and part of the Nordic region. It is one of the larger countries in Europe by area, but it has a relatively small population compared to its size. The landscape includes forests, thousands of lakes, long coastlines, and mountain areas in the north. The country borders Norway and Finland and has a long coastline along the Baltic Sea.
             Sweden is a constitutional monarchy and a parliamentary democracy. Its capital is Stockholm, a city built across several islands. The country is known for its high standard of living, extensive welfare system, and strong focus on education and equality. Its economy is based on industry, technology, trade, and innovation. Several internationally known companies have their origins there.
             The climate varies from colder conditions in the north to milder weather in the south. Nature and outdoor life are important parts of the culture, and public access to the countryside is a well-known tradition.`,
-    easy: ["Kingdom", "Nordic", "northern", "democracy", "small", "climate"],
-    medium: [],
-    hard: [],
+    easy: ["Nothern", "Nordic", "northern", "democracy", "small", "climate", "country", "baltic"],
+    medium: ["Europe", "population", "forests", "lakes", "technology"],
+    hard: ["constitutional", "monarchy", "welfare"],
     hints: ["social welfare", "Nobel prize", "ABBA"]
     },
     {
@@ -24,9 +24,9 @@ export const country_texts: text_save [] = [
             Germany is a federal parliamentary republic made up of sixteen states. Its capital is Berlin, which is also the largest city. The country is known for its strong economy, advanced industry, and major role in European politics. It is especially recognized for engineering, manufacturing, science, and transportation. Many globally known companies in the automotive, chemical, and technology sectors are based there.
             The country has a rich cultural history in music, philosophy, literature, and architecture. It is also known for castles, historic cities, and seasonal festivals. The climate is generally temperate, with warm summers and cool winters. Germany combines modern urban life with deep historical roots, making it an influential country both in Europe and globally.`,
     
-    easy: ["Republic", "Europe", "Baltic", "architecture", "historic","climate", "largest"],
-    medium: [],
-    hard: [],
+    easy: ["Republic", "Europe", "cities", "architecture", "historic","climate", "largest"],
+    medium: ["federal", "states", "industry", "manufacturing"],
+    hard: ["parliamentary", "republic", "transportation", "economy"],
     hints: ["engineering hub", "16 federal states", "oktoberfest" ]
 },
 {
@@ -34,9 +34,9 @@ export const country_texts: text_save [] = [
     text: ` Australia is a country in the Southern Hemisphere and is both a nation and a continent. It is surrounded by the Indian and Pacific Oceans and is known for its large size and relatively low population density. Much of the interior is dry or semi-arid, while the coastal areas contain most of the population. The landscape includes deserts, tropical forests, mountain ranges, and long stretches of coastline.
             Australia is a federal parliamentary democracy and a constitutional monarchy made up of states and territories. Its capital is Canberra, while Sydney and Melbourne are among its largest and best-known cities. The country is known for its high quality of life, multicultural society, and strong economy. Important industries include mining, agriculture, tourism, education, and services.
             Australia is also famous for its unique wildlife, with many animal species found nowhere else in the world. The climate varies widely, from tropical conditions in the north to more temperate regions in the south. Outdoor life plays a major role in the culture, and the country is often associated with beaches, sports, and wide open spaces.` ,
-    easy: ["Kingdom", "Nordic", "western", "parliamentary", "many", "species", "climate", "tropical", "culture","beaches"],
-    medium: [],
-    hard: [],
+    easy: ["North", "parliamentary", "many", "species", "climate", "tropical", "culture","beaches"],
+    medium: ["continent", "deserts", "forests", "coastline", "wildlife"],
+    hard: ["multicultural", "territories", "semi-arid", "population", "density"],
     hints: ["native wildlife", "big nation", "outback interior"]
 
 },
@@ -46,9 +46,9 @@ export const country_texts: text_save [] = [
     text: `England is a country in northwestern Europe and is part of the United Kingdom. It occupies the southern and central portion of the island of Great Britain and is bordered by Scotland to the north and Wales to the west. The landscape includes rolling hills, plains, forests, and a long coastline, with many towns and cities shaped by centuries of history.
             England is not a sovereign state on its own, but it is the largest and most populous country within the United Kingdom. Its capital is London, one of the world’s most influential cities in finance, culture, and politics. The country is known for its historic institutions, including a constitutional monarchy and parliamentary system that have influenced many other nations. Its economy is diverse, with major strengths in finance, education, technology, media, and services.
             England has had a major impact on global history through literature, science, industry, and exploration. It is associated with many well-known traditions, historic landmarks, and cultural symbols. The climate is generally temperate, with mild winters and cool summers. England combines deep historical roots with modern urban life, making it one of the most recognized countries in the world.`,
-    easy: [],
-    medium: ["Kingdom", "Africa", "southernmost", "continental","well-known", "historic", "science", "temperate", "major"],
-    hard: [],
+    easy: ["kingdom", "historic", "science", "temperate"],
+    medium: ["Kingdom", "southern", "largest","well-known", "historic", "science", "temperate", "major"],
+    hard: ["constitutional", "monarchy", "parliamentary", "institutions"],
     hints: ["Shakespear", "premiere league", "big ben"]
 },
 
@@ -56,9 +56,9 @@ export const country_texts: text_save [] = [
     text: `China is a country in East Asia and one of the largest and most populous nations in the world. It has a wide variety of landscapes, including mountains, deserts, plateaus, rivers, and fertile plains. The country shares borders with many others, and its size has contributed to a long history of regional diversity in culture, language, and tradition.
             China is governed as a single-party socialist state, and its capital is Beijing. Other major cities include Shanghai, Guangzhou, and Shenzhen, which are important centers of trade, finance, and industry. The country has one of the world’s largest economies and is known for manufacturing, technology, infrastructure, and global trade. It plays a major role in international politics and economic affairs.
             China has one of the oldest continuous civilizations in the world and is known for major historical achievements in philosophy, science, art, and engineering. It is associated with famous landmarks, long-standing cultural traditions, and a rich culinary heritage. The climate varies greatly across the country, from cold northern winters to subtropical conditions in the south. China combines ancient history with rapid modernization, making it one of the most influential countries in the world.`,
-    easy: [],
-    medium: ["Republic","Southern", "Mediterranean", "800", "islands"],
-    hard: [],
+    easy: ["country", "population", "economy", "cities"],
+    medium: ["mountains","deserts", "rivers", "plains", "industry"],
+    hard: ["civilization", "modernizarion", "socialist", "infrastructure"],
     hints: ["Ancient", "Great wall", "single-party state"]
 },
 ]
@@ -132,9 +132,9 @@ export const song_title: text_save [] = [
     I shake it off, I shake it off (Ha)
     Heartbreakers gonna break, break, break, break, break (Mmm)
     And the fakers gonna fake, fake, fake, fake, fake (They fake and fake and fake)`,
-    easy: ["off", "it", "people", "gonna", "players", "haters", "shake", "music", "dates"],
-    medium: ["brain", "cruisin'", "music"],
-    hard: [],
+    easy: ["off", "people", "gonna", "players", "haters", "shake", "music", "dates"],
+    medium: ["brain", "cruisin'", "movin"],
+    hard: ["Heartbreakers", "fakers"],
     hints: ["pop", "2014", "Taylor swift"]
 },
     {
@@ -187,9 +187,9 @@ export const song_title: text_save [] = [
     Lay all your love on me
     Don't go wasting your emotion
     Lay all your love on me`,
-    easy: ["Lay", "fear", "all", "baby", "smile", "sitting", "everything", "jealous", "emotion", "love" ],
-    medium: ["duck", "baby", "jealous", "fear", "emotion" ],
-    hard: [],
+    easy: ["Lay", "fear", "baby", "smile", "sitting", "everything", "jealous", "emotion", "love" ],
+    medium: ["duck", "baby", "jealous", "fear", "emotion", "devotion" ],
+    hard: ["duck", "possesive", "talk"],
     hints: ["Disco love", "swedish pop", "1980"]
     },
     {
@@ -236,7 +236,7 @@ export const song_title: text_save [] = [
                 'Til then, I walk alone` ,
         easy: ["boulevard", "dreams", "lonely", "shadow", "street"],
         medium: ["alone", "walking", "empty" ],
-        hard: [],
+        hard: ["Borderline", "Vital", "beating"],
         hints: ["lonely city walk", "2004", "green day"]
         
     },
@@ -301,7 +301,7 @@ export const song_title: text_save [] = [
         Beat it, beat it `,
         easy: ["beat", "fight", "strong", "wrong", "fire"],
         medium: ["tough", "scared", "blood"],
-        hard: [],
+        hard: ["Defeated", "macho", "funky"],
         hints: ["avoid the fight", "1980", "jackson"]
         
     },
@@ -337,9 +337,9 @@ export const song_title: text_save [] = [
                 Picking up the pieces of my life without you on my mind
                 I'm still standing (yeah, yeah, yeah)
                 I'm still standing (yeah, yeah, yeah)` ,
-        easy: ["standing", "survivin'", "piece", "life", "fadin'"],
-        medium: ["once", "down", "sad"],
-        hard: [],
+        easy: ["standing", "survivin'", "piece", "life", "fadin'", "cold", "kid"],
+        medium: ["once", "down", "sad", "road"],
+        hard: ["survivor", "pieces", "fade"],
         hints: ["Resilient", "1983", "Elton"]
         
     }
