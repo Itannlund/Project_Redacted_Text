@@ -300,6 +300,7 @@ function gameplay_loop(kategory, difficulty) {
         points = 150;
         wrong_guess = 15;
         correct_guess = 30;
+        our_array.hard.forEach(function (value) { find_words(normalize_text(value), text_tokenized, text_redacted_tokenized); });
         //Takes away common words so they are not redacted at the start
     }
     if (difficulty === "1") {
