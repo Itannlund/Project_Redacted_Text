@@ -309,10 +309,10 @@ export function game_rules(): void {
     console.log(`_______________________________________________________________________________\n
                 Welcome to our game redacted, here are the rules!!!\n
                 1. The player will get a redacted text from a choosen category
-                2. The player will start with 100 points and your goal is to unredact 
+                2. The player will start with a certain amount of points and your goal is to unredact 
                    as many words as you can by typing them in the terminal.
-                3. For each word you guess correctly you gain 10 points and for each word 
-                   you guess incorrectly you lose 10 points.
+                3. For each word you guess correctly you gain points and for each word 
+                   you guess incorrectly you lose points.
                 4. To win the player needs to guess the current topic for their selected 
                    category, correct guess for current topic gains double points.\n`);
         const input_leave = prompt("If you wish to continue press any button: ")
