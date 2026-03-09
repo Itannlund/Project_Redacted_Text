@@ -43,9 +43,10 @@ describe("Redacting Text", () => {
      test("empty string", () => {
         expect(redact_all_text("")).toBe("");
     })
-     test("keep punctuation", () => {
-        
+     test("keep punctiation", () => {
+        expect(redact_all_text("isak.hello.")).toBe("****.*****.");
     })
+    
 
 });
 describe("Redacting Text Tokenized", () => {
@@ -67,7 +68,16 @@ describe("Normalize_text", () => {
     test('Testing normalize_text for weird letters', ()=> {
         const Swedish_letters = "Är Ån Något,. att öva pÅ? "
         expect(normalize_text(Swedish_letters)).toEqual("ar an nagot,. att ova pa?");
-});
+    });
+    test("Works with space at the end and start", () => {
+        expect(normalize_text(" hello  my    name         is ")).toBe("hello my name is");
+    })
+    test("takes away accents from letters", () => {
+        expect(normalize_text("café")).toBe("cafe");
+        expect(normalize_text("naïve")).toBe("naive");
+        expect(normalize_text("résumé")).toBe("resume");
+        expect(normalize_text("àéîõü")).toBe("aeiou");
+    });
 });
 
 describe("Tokenize", ()=>{
