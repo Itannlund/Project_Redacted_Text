@@ -4,6 +4,9 @@ import { diff } from "util";
 export type Text = string;
 export type Tokenized_Text = string[];
 
+export type Player = {
+    points: number;
+    name: string };
 
 const prompt = require('prompt-sync')({ sigint: true}) // Used to handle Inputs
 const regular_words: string[] = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "you", "do", "at", "as", "gona"]
@@ -13,7 +16,7 @@ const regular_words: string[] = ["the", "in", "a", "and", "have", "to", "be", "c
  * @example normalize_text("Hej Mitt    naMn är Öster")
  * results in "hej mitt namn ar oster"
  * @param t: Text Takes in a string.
- * @returns The same text but normalized, (see comments in function for exact description)
+ * @returns The same text but normalized, (see comments in function for exact description of each method)
  */
 // Kan fixas så att * tas bort
 export function normalize_text(t: Text): Text{
@@ -212,9 +215,7 @@ export function point_set(points: number, action: number, value: number): number
 }
 
 
-type Player = {
-    points: number;
-    name: string };
+
 
 
 let points_board: Player[] = [];
@@ -305,6 +306,7 @@ export function generate_random_text(Kategory: text_save[]): text_save{
         const n = Math.floor(Math.random() * length);
         return Kategory[n];
     }
+    
 export function game_rules(): void {
     console.log(`_______________________________________________________________________________\n
                 Welcome to our game redacted, here are the rules!!!\n
@@ -319,13 +321,17 @@ export function game_rules(): void {
         return;
 }
 
-// Våran gameplay loop. Denna kör spelet
-export function gameplay_loop(kategory: text_save[], difficulty: string) {
+/**
+ * Takes in a katergory and a difficulty, then starts the game loop runnings trought our game with prompts.
+ * @example gameplay_loop(country_texts[0], easy) => plays the game with the first text in country_texts and difficulty easy.
+ * @param kategory: text_save[] takes in the type text_save which is an array with objects inside 
+ * @param difficulty is a string
+ * @precondiction function needs a text_save[] file which is an array including objects: answer, text, easy, medium, hard, hints.
+ * @returns void
+ */
+export function gameplay_loop(kategory: text_save[], difficulty: string) : void {
     console.log(`________________________________________________________________________________\n
                     Welcome to the game Redacted!!!`)
-
-    
-    
     // Our array of guesses
     let guesses: string[] = [];
     // Our array with correct guess and text
@@ -358,8 +364,6 @@ export function gameplay_loop(kategory: text_save[], difficulty: string) {
         correct_guess = 30;
         our_array.hard.forEach((value) => {find_words(normalize_text(value), text_tokenized, text_redacted_tokenized)})
         //Takes away common words so they are not redacted at the start
-        
-        
     }
     
     if(difficulty === "1"){set_easy_difficulty()};

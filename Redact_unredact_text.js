@@ -23,7 +23,7 @@ var regular_words = ["the", "in", "a", "and", "have", "to", "be", "can", "i", "y
  * @example normalize_text("Hej Mitt    naMn är Öster")
  * results in "hej mitt namn ar oster"
  * @param t: Text Takes in a string.
- * @returns The same text but normalized, (see comments in function for exact description)
+ * @returns The same text but normalized, (see comments in function for exact description of each method)
  */
 // Kan fixas så att * tas bort
 function normalize_text(t) {
@@ -264,11 +264,17 @@ function generate_random_text(Kategory) {
     return Kategory[n];
 }
 function game_rules() {
-    console.log("_______________________________________________________________________________\n\n                Welcome to our game redacted, here are the rules!!!\n\n                1. The player will get a redacted text from a choosen category\n                2. The player will start with 100 points and your goal is to unredact \n                   as many words as you can by typing them in the terminal.\n                3. For each word you guess correctly you gain 10 points and for each word \n                   you guess incorrectly you lose 10 points.\n                4. To win the player needs to guess the current topic for their selected \n                   category, correct guess for current topic gains double points.\n");
+    console.log("_______________________________________________________________________________\n\n                Welcome to our game redacted, here are the rules!!!\n\n                1. The player will get a redacted text from a choosen category\n                2. The player will start with a certain amount of points and your goal is to unredact \n                   as many words as you can by typing them in the terminal.\n                3. For each word you guess correctly you gain points and for each word \n                   you guess incorrectly you lose points.\n                4. To win the player needs to guess the current topic for their selected \n                   category, correct guess for current topic gains double points.\n");
     var input_leave = prompt("If you wish to continue press any button: ");
     return;
 }
-// Våran gameplay loop. Denna kör spelet
+/**
+ * Takes in a katergory and a difficulty, then starts the game loop runnings trought our game with prompts.
+ * @example gameplay_loop(country_texts[0], easy) => plays the game with the first text in country_texts and difficulty easy.
+ * @param kategory: text_save[] takes in the type text_save which is an
+ * @param difficulty
+ * @returns
+ */
 function gameplay_loop(kategory, difficulty) {
     console.log("________________________________________________________________________________\n\n                    Welcome to the game Redacted!!!");
     // Our array of guesses
