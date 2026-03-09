@@ -34,7 +34,7 @@ export function normalize_text(t: Text): Text{
  * @example tokenize_text("Hej mitt namn är Öster")
  * results in ["hej", "mitt", "namn", "ar", "oster"]
  * @param t: Text is a string
- * @precondition
+ * @precondition t is a string
  * @returns the same text but where each space between words creates a token until next space
  */
 
@@ -71,7 +71,7 @@ export function tokenize_text(t: Text): Tokenized_Text{
 }
 
 /**
- * Takes in a string and transforms all letters to * while keeping the structure and dots
+ * Takes in a string and transforms all letters to * while keeping spaces and punctuation
  * @example: redact_all_text("hello my name is öster")
  * results in "***** ** **** ** *****"
  * @param t: A text of some kind
@@ -82,7 +82,7 @@ export function redact_all_text(input: Text):string{
 }
 
 /**
- * Takes in a string and transforms all letters to * and tokenizes them, they keep the same structure and dots
+ * Takes in a string and transforms all letters to * and tokenizes them, they keep spaces and punctuation
  * @example: redact_all_text("hello my name is öster")
  * results in ["*****"", "**", "****", "**" "*****"]
  * @param t: A text of some kind
@@ -93,16 +93,14 @@ export function redact_all_text_tokenized(input: Text): string[]{
 }
 
 /**
- * Takes in a guess a text and a redacted text and unredacts that guess in the redacted text
+ * Takes in a guess, a text, and a redacted text and unredacts that guess in the redacted text
  * @example find_words("Öster", ["mitt", "oster"], ["****", "*****"])
  * results in ["****", "oster"]
  * @param guess, is a string, 
  * @param text is an array with strings
  * @param redacted_text_tokenized an array with strings
- * @precondition This function requiered a redacted_text_tokenized that has the same ammount of words and placing as the text, 
- * will othervise return false
- * @returns Returns false if no changes were made to redacted_text_tokenized 
- * and returns the redacted text if changes were made.
+ * @precondition text and redacted_text_tokenized must have the same length and positioning for words
+ * @returns Returns true if atleast one word was revealed othervise returns false
  */
 export function find_words(guess: string, text: string[], redacted_text_tokenized: string[]): boolean {
    
@@ -123,9 +121,6 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
    return ok;
 }
 
-
-
-
 /**
  * Takes in an array with guesses and a guess, it then adds the guess if it was not prevously in the array and returns false,
  * othervise returns true
@@ -134,6 +129,7 @@ export function find_words(guess: string, text: string[], redacted_text_tokenize
  * @param guesses is an array with strings
  * @param guess is a string
  * @returns Returns true if not changes were made to guesses and false if changes where made.
+ * @sideeffect prints information in terminal
  */
 export function already_guessed(guesses: string[], guess: string): boolean {
 
@@ -147,7 +143,14 @@ export function already_guessed(guesses: string[], guess: string): boolean {
     return false;
 }
 
-export function letters_spaces(text: string): { letters: Number; spaces: Number } {
+/**
+ * Takes a string and counts how many letters and spaces exists and returns it in a record
+ * with the correct counted numbers
+ * @example letters_spaces("hello world") returns {letters: 10; spaces: 1}
+ * @param text is a string without numbers
+ * @returns Returns a record that stores the number and spaces for the string
+ */
+export function letters_spaces(text: string): { letters: number; spaces: number } {
     let letters = 0;
     let spaces = 0;
 
@@ -164,6 +167,17 @@ export function letters_spaces(text: string): { letters: Number; spaces: Number 
     return {letters, spaces}
 }
 
+/**
+ * Allows player to request hint during the game.
+ * The player can choose between 2 diffrent hints, letters and spaces or specific hint
+ * @param text the correct answer of the current word
+ * @param item the object containing the hints for the current text
+ * @param index containing the current hint indec for specific hints
+ * 
+ * @returns true if option 1 was picked, false if no hint was used,
+ * number for the next hint index incase specific hint was used
+ * @sideeffect prints information in terminal
+ */
 export function hints(text: string, item: text_save, index: number): boolean | number {
     console.log("\n 1. How many letters and spaces in titel (costs 15 points) \n 2. Specific hint about country (costs 20 points) \n 3. No hint needed")
     const input = prompt("Choose what type of hint: ")
@@ -197,9 +211,16 @@ export function hints(text: string, item: text_save, index: number): boolean | n
     }
 }
 
-
+/**
+ * modifies points depending on action and returns the new points
+ * @example: point_set(100, 2, 10) returns 110
+ * @param Points is a positive number
+ * @param Action is a number
+ * @param Value is a number
+ * @returns Returns the modified points unless action is something else than 1, 2 ,3 
+ * which will cause the return to be the original points
+ */
 export function point_set(points: number, action: number, value: number): number {
-    //remove points
     if (action === 1) {
         return points - value;
     }
@@ -217,13 +238,33 @@ export function point_set(points: number, action: number, value: number): number
 
 
 let points_board: Player[] = [];
-
+/**
+ * Takes a name and a score and turns it into a record that is sorted depenting on newPoints value
+ * and returns a points board
+ * @example: leaderboard("test1", 100) and leaderboard("test2", 60) which returns [{"test1", 200},
+ * {"test2", 60}]
+ * @param name is a string
+ * @param newPoints is a positive number
+ * @returns Returns an sorted array of records which saves the names and points
+ */
 export function leaderboard(name: string, newPoints: number): Player[] {
     points_board.push({name, points: newPoints});
     points_board.sort((a,b) =>b.points -a.points);
     return points_board;
 }
 
+
+/**
+ * Displays the main menu and handles user navigation.
+ * The function prompts the user to choose between staring, rules, exit,
+ * categories and leaderboard
+ * The function runs in a loop till the player selects the exit option
+ * @returns void
+ * @sideeffects 
+ * Prints menu options in terminal
+ * reads user input
+ * may start game or show leaderboard
+ */
 export function meny(){
     while(true){
         console.log("\n 1. Play \n \n 2. Rules \n \n 3. Exit \n")
@@ -281,6 +322,14 @@ export function meny(){
     
 }
 
+/**
+ * Uses input from the user in the function to decide if a valid result has been typed
+ * @returns Returns string incase of a valid input(1-4) else a while loop repeats till valid
+ * input
+ * @sideeffect 
+ * Prints options in terminal
+ * Prints information in terminal
+ */
 export function helper_set_difficulty(): string {
     while (true) {
         console.log("\n \n 1. Easy \n \n 2. Medium \n \n 3. Hard \n \n 4. Go back \n \n");
@@ -294,17 +343,23 @@ export function helper_set_difficulty(): string {
     }
 }
 
-    
-        
-    
 
-// Generates a random text from the desired kategory
+/**
+ * generates a random text for the gameloop from the Katergory
+ * @param Kategory is an array that has records in it sorted as country or artist
+ * @returns Returns a random text from the correct object
+ */
 export function generate_random_text(Kategory: text_save[]): text_save{
         const length = Kategory.length;
         const n = Math.floor(Math.random() * length);
         return Kategory[n];
-    }
+}
 
+/**
+ * Displays in the terminal the game rules, takes no arguments
+ * @returns returns void
+ * @sideeffect Prints rules in terminal
+ */
 export function game_rules(): void {
     console.log(`_______________________________________________________________________________\n
                 Welcome to our game redacted, here are the rules!!!\n
@@ -326,6 +381,7 @@ export function game_rules(): void {
  * @param difficulty is a string
  * @precondiction function needs a text_save[] file which is an array including objects: answer, text, easy, medium, hard, hints.
  * @returns void
+ * @sideeffect displays the game in the terminal
  */
 export function gameplay_loop(kategory: text_save[], difficulty: string) : void {
     console.log(`________________________________________________________________________________\n
