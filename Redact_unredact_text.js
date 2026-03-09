@@ -180,7 +180,6 @@ function hints(text, item, index) {
         return hints(text, item, index);
     }
 }
-// Skall användas senare när vi får flera actions
 function point_set(points, action, value) {
     //remove points
     if (action === 1) {
@@ -271,9 +270,10 @@ function game_rules() {
 /**
  * Takes in a katergory and a difficulty, then starts the game loop runnings trought our game with prompts.
  * @example gameplay_loop(country_texts[0], easy) => plays the game with the first text in country_texts and difficulty easy.
- * @param kategory: text_save[] takes in the type text_save which is an
- * @param difficulty
- * @returns
+ * @param kategory: text_save[] takes in the type text_save which is an array with objects inside
+ * @param difficulty is a string
+ * @precondiction function needs a text_save[] file which is an array including objects: answer, text, easy, medium, hard, hints.
+ * @returns void
  */
 function gameplay_loop(kategory, difficulty) {
     console.log("________________________________________________________________________________\n\n                    Welcome to the game Redacted!!!");

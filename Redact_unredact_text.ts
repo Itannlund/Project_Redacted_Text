@@ -198,8 +198,6 @@ export function hints(text: string, item: text_save, index: number): boolean | n
 }
 
 
-// Skall användas senare när vi får flera actions
-
 export function point_set(points: number, action: number, value: number): number {
     //remove points
     if (action === 1) {
@@ -306,7 +304,7 @@ export function generate_random_text(Kategory: text_save[]): text_save{
         const n = Math.floor(Math.random() * length);
         return Kategory[n];
     }
-    
+
 export function game_rules(): void {
     console.log(`_______________________________________________________________________________\n
                 Welcome to our game redacted, here are the rules!!!\n

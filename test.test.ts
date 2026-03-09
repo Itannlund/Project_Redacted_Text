@@ -10,7 +10,8 @@ import {    normalize_text,
             already_guessed,
             leaderboard,
             point_set,
-            gameplay_loop} from "./Redact_unredact_text";
+            gameplay_loop
+            } from "./Redact_unredact_text";
 import {country_texts, song_title, type text_save} from "./Texts";
 
     
@@ -146,7 +147,10 @@ describe("Already Guessed", ()=> {
 });
 
 test("testing counting numbers and letters", () => {
+    expect(letters_spaces("")).toEqual({letters: 0, spaces: 0})
     expect(letters_spaces("number")).toEqual({letters: 6, spaces: 0})
+    expect(letters_spaces("number and")).toEqual({letters: 9, spaces: 1})
+    expect(letters_spaces("Hello My Name Is")).toEqual({letters: 13, spaces: 3})
 })
 
 describe("point set", () => {
